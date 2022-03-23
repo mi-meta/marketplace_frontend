@@ -1,4 +1,4 @@
-export * from './Card';
+export * from './NFTCard';
 export * from './Collections';
 export * from './Contact';
 export * from './Footer';

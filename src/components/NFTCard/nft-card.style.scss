@@ -1,0 +1,20 @@
+.nft-card {
+  background: #FFFFFF;
+  box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.02), 0px 24px 48px rgba(44, 39, 56, 0.04);
+  border-radius: 24px;
+  padding: 20px;
+
+  img {
+    border-radius: 16px;
+  }
+  .card-title {
+    font-family: Montserrat;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34px;
+    letter-spacing: 0px;
+    text-align: left;
+
+  }
+}

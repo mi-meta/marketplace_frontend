@@ -1,5 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
-import { Landing, CollectionList, TopShelfDrops, Card } from '../components';
+import { Landing, CollectionList, TopShelfDrops, NFTCard } from '../components';
 
 const Home = () => {
   return (
@@ -14,13 +14,13 @@ const Home = () => {
             <Col md={8} className='m-auto'>
               <Row>
                 <Col md={4}>
-                  <Card />
+                  <NFTCard />
                 </Col>
                 <Col md={4}>
-                  <Card />
+                  <NFTCard />
                 </Col>
                 <Col md={4}>
-                  <Card />
+                  <NFTCard />
                 </Col>
               </Row>
             </Col>

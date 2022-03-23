@@ -7,7 +7,8 @@ const Header = () => {
       <Navbar bg="light" expand="lg">
         <Container fluid>
           <Navbar.Brand href="#">
-            <Image src='/icons/logo.svg' />
+            <Image src='/icons/logo.svg' className="img-brand" />
+            <span>mi-meta</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
