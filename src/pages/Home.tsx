@@ -14,13 +14,13 @@ const Home = () => {
             <Col md={8} className='m-auto'>
               <Row>
                 <Col md={4}>
-                  <NFTCard />
+                  <NFTCard id={1}/>
                 </Col>
                 <Col md={4}>
-                  <NFTCard />
+                  <NFTCard id={2}/>
                 </Col>
                 <Col md={4}>
-                  <NFTCard />
+                  <NFTCard id={3}/>
                 </Col>
               </Row>
             </Col>

@@ -1,10 +1,10 @@
 import { Card, ListGroupItem, ListGroup } from 'react-bootstrap';
 import './nft-card.style.scss';
 
-const NFTCard = () => {
+const NFTCard = ({id}: {id: number}) => {
   return (
     <Card style={{ width: '300px' }} className='nft-card'>
-      <Card.Img variant="top" src="/images/trending/1.png" />
+      <Card.Img variant="top" src={`/images/trending/${id}.png`} />
       <Card.Body>
         <Card.Text>
           1 Edition minted
