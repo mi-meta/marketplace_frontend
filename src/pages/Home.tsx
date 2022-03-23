@@ -1,8 +1,19 @@
+import { Row } from 'react-bootstrap';
+import { Landing, CollectionList, TopShelfDrops, Card } from '../components';
+
 const Home = () => {
   return (
-    <>
-      Home
-    </>
+    <Row>
+      <Landing />
+      <TopShelfDrops />
+      <CollectionList />
+      <Row className='nft-carousel'>
+
+      </Row>
+      <Row className='categories' >
+
+      </Row>
+    </Row>
   );
 };
 
