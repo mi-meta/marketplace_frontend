@@ -1,4 +1,4 @@
-import { Card, ListGroupItem, ListGroup } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import './nft-card.style.scss';
 
 const NFTCard = ({id}: {id: number}) => {
