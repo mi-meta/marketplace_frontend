@@ -1,4 +1,4 @@
-import { Container, Row, Col, Stack, Image } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { CollectionListItem } from './CollectionListItem'
 import './collections.style.scss';
 const CollectionList = () => {

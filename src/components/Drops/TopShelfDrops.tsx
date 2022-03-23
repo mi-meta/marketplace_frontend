@@ -1,4 +1,4 @@
-import { Container, Stack, Row, Col } from 'react-bootstrap';
+import { Container, Stack } from 'react-bootstrap';
 import { DropItem } from './DropItem';
 import './drops.style.scss';
 
