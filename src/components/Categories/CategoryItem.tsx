@@ -1,9 +1,5 @@
-const CategoryItem = () => {
-  return (
-    <>
-      CategoryItem
-    </>
-  )
-};
+function CategoryItem() {
+  return <>CategoryItem</>;
+}
 
 export { CategoryItem };
