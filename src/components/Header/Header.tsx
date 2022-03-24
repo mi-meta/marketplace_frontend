@@ -23,7 +23,9 @@ function Header() {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <InputGroup className="d-flex">
-              <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+              <InputGroup.Text id="basic-addon1">
+                <Image src={`/icons/lens.svg`} />
+              </InputGroup.Text>
               <FormControl
                 type="search"
                 placeholder="Search items and collections"

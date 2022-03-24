@@ -1,11 +1,16 @@
 .navbar {
   input {
     width: 500px;
+    border-left: none;
   }
   .container-fluid {
     gap: 150px;
   }
   .img-brand {
     margin-right: 20px;
+  }
+  .input-group-text {
+    border-right: none;
+    background: white;
   }
 }
