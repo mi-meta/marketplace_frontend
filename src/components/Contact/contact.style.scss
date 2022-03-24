@@ -1,3 +1,7 @@
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
 .contact {
   background-image: url('../../../public/images/contact-bg.png');
   background-size: cover;
@@ -21,8 +25,6 @@
     font-size: 16px;
     line-height: 22px;
     /* or 138% */
-
-
     color: #FFFFFF;
   }
   input {
@@ -56,5 +58,23 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  & > div:nth-child(1) > button {
+    width: 58px !important;
+    height: 58px !important;
+  }
+  &-sign-up {
+    width: 180px;
+  }
+}
+@include media-breakpoint-down(sm) {
+  .contact {
+    padding: 32px;
+    div {
+      padding: 10px !important;
+    }
+    h1, p {
+      padding: 10px;
+    }
   }
 }

@@ -1,3 +1,7 @@
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
 .landing {
   position: relative;
   // background-color: rgba(0, 0, 0, 0.64);
@@ -77,5 +81,10 @@
     width: 100%;
     top: 0px;
     left: 0px;
+  }
+}
+@include media-breakpoint-down(sm) {
+  .landing {
+    padding: 32px;
   }
 }
