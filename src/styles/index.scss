@@ -63,19 +63,30 @@ p.bold {
   letter-spacing: 0px;
   text-align: left;
 }
-@include media-breakpoint-up(sm) {
+@include media-breakpoint-down(sm) {
+  .card {
+    width: 240px !important;
+    margin: auto !important;
+    margin-bottom: 10px !important;
+  }
+  .home {
+    .nft-carousel {
+      .container-fluid {
+        padding: 10px !important;
+      }
+    }
+  }
+}
+@include media-breakpoint-down(md) {
 
 }
-@include media-breakpoint-up(md) {
+@include media-breakpoint-down(lg) {
 
 }
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-down(xl) {
 
 }
-@include media-breakpoint-up(xl) {
-
-}
-@include media-breakpoint-up(xxl) {
+@include media-breakpoint-down(xxl) {
 
 }
 
