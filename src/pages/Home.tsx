@@ -9,6 +9,7 @@ const Home = () => {
       <TopShelfDrops />
       <CollectionList />
       <div className="nft-carousel">
+        <div className="nft-carousel-bg"></div>
         <Container className="p-5" fluid>
           <h1 className="title text-white">
             YOU <strong className="font-bold">DON’T</strong> WANT TO MISS THESE

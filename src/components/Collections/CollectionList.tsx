@@ -5,7 +5,7 @@ import './collections.style.scss';
 
 function CollectionList() {
   return (
-    <Container>
+    <Container className="collection-list">
       <h1 className="title">Top collections this week</h1>
       <Container className="p-4">
         <Row>

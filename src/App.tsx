@@ -6,7 +6,7 @@ import { Header, Footer, Contact } from './components';
 function App() {
   return (
     <ThemeProvider breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}>
-      <Container className="App" fluid>
+      <Container className="App dark" fluid>
         <BrowserRouter>
           <Header />
           <Routes>

@@ -41,8 +41,29 @@ h1.title {
 
 .home {
   .nft-carousel {
-    background: #EBF4F8;
-    background-image: url('../../public/images/nfts-bg.png');
+    position: relative;
+    &-bg {
+      background: #EBF4F8;
+      background-image: url('../../public/images/nfts-bg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      top: 0px;
+      left: 0px;
+    }
+    &-bg::before{
+      // background-color: rgba(0, 0, 0, 0.37);
+      // content: '';
+      // display: block;
+      // height: 100%;
+      // position: absolute;
+      // width: 100%;
+      // top: 0px;
+      // left: 0px;      
+    }
   }
 }
 p.bold {
@@ -98,6 +119,32 @@ p.bold {
       .container-fluid {
         padding: 10px !important;
       }
+    }
+  }
+}
+
+.dark {
+  .nft-carousel {
+    &-bg {
+      background-image: url('../../public/images/nfts-bg-dark.png');
+    }
+    .card {
+      box-shadow: 0px 11px 9px 0px #C209AD4D;
+    }
+  }
+}
+.dark {
+  h1.title {
+    color: white;
+  }
+  .card {
+    background: #333236;
+
+    .card-title {
+      color: white;
+    }
+    p {
+      color: white;
     }
   }
 }
