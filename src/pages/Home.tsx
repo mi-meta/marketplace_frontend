@@ -16,13 +16,13 @@ const Home = () => {
           <Row className="p-3">
             <Col md={10} className="m-auto">
               <Row>
-                <Col md={4} sm={6}>
+                <Col md={4} sm={12}>
                   <NFTCard id={1} />
                 </Col>
-                <Col md={4} sm={6}>
+                <Col md={4} sm={12}>
                   <NFTCard id={2} />
                 </Col>
-                <Col md={4} sm={6}>
+                <Col md={4} sm={12}>
                   <NFTCard id={3} />
                 </Col>
               </Row>

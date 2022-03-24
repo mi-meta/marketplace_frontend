@@ -17,7 +17,7 @@ function Contact() {
       </Col>
       <Col md={4} sm={12}>
         <h1>JOIN THE CONVERSATION</h1>
-        <Stack direction="horizontal" gap={3}>
+        <Stack direction="horizontal" gap={3} className="join">
           <Button>
             <Image src={`/icons/discord.svg`} />
           </Button>

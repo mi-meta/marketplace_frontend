@@ -10,13 +10,13 @@ const TopShelfDrops = () => {
       <Row>
         <Col md={8} sm={12}>
           <Row>
-            <Col md={4} sm={12}>
+            <Col md={4} sm={6}>
               <DropItem id={1} />
             </Col>
-            <Col md={4} sm={12}>
+            <Col md={4} sm={6}>
               <DropItem id={2} />
             </Col>
-            <Col md={4} sm={12}>
+            <Col md={4} sm={6}>
               <DropItem id={3} />
             </Col>
           </Row>

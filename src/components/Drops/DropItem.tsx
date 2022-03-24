@@ -2,7 +2,7 @@ import { Card } from 'react-bootstrap';
 
 function DropItem({ id }: { id: number }) {
   return (
-    <Card className="text-white m-auto">
+    <Card className="text-white">
       <Card.Img src={`/images/drops/${id.toString()}.png`} alt="Card image" />
       <Card.ImgOverlay>
         <Card.Title>Card title</Card.Title>

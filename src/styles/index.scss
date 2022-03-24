@@ -64,7 +64,18 @@ p.bold {
   text-align: left;
 }
 @include media-breakpoint-down(sm) {
-
+  .card {
+    width: 240px !important;
+    margin: auto !important;
+    margin-bottom: 10px !important;
+  }
+  .home {
+    .nft-carousel {
+      .container-fluid {
+        padding: 10px !important;
+      }
+    }
+  }
 }
 @include media-breakpoint-down(md) {
 
