@@ -3,7 +3,7 @@ module.exports = {
   //   browser: true,
   //   es2021: true,
   // },
-  
+
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -13,7 +13,7 @@ module.exports = {
     sourceType: 'module',
   },
   extends: [
-    "eslint:recommended",
+    'eslint:recommended',
     'plugin:react/recommended',
     // 'airbnb',
     'plugin:react/recommended',
@@ -40,7 +40,13 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/display-name': 'off',
-    'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
+    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
   },
   settings: {
     // "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
@@ -61,5 +67,5 @@ module.exports = {
     //         moduleDirectory: ['node_modules', 'src/'],
     //     },
     // },
-  }
+  },
 };
