@@ -1,9 +1,5 @@
-const Detail = () => {
-  return (
-    <>
-      Detail
-    </>
-  )
-};
+function Detail() {
+  return <>Detail</>;
+}
 
 export { Detail };

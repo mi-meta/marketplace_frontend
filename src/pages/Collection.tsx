@@ -1,9 +1,5 @@
-const Collection = () => {
-  return (
-    <>
-      Collection
-    </>
-  )
-};
+function Collection() {
+  return <>Collection</>;
+}
 
 export { Collection };

@@ -1,9 +1,5 @@
-const Explore = () => {
-  return (
-    <>
-      Explore
-    </>
-  )
-};
+function Explore() {
+  return <>Explore</>;
+}
 
 export { Explore };
