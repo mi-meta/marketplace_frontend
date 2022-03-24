@@ -14,7 +14,7 @@ const categories: string[] = [
 
 function Explore() {
   return (
-    <Container className="explore">
+    <Container className="explore p-0" fluid>
       <Row className="explore-landing">
         <div className="explore-landing-bg" />
         <Col md={12} className="explore-landing-title">
