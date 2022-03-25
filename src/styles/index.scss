@@ -148,6 +148,9 @@ p.bold {
     }
   }
 }
+img.react-parallax-bgimage {
+  width: 100% !important;
+}
 @include media-breakpoint-down(md) {
 
 }
