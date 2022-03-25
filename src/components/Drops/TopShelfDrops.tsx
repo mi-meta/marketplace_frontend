@@ -6,7 +6,9 @@ import './drops.style.scss';
 const TopShelfDrops = () => {
   return (
     <Container className="top-shelf-drops p-5">
-      <h1 className="title">Top Shelf Drops</h1>
+      <h1 className="title">
+        <span className="font-bold">Top Shelf</span> Drops
+      </h1>
       <Row>
         <Col md={8} sm={12}>
           <Row>
