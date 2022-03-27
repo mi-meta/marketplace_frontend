@@ -22,13 +22,15 @@ function Explore() {
         </Col>
       </Row>
       <Row>
-        <Stack direction="horizontal" gap={3} className="explore-categories">
-          {categories.map((item: string, key: number) => {
-            return <span key={key}>{item}</span>;
-          })}
-        </Stack>
+        <Col lg={8} md={12} className="m-auto">
+          <Stack direction="horizontal" gap={3} className="explore-categories">
+            {categories.map((item: string, key: number) => {
+              return <span key={key}>{item}</span>;
+            })}
+          </Stack>
+        </Col>
       </Row>
-      <Row>
+      <Row className="explore-nft">
         {new Array(20).fill(1).map((_item: number, key: number) => {
           return <NFTCard id={_item} key={key} />;
         })}

@@ -112,7 +112,7 @@ p.bold {
   .card {
     max-width: 300px !important;
     margin: auto !important;
-    margin-bottom: 10px !important;
+    // margin-bottom: 12px !important;
   }
   .home {
     .nft-carousel {
@@ -134,6 +134,7 @@ p.bold {
   }
 }
 .dark {
+  background-color: #333236;
   h1.title {
     color: white; 
   }
