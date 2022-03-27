@@ -2,7 +2,29 @@ import React from 'react';
 import { Parallax } from 'react-parallax';
 import { Container, Row, Col } from 'react-bootstrap';
 import * as components from '../components';
+import { CategoryGroup } from '../components';
 // import image from './nfts-bg-dark-parallax.png';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 
 const Home = () => {
   return (
@@ -37,15 +59,15 @@ const Home = () => {
             <Row className="p-3 nft-carousel">
               <Col md={10} className="m-auto">
                 <Row>
-                  <Col md={4} sm={12}>
-                    <components.NFTCard id={1} />
-                  </Col>
-                  <Col md={4} sm={12}>
-                    <components.NFTCard id={2} />
-                  </Col>
-                  <Col md={4} sm={12}>
-                    <components.NFTCard id={3} />
-                  </Col>
+                  <Carousel responsive={responsive}>
+                    {new Array(10).fill(2).map((key: number) => {
+                      return (
+                        <div style={{ padding: '12px' }} key={key}>
+                          <components.NFTCard id={key} />
+                        </div>
+                      );
+                    })}
+                  </Carousel>
                 </Row>
               </Col>
             </Row>
@@ -75,7 +97,7 @@ const Home = () => {
           </Row>
         </Container>
       </div> */}
-      <components.CategoryGroup />
+      <CategoryGroup />
     </Row>
   );
 };

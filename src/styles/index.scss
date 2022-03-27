@@ -110,7 +110,7 @@ p.bold {
 
 @include media-breakpoint-down(sm) {
   .card {
-    width: 240px !important;
+    max-width: 300px !important;
     margin: auto !important;
     margin-bottom: 10px !important;
   }
@@ -139,7 +139,11 @@ p.bold {
   }
   .card {
     background: #333236;
-
+    margin: auto;
+    height: 450px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 12px;
     .card-title {
       color: white;
     }

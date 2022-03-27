@@ -1,3 +1,7 @@
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
 .nft-card {
   background: #FFFFFF;
   box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.02), 0px 24px 48px rgba(44, 39, 56, 0.04);
@@ -15,6 +19,13 @@
     line-height: 34px;
     letter-spacing: 0px;
     text-align: left;
+  }
+}
 
+@include media-breakpoint-down(sm) {
+  .nft-card {
+    .card-body {
+      padding: 0px;
+    }
   }
 }

@@ -10,7 +10,7 @@ const TopShelfDrops = () => {
         <span className="font-bold">Top Shelf</span> Drops
       </h1>
       <Row>
-        <Col md={8} sm={12}>
+        <Col md={10} lg={8}>
           <Row>
             <Col md={4} sm={6}>
               <DropItem id={1} />

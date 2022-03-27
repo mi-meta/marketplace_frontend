@@ -12,6 +12,13 @@ const CategoryGroup = () => {
       <Row>
         <Col md={8} className="m-auto">
           <Row>
+            {/* {new Array(6).fill(1).map((key: number) => {
+              return (
+                <Col md={4} key={key}>
+                  <CategoryItem id={key + 1} />
+                </Col>
+              );
+            })} */}
             <Col md={4} sm={6} xs={12}>
               <CategoryItem id={1} />
             </Col>
