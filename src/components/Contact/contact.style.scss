@@ -83,3 +83,35 @@
     }
   }
 }
+@include media-breakpoint-down(md) {
+  .contact {
+    padding: 32px;
+    div {
+      padding: 10px !important;
+    }
+    h1, p {
+      padding: 10px;
+    }
+    .join {
+      button {
+        padding: 2px;
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .contact {
+    padding: 32px;
+    div {
+      padding: 10px !important;
+    }
+    h1, p {
+      padding: 10px;
+    }
+    .join {
+      button {
+        padding: 2px;
+      }
+    }
+  }
+}
