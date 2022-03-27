@@ -4,7 +4,7 @@ import './contact.style.scss';
 function Contact() {
   return (
     <Row className="contact">
-      <Col md={7} sm={12} className="px-5">
+      <Col lg={7} sm={12} className="px-5">
         <h1>YOU DON’T MISS A THING</h1>
         <p>
           If that’s you, then you definitely want to join our mailing list to be the first to know
@@ -15,7 +15,7 @@ function Contact() {
           <Button className="contact-sign-up">Sign me up!</Button>
         </Stack>
       </Col>
-      <Col md={4} sm={12}>
+      <Col lg={4} sm={12}>
         <h1>JOIN THE CONVERSATION</h1>
         <Stack direction="horizontal" gap={3} className="join">
           <Button>

@@ -83,8 +83,38 @@
     left: 0px;
   }
 }
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-up(xs) {
+  .landing {
+    padding: 16px;
+  }
+}
+@media (min-width: 425px) {
   .landing {
     padding: 32px;
+    // border: 1px solid green;
+  }
+}
+@include media-breakpoint-up(sm) {
+  .landing {
+    padding: 32px;
+    // border: 1px solid green;
+  }
+}
+@include media-breakpoint-up(md) {
+  .landing {
+    // border: 1px solid red;
+    padding: 48px;
+  }
+}
+@include media-breakpoint-up(lg) {
+  .landing {
+    // border: 1px solid blue;
+    padding: 64px;
+  }
+}
+@include media-breakpoint-up(xl) {
+  .landing {
+    // border: 1px solid yellow;
+    padding: 128px;
   }
 }

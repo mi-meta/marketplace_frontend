@@ -6,7 +6,7 @@ function Landing() {
     <Container fluid>
       <Row className="landing">
         <div className="landing-bg" />
-        <Col md={6} className="landing-title">
+        <Col lg={6} mg={8} sm={12} className="landing-title">
           <h1>Create, Collect, & Explore NFTs</h1>
           <p>
             A quick supportive, and easy to understand catchphrase, slogan, tagline, or the
@@ -16,7 +16,7 @@ function Landing() {
             <span>Call to Action</span>
           </Button>
         </Col>
-        <Col md={6} />
+        {/* <Col md={6} /> */}
       </Row>
     </Container>
   );
