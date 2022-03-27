@@ -4,7 +4,7 @@ import './nft-card.style.scss';
 
 function NFTCard({ id }: { id: number }) {
   return (
-    <Card className="nft-card mb-5 m-auto">
+    <Card className="nft-card m-auto">
       <Card.Img variant="top" src={`/images/nft/${id}.png`} />
       <Card.Body>
         <Card.Text>1 Edition minted</Card.Text>
