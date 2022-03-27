@@ -135,7 +135,7 @@ p.bold {
 }
 .dark {
   h1.title {
-    color: white;
+    color: white; 
   }
   .card {
     background: #333236;
@@ -144,6 +144,7 @@ p.bold {
     width: 100%;
     max-width: 300px;
     margin-bottom: 12px;
+    
     .card-title {
       color: white;
     }

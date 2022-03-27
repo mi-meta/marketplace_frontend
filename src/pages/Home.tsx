@@ -40,18 +40,6 @@ const Home = () => {
         strength={800}
       >
         <div style={{ height: 800 }}>
-          <div
-            style={{
-              background: 'white',
-              padding: 20,
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%,-50%)',
-            }}
-          >
-            HTML inside the parallax
-          </div>
           <Container className="p-5" fluid>
             <h1 className="title text-white">
               YOU <strong className="font-bold">DON’T</strong> WANT TO MISS THESE
@@ -60,10 +48,10 @@ const Home = () => {
               <Col md={10} className="m-auto">
                 <Row>
                   <Carousel responsive={responsive}>
-                    {new Array(10).fill(2).map((key: number) => {
+                    {new Array(10).fill(2).map((item: number, key: number) => {
                       return (
                         <div style={{ padding: '12px' }} key={key}>
-                          <components.NFTCard id={key} />
+                          <components.NFTCard id={key + 1} />
                         </div>
                       );
                     })}
