@@ -14,7 +14,7 @@ import {
 function Header() {
   return (
     <Row>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
           <Link to="/" className="navbar-brand">
             <Image src="/icons/logo.svg" className="img-brand" />
