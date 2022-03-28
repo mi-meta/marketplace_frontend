@@ -38,14 +38,13 @@ function Header() {
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '140px' }} navbarScroll>
               <NavDropdown title="Explore" id="navbarScrollingDropdown">
                 <Link to="/explore">Marketplace</Link>
-                <NavDropdown.Item href="#action4">Auctions</NavDropdown.Item>
-                {/* <NavDropdown.Divider /> */}
-                <NavDropdown.Item href="#action5">Collections</NavDropdown.Item>
-                <NavDropdown.Item href="#action6">New Drops</NavDropdown.Item>
+                <Link to="/auctions">Auctions</Link>
+                <Link to="/collections">Collections</Link>
+                <Link to="/drops">New Drops</Link>
               </NavDropdown>
-              <Nav.Link href="#">Activity</Nav.Link>
-              <Nav.Link href="#action1">Learn</Nav.Link>
-              <Nav.Link href="#action1">Create</Nav.Link>
+              <Link to="/activity">Activity</Link>
+              <Link to="/learn">Learn</Link>
+              <Link to="/create">Create</Link>
               <Nav.Link href="#action1">
                 <Image src="/icons/user.svg" />
               </Nav.Link>

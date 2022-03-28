@@ -1,6 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, Container } from 'react-bootstrap';
-import { Explore, Home } from './pages';
+import {
+  Explore,
+  Home,
+  Collections,
+  Activity,
+  Auctions,
+  Create,
+  Detail,
+  Learn,
+  Drops,
+} from './pages';
 import { Header, Footer, Contact } from './components';
 
 function App() {
@@ -11,8 +21,15 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/activity" element={<Activity />} />
+            <Route path="/auctions" element={<Auctions />} />
+            <Route path="/create" element={<Create />} />
+            <Route path="/detail" element={<Detail />} />
+            <Route path="/drops" element={<Drops />} />
+            <Route path="/learn" element={<Learn />} />
             <Route path="/home" element={<Home />} />
             <Route path="/explore" element={<Explore />} />
+            <Route path="/collections" element={<Collections />} />
           </Routes>
         </BrowserRouter>
         <Contact />
