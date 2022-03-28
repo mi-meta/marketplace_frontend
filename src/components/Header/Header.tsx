@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from '../../providers';
 import './header.style.scss';
 import {
   Row,
@@ -12,9 +14,10 @@ import {
 } from 'react-bootstrap';
 
 function Header() {
+  const { theme } = useContext(ThemeContext);
   return (
     <Row>
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar bg={`${theme}`} variant={`${theme === 'dark' ? 'dark' : 'light'}`} expand="lg">
         <Container fluid>
           <Link to="/" className="navbar-brand">
             <Image src="/icons/logo.svg" className="img-brand" />
@@ -39,7 +42,7 @@ function Header() {
               <NavDropdown title="Explore" id="navbarScrollingDropdown">
                 <Link to="/explore">Marketplace</Link>
                 <Link to="/auctions">Auctions</Link>
-                <Link to="/collections">Collections</Link>
+                <Link to="/collection">Collections</Link>
                 <Link to="/drops">New Drops</Link>
               </NavDropdown>
               <Link to="/activity">Activity</Link>

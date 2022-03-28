@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
-import '../styles/collections.scss';
+import '../styles/collection.scss';
 
-function Collections() {
+function Collection() {
   return (
     <Container className="collections p-0" fluid>
       <Row className="collections-landing">
@@ -10,8 +10,12 @@ function Collections() {
           <h1>Explore collections</h1>
         </Col>
       </Row>
+      <Row>
+        <h1>LoopingRings</h1>
+        <p></p>
+      </Row>
     </Container>
   );
 }
 
-export { Collections };
+export { Collection };
