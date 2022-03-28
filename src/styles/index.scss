@@ -107,7 +107,9 @@ p.bold {
 ::-webkit-scrollbar-thumb:hover {
   background: #898989;
 }
-
+.dropdown-menu {
+  left: -32px !important;
+}
 @include media-breakpoint-down(sm) {
   .card {
     max-width: 300px !important;
