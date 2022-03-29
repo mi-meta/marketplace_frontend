@@ -1,5 +1,8 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from '../../providers';
 import './header.style.scss';
+import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import {
   Row,
   Image,
@@ -12,9 +15,10 @@ import {
 } from 'react-bootstrap';
 
 function Header() {
+  const { theme } = useContext(ThemeContext);
   return (
     <Row>
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar bg={`${theme}`} variant={`${theme === 'dark' ? 'dark' : 'light'}`} expand="lg">
         <Container fluid>
           <Link to="/" className="navbar-brand">
             <Image src="/icons/logo.svg" className="img-brand" />
@@ -39,15 +43,25 @@ function Header() {
               <NavDropdown title="Explore" id="navbarScrollingDropdown">
                 <Link to="/explore">Marketplace</Link>
                 <Link to="/auctions">Auctions</Link>
-                <Link to="/collections">Collections</Link>
+                <Link to="/collection">Collections</Link>
                 <Link to="/drops">New Drops</Link>
               </NavDropdown>
               <Link to="/activity">Activity</Link>
               <Link to="/learn">Learn</Link>
               <Link to="/create">Create</Link>
-              <Nav.Link href="#action1">
+              <NavDropdown title={<Image src="/icons/user.svg" />} id="navbarScrollingDropdown">
+                <Link to="/#">My Profile</Link>
+                <Link to="/#">Favourite</Link>
+                <Link to="/#">Watchlist</Link>
+                <Link to="/#">My Collections</Link>
+                <Link to="/#">Settings</Link>
+                <Link to="/#">
+                  Dark Mode <BootstrapSwitchButton checked={true} size="xs" />
+                </Link>
+              </NavDropdown>
+              {/* <Nav.Link href="#action1">
                 <Image src="/icons/user.svg" />
-              </Nav.Link>
+              </Nav.Link> */}
               <Nav.Link href="#action1">
                 <Image src="/icons/save.svg" />
               </Nav.Link>
