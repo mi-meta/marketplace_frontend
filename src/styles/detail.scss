@@ -1,5 +1,8 @@
 .detail {
   padding: 90px;
+  & > div {
+    gap: 50px;
+  }
   &-preview {
     // float: right;
     // text-align: right;
@@ -35,7 +38,8 @@
     }
   }
   &-body {
-    padding: 0px 50px;
+    // padding: 0px 50px;
+    // margin: 0px 50px;
     p {
       font-family: 'Montserrat';
       font-style: normal;
