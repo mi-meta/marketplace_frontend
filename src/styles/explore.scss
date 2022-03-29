@@ -93,7 +93,7 @@
 @include media-breakpoint-up(sm) {
   .explore {
     &-nft {
-      padding: 0px 120px;
+      padding: 0px 80px;
       .card {
         // margin: 0px 12px 12px 12px !important;
         margin: 0px 6px;
@@ -108,10 +108,10 @@
 
     }
     &-nft {
-      padding: 0px 200px;
+      padding: 0px 160px;
       justify-content: center;
       .card {
-        margin: 0px 35px 12px 35px !important;
+        margin: 0px 35px 48px 35px !important;
       }
     }
     // ::-webkit-scrollbar {
