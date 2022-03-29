@@ -10,7 +10,8 @@ const ThemeContext = createContext<IThemeContext>({
   // setTheme: Dispatch
 });
 
-const CustomThemeProvider = ({ children }: { children: React.ReactNode; value?: any }) => {
+// eslint-disable-next-line @typescript-eslint/ban-types
+const CustomThemeProvider = ({ children }: { children: React.ReactNode; value?: {} }) => {
   const [theme, setTheme] = useState<string>('light');
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
