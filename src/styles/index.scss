@@ -115,8 +115,9 @@ p.bold {
 @include media-breakpoint-down(sm) {
   .card {
     max-width: 300px !important;
+    // margin: 0px 0px 0px 24px !important;
     margin: auto !important;
-    // margin-bottom: 12px !important;
+    // margin-bottom: 24px !important;
   }
   .home {
     .nft-carousel {
@@ -138,7 +139,7 @@ p.bold {
   }
 }
 .dark {
-  background-color: #333236;
+  background-color: $bg-dark;
   h1.title {
     color: white; 
   }

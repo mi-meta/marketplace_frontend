@@ -15,7 +15,8 @@ import {
 } from 'react-bootstrap';
 
 function Header() {
-  const { theme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
+
   return (
     <Row>
       <Navbar bg={`${theme}`} variant={`${theme === 'dark' ? 'dark' : 'light'}`} expand="lg">
@@ -56,7 +57,17 @@ function Header() {
                 <Link to="/#">My Collections</Link>
                 <Link to="/#">Settings</Link>
                 <Link to="/#">
-                  Dark Mode <BootstrapSwitchButton checked={true} size="xs" />
+                  Dark Mode
+                  <BootstrapSwitchButton
+                    checked={true}
+                    onChange={(checked: boolean) => {
+                      console.log(checked);
+                      if (setTheme) {
+                        setTheme(checked ? 'dark' : 'light');
+                      }
+                    }}
+                    size="xs"
+                  />
                 </Link>
               </NavDropdown>
               {/* <Nav.Link href="#action1">

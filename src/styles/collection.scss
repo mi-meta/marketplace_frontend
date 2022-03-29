@@ -196,3 +196,31 @@
 .collection-params::-webkit-scrollbar-thumb:hover {
   background: #898989;
 }
+
+
+.dark {
+  .collection {
+    &-landing {
+      &-bg {
+        z-index: 1;
+      }
+    }
+    &-description {
+      h1 {
+        color: white;
+      }
+    }
+    &-params {
+      h1, p {
+        color: white !important;
+      }
+    }
+    &-body {
+      .list-group {
+        .list-group-item {
+          background: $fg-dark !important;
+        }
+      }
+    }
+  }
+}

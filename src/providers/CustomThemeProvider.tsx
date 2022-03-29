@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 // import { initialState, StateProps } from '../state'
 
 interface IThemeContext {
@@ -12,7 +12,11 @@ const ThemeContext = createContext<IThemeContext>({
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 const CustomThemeProvider = ({ children }: { children: React.ReactNode; value?: {} }) => {
-  const [theme, setTheme] = useState<string>('light');
+  const [theme, setTheme] = useState<string>('dark');
+
+  useEffect(() => {
+    console.log(theme);
+  }, [theme]);
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 };

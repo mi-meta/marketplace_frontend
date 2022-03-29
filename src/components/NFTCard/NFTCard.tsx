@@ -1,10 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import './nft-card.style.scss';
 
 function NFTCard({ id }: { id: number }) {
+  const navigate = useNavigate();
+  const showDetail = (id: number) => {
+    console.log(id);
+    navigate('/detail');
+  };
   return (
-    <Card className="nft-card m-auto">
+    // <Link to="/detail">
+    <Card className="nft-card m-auto" onClick={() => showDetail(id)}>
       <Card.Img variant="top" src={`/images/nft/${id}.png`} />
       <Card.Body>
         <Card.Text>1 Edition minted</Card.Text>
@@ -16,6 +23,7 @@ function NFTCard({ id }: { id: number }) {
         <Card.Text className="bold">Price</Card.Text>
       </Card.Body>
     </Card>
+    // </Link>
   );
 }
 
