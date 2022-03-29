@@ -62,7 +62,7 @@ function Collection() {
         </Stack>
       </Row>
       <Row className="mb-3 collection-body">
-        <Col lg={3}>
+        <Col lg={3} className="mt-3">
           <ListGroup as="ol">
             <ListGroup.Item as="li">
               <span>Trait</span>
