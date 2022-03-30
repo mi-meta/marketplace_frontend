@@ -96,9 +96,9 @@
   &-body {
     padding: 20px 70px;
     min-height: 540px;
-    
+
     .card {
-      background: $bg-dark;
+      background: $bg-light;
     }
   }
   
@@ -149,6 +149,16 @@
       
       margin-left: -12px;
       background: linear-gradient(180deg, #70BCFD -19.23%, #403896 -19.22%, #8D3695 51.86%, #BB2E69 117.49%);
+    }
+  }
+  .profile {
+    &-body {
+      padding: 20px 70px;
+      min-height: 540px;
+  
+      .card {
+        background: $bg-dark;
+      }
     }
   }
 }
