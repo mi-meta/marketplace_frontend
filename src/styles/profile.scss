@@ -49,6 +49,59 @@
       }
     }
   }
+  &-intro {
+    & > div {
+      text-align: center;
+      p {
+        text-align: center;
+      }
+      div {
+        justify-content: center;
+      }
+      
+    }
+    &-address {
+      width: 250px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: auto;
+    }
+    &-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 60px;
+    }
+    div.switch {
+    margin-left: 12px !important;
+    border-radius: 12px !important;
+    border: 1px solid $bg-dark;
+
+    .switch-handle {
+      border-radius: 8px;
+      background: linear-gradient(180deg, #70BCFD -19.23%, #403896 -19.22%, #8D3695 51.86%, #BB2E69 117.49%);
+      margin-left: 12px;
+    }
+    .switch-on {
+      margin-left: -8px;
+      // margin-top: 2px;
+      background-color: $fg-dark;
+    }
+    .switch-off {
+      // margin-top: 2px;
+    }
+  }
+  
+  }
+  &-body {
+    padding: 20px 70px;
+    min-height: 540px;
+    
+    .card {
+      background: $bg-dark;
+    }
+  }
+  
   // &-categories {
   //   padding: 10px;
   //   gap: 10px;
@@ -69,5 +122,33 @@
   //     color: #979797;
   //   }
   // }
+  .nav {
+    justify-content: center;
+    // justify-content: space-between;
+    border-bottom: 1px solid #979797;
+  }
+  .nav-item {
+    a {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 36px;
+      /* identical to box height, or 200% */
+
+
+      color: #979797;
+    }
+  }
 }
 
+
+.dark {
+  div.switch {
+    .switch-handle {
+      
+      margin-left: -12px;
+      background: linear-gradient(180deg, #70BCFD -19.23%, #403896 -19.22%, #8D3695 51.86%, #BB2E69 117.49%);
+    }
+  }
+}

@@ -6,3 +6,4 @@ export * from './Header';
 export * from './Landing';
 export * from './Drops';
 export * from './Categories';
+export * from './CNav';
