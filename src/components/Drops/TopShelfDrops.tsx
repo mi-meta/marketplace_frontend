@@ -9,7 +9,7 @@ const TopShelfDrops = () => {
       <h1 className="title">
         <span className="font-bold">Top Shelf</span> Drops
       </h1>
-      <Row>
+      <Row className="mt-5">
         <Col md={10} lg={8}>
           <Row>
             <Col md={4} sm={6}>
