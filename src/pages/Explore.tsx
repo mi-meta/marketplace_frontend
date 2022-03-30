@@ -32,7 +32,7 @@ function Explore() {
       </Row>
       <Row className="explore-nft">
         {new Array(20).fill(1).map((_item: number, key: number) => {
-          return <NFTCard id={_item} key={key} />;
+          return <NFTCard id={key + 1} key={key} />;
         })}
       </Row>
     </Container>
