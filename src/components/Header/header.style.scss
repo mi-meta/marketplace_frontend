@@ -2,6 +2,8 @@
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
 
+@import "../../styles/_variables.scss";
+
 .navbar {
   input {
     width: 500px; 
@@ -55,6 +57,23 @@
     text-decoration: none;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
   }
+  
+  div.switch {
+    margin-left: 12px !important;
+    border-radius: 12px !important;
+
+    .switch-handle {
+      margin-right: 12px;
+      border-radius: 8px;
+    }
+    .switch-on {
+      margin-left: -8px;
+      margin-top: 2px;
+    }
+    .switch-off {
+      margin-top: 2px;
+    }
+  }
 }
 // @include media-breakpoint-down(sm) {
 //   .navbar {
@@ -103,6 +122,14 @@
     }
     #navbarScrollingDropdown {
       color: #979797 !important;
+    }
+  }
+  .dropdown-menu {
+    background: $bg-dark;
+
+    a {
+      color: $text-light;
+
     }
   }
 }
