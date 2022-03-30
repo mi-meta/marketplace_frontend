@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../providers';
 import './header.style.scss';
-import BootstrapSwitchButton from 'bootstrap-switch-button-react';
+// import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import {
   Row,
   Image,
@@ -15,7 +15,7 @@ import {
 } from 'react-bootstrap';
 
 function Header() {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <Row>
@@ -50,26 +50,9 @@ function Header() {
               <Link to="/activity">Activity</Link>
               <Link to="/learn">Learn</Link>
               <Link to="/create">Create</Link>
-              <NavDropdown title={<Image src="/icons/user.svg" />} id="navbarScrollingDropdown">
-                <Link to="/#">My Profile</Link>
-                <Link to="/#">Favourite</Link>
-                <Link to="/#">Watchlist</Link>
-                <Link to="/#">My Collections</Link>
-                <Link to="/#">Settings</Link>
-                <Link to="/#">
-                  Dark Mode
-                  <BootstrapSwitchButton
-                    checked={true}
-                    onChange={(checked: boolean) => {
-                      console.log(checked);
-                      if (setTheme) {
-                        setTheme(checked ? 'dark' : 'light');
-                      }
-                    }}
-                    size="xs"
-                  />
-                </Link>
-              </NavDropdown>
+              <Link to="/profile">
+                <Image src="/icons/user.svg" />
+              </Link>
               {/* <Nav.Link href="#action1">
                 <Image src="/icons/user.svg" />
               </Nav.Link> */}

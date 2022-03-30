@@ -6,6 +6,7 @@ import { CategoryGroup } from '../components';
 // import image from './nfts-bg-dark-parallax.png';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import '../styles/home.scss';
 
 const responsive = {
   superLargeDesktop: {
@@ -37,9 +38,9 @@ const Home = () => {
         //   'https://images.unsplash.com/photo-1498092651296-641e88c3b057?auto=format&fit=crop&w=1778&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D'
         // }
         bgImage={'/images/nfts-bg-dark-parallax.png'}
-        strength={800}
+        strength={700}
       >
-        <div style={{ height: 800 }}>
+        <div style={{ height: 700 }}>
           <Container className="p-5" fluid>
             <h1 className="title text-white">
               YOU <strong className="font-bold">DON’T</strong> WANT TO MISS THESE

@@ -5,7 +5,7 @@ import { CategoryItem } from './';
 const CategoryGroup = () => {
   return (
     <div className="category-group">
-      <h1 className="title">
+      <h1 className="title mt-2">
         EXPLORE NFT BY
         <strong> CATEGORY</strong>
       </h1>
