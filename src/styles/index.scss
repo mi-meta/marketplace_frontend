@@ -70,7 +70,9 @@ p.bold {
   letter-spacing: 0px;
   text-align: left;
 }
-
+.underline {
+  border-bottom: 1px solid #979797;
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -131,6 +133,9 @@ p.bold {
   }
   p {
     color: $text-gray;
+  }
+  .nav-item > a:hover {
+    color: white !important;
   }
 }
 .card {

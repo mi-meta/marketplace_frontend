@@ -9,3 +9,4 @@ export * from './Home';
 export * from './Learn';
 export * from './Root';
 export * from './Profile';
+export * from './Settings';
