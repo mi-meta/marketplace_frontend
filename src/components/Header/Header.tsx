@@ -13,6 +13,7 @@ import {
   FormControl,
   InputGroup,
 } from 'react-bootstrap';
+import Sidebar from '../SideBar/Sidebar';
 
 function Header() {
   const { theme } = useContext(ThemeContext);
@@ -26,6 +27,7 @@ function Header() {
             <span>mi-meta</span>
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
+          <Sidebar />
           <Navbar.Collapse id="navbarScroll">
             <InputGroup className="d-flex">
               <InputGroup.Text id="basic-addon1">
@@ -57,7 +59,9 @@ function Header() {
                 <Image src="/icons/user.svg" />
               </Nav.Link> */}
               <Nav.Link href="#action1">
-                <Image src="/icons/save.svg" />
+                <Navbar.Toggle aria-controls="offcanvasNavbar">
+                  <Image src="/icons/save.svg" />
+                </Navbar.Toggle>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

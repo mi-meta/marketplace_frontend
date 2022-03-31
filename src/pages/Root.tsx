@@ -15,7 +15,14 @@ import {
   Profile,
   Settings,
 } from '../pages';
-import { Header, Footer, Contact } from '../components';
+import {
+  Header,
+  Footer,
+  Contact,
+  ProfileSetting,
+  CommunicationSetting,
+  SecuritySetting,
+} from '../components';
 
 function Root() {
   const { theme } = useContext(ThemeContext);
@@ -35,7 +42,12 @@ function Root() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/settings" element={<Settings />}>
+            <Route path="" element={<ProfileSetting />} />
+            <Route path="profile" element={<ProfileSetting />} />
+            <Route path="communication" element={<CommunicationSetting />} />
+            <Route path="security" element={<SecuritySetting />} />
+          </Route>
         </Routes>
       </BrowserRouter>
       <Contact />
