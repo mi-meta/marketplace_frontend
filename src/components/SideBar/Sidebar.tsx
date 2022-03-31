@@ -1,9 +1,14 @@
 import { Navbar, Offcanvas, NavDropdown, Form, FormControl, Nav, Button } from 'react-bootstrap';
 
-const Sidebar = () => {
+const Sidebar = ({ show, setShow }: { show: boolean; setShow: (f: boolean) => void }) => {
   return (
-    <Navbar.Offcanvas id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" placement="end">
-      <Offcanvas.Header closeButton>
+    <Navbar.Offcanvas
+      show={show}
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+      placement="end"
+    >
+      <Offcanvas.Header closeButton onHide={() => setShow(false)}>
         <Offcanvas.Title id="offcanvasNavbarLabel">Offcanvas</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../providers';
 import './header.style.scss';
@@ -17,6 +17,7 @@ import Sidebar from '../SideBar/Sidebar';
 
 function Header() {
   const { theme } = useContext(ThemeContext);
+  const [show, setShow] = useState(false);
 
   return (
     <Row>
@@ -27,7 +28,7 @@ function Header() {
             <span>mi-meta</span>
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <Sidebar />
+          <Sidebar show={show} setShow={setShow} />
           <Navbar.Collapse id="navbarScroll">
             <InputGroup className="d-flex">
               <InputGroup.Text id="basic-addon1">
@@ -58,10 +59,8 @@ function Header() {
               {/* <Nav.Link href="#action1">
                 <Image src="/icons/user.svg" />
               </Nav.Link> */}
-              <Nav.Link href="#action1">
-                <Navbar.Toggle aria-controls="offcanvasNavbar">
-                  <Image src="/icons/save.svg" />
-                </Navbar.Toggle>
+              <Nav.Link href="#action1" onClick={() => setShow(true)}>
+                <Image src="/icons/save.svg" />
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
