@@ -13,6 +13,7 @@ import {
   Learn,
   Drops,
   Profile,
+  Settings,
 } from '../pages';
 import { Header, Footer, Contact } from '../components';
 
@@ -34,6 +35,7 @@ function Root() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </BrowserRouter>
       <Contact />

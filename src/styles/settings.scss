@@ -1,0 +1,133 @@
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+@import "./_variables.scss";
+
+.settings {
+  h1 {
+    padding: 12px 50px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+    /* identical to box height, or 167% */
+    color: #FFFFFF;
+  }
+  .nav {
+    a {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 30px;
+      padding: 12px 42px;
+      /* identical to box height, or 167% */
+
+      color: #FFFFFF;
+    }
+    a.active {
+      background: #009CDE !important;
+      border-radius: 5px;
+    }
+  }
+  &-body {
+    padding-top: 50px;
+    h1 {
+      
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 30px;
+    }
+    & > div {
+      padding-left: 50px;
+
+      h2 {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 30px;
+        /* identical to box height, or 167% */
+
+
+        color: #FFFFFF;
+      }
+      &-profile {
+        &-image {
+
+        }
+      }
+    }
+
+    input, textarea {
+      background: #333236;
+      border-radius: 3px;
+      margin-top: 5px;
+      border: none;
+      font-size: 24px;
+      padding: 12px 24px;
+      max-width: 596px;
+    }
+    textarea {
+      rows: 5;
+    }
+    .btn {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      // font-size: 16px;
+      line-height: 20px;
+      /* identical to box height */
+
+      text-align: center;
+      padding: 18px 12px;
+      width: 120px;
+      // color: #EBF4F8;
+    }
+    .btn-primary {
+      background: #009CDE;
+      box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.08), 0px 24px 48px rgba(44, 39, 56, 0.16);
+      border-radius: 6px;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .settings {
+    &-body {
+      &-profile {
+        flex-direction: column;
+      }
+      & > div {
+        & > div:last-child {
+          // border: 1px solid red;
+          display: flex;
+          flex-direction: row;
+          gap: 12px;
+          button {
+            width: 100%;
+            margin: 0px !important;
+            
+          }
+        }
+      }
+    }
+  }
+}
+@include media-breakpoint-down(md) {
+  .settings {
+    &-body {
+      & > div {
+        padding: 8px;
+      }
+      &-profile {
+        flex-direction: column;
+        &-banner {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

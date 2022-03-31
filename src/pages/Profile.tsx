@@ -1,4 +1,5 @@
 import '../styles/profile.scss';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Image, Stack, Nav, InputGroup, FormControl } from 'react-bootstrap';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import { useContext } from 'react';
@@ -62,7 +63,10 @@ const Profile = () => {
             {categories.map((item: string, key: number) => {
               return (
                 <Nav.Item key={key}>
-                  <Nav.Link>{item}</Nav.Link>
+                  {/* <Nav.Link>{item}</Nav.Link> */}
+                  <Link className="nav-link" to={`/${item}`}>
+                    {item}
+                  </Link>
                 </Nav.Item>
               );
             })}
