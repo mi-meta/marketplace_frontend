@@ -73,7 +73,28 @@ p.bold {
 .underline {
   border-bottom: 1px solid #979797;
 }
+div.switch {
+  margin-left: 12px !important;
+  border-radius: 12px !important;
+  border: 1px solid $bg-dark;
 
+  .switch-handle {
+    border-radius: 8px;
+    background: linear-gradient(180deg, #70BCFD -19.23%, #403896 -19.22%, #8D3695 51.86%, #BB2E69 117.49%);
+    margin-left: 12px;
+  }
+  .switch-on {
+    margin-left: -8px;
+    // margin-top: 2px;
+    background-color: $fg-dark;
+  }
+  .switch-off.btn-xs {
+    padding-left: 1.3rem;
+  }
+  .switch-off {
+    // margin-top: 2px;
+  }
+}
 /* width */
 ::-webkit-scrollbar {
   width: 6px;
@@ -96,7 +117,7 @@ p.bold {
   background: #898989;
 }
 .dropdown-menu {
-  left: -32px !important;
+  left: -25px !important;
 }
 @include media-breakpoint-down(sm) {
   .card {
@@ -136,6 +157,13 @@ p.bold {
   }
   .nav-item > a:hover {
     color: white !important;
+  }
+  div.switch {
+    .switch-handle {
+      
+      margin-left: -12px;
+      background: linear-gradient(180deg, #70BCFD -19.23%, #403896 -19.22%, #8D3695 51.86%, #BB2E69 117.49%);
+    }
   }
 }
 .card {

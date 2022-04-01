@@ -1,31 +1,28 @@
 import { Container, Row, Col, Stack } from 'react-bootstrap';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { NFTCard } from '../components';
 import '../styles/explore.scss';
-
-const categories: string[] = [
-  'trending',
-  'art',
-  'music',
-  'photography',
-  'utility',
-  'videos',
-  'domain names',
-];
+import { categories, LinkItem } from '../store';
 
 function Explore() {
+  const { type } = useParams();
+  useEffect(() => {
+    console.log(type);
+  }, [type]);
   return (
     <Container className="explore p-0" fluid>
       <Row className="explore-landing">
         <div className="explore-landing-bg" />
         <Col md={12} className="explore-landing-title">
-          <h1>Explore collections</h1>
+          <h1>Discover collections</h1>
         </Col>
       </Row>
       <Row>
         <Col lg={8} md={12} className="m-auto">
           <Stack direction="horizontal" gap={3} className="explore-categories">
-            {categories.map((item: string, key: number) => {
-              return <span key={key}>{item}</span>;
+            {categories.map((item: LinkItem, key: number) => {
+              return <span key={key}>{item.text}</span>;
             })}
           </Stack>
         </Col>

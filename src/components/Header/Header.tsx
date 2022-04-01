@@ -1,8 +1,8 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { ThemeContext } from '../../providers';
+import { categories, LinkItem } from '../../store';
 import './header.style.scss';
-// import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import {
   Row,
   Image,
@@ -13,9 +13,17 @@ import {
   FormControl,
   InputGroup,
 } from 'react-bootstrap';
+import Sidebar from '../SideBar/Sidebar';
 
 function Header() {
   const { theme } = useContext(ThemeContext);
+  const params = useParams();
+  // const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    console.log(params);
+  }, [params]);
 
   return (
     <Row>
@@ -26,6 +34,7 @@ function Header() {
             <span>mi-meta</span>
           </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
+          <Sidebar show={show} setShow={setShow} />
           <Navbar.Collapse id="navbarScroll">
             <InputGroup className="d-flex">
               <InputGroup.Text id="basic-addon1">
@@ -41,11 +50,15 @@ function Header() {
             </InputGroup>
             <Nav className="me-auto pull-width" />
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '140px' }} navbarScroll>
-              <NavDropdown title="Explore" id="navbarScrollingDropdown">
-                <Link to="/explore">Marketplace</Link>
-                <Link to="/auctions">Auctions</Link>
-                <Link to="/collection">Collections</Link>
-                <Link to="/drops">New Drops</Link>
+              <NavDropdown title="Discover" id="navbarScrollingDropdown">
+                <Link to="/discover/all">All NFT</Link>
+                {categories.map((item: LinkItem, key: number) => {
+                  return (
+                    <Link to={`/discover/${item.link}`} key={key}>
+                      {item.text}
+                    </Link>
+                  );
+                })}
               </NavDropdown>
               <Link to="/activity">Activity</Link>
               <Link to="/learn">Learn</Link>
@@ -53,10 +66,7 @@ function Header() {
               <Link to="/profile">
                 <Image src="/icons/user.svg" />
               </Link>
-              {/* <Nav.Link href="#action1">
-                <Image src="/icons/user.svg" />
-              </Nav.Link> */}
-              <Nav.Link href="#action1">
+              <Nav.Link href="#action1" onClick={() => setShow(true)}>
                 <Image src="/icons/save.svg" />
               </Nav.Link>
             </Nav>

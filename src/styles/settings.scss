@@ -54,10 +54,29 @@
 
         color: #FFFFFF;
       }
-      &-profile {
-        &-image {
+      
+    }&-profile {
+      &-image {
 
-        }
+      }
+      
+      .btn {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        // font-size: 16px;
+        line-height: 20px;
+        /* identical to box height */
+
+        text-align: center;
+        padding: 18px 12px;
+        width: 120px;
+        // color: #EBF4F8;
+      }
+      .btn-primary {
+        background: #009CDE;
+        box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.08), 0px 24px 48px rgba(44, 39, 56, 0.16);
+        border-radius: 6px;
       }
     }
 
@@ -72,24 +91,6 @@
     }
     textarea {
       rows: 5;
-    }
-    .btn {
-      font-family: 'Montserrat';
-      font-style: normal;
-      font-weight: 600;
-      // font-size: 16px;
-      line-height: 20px;
-      /* identical to box height */
-
-      text-align: center;
-      padding: 18px 12px;
-      width: 120px;
-      // color: #EBF4F8;
-    }
-    .btn-primary {
-      background: #009CDE;
-      box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.08), 0px 24px 48px rgba(44, 39, 56, 0.16);
-      border-radius: 6px;
     }
   }
 }
@@ -118,6 +119,9 @@
 }
 @include media-breakpoint-down(md) {
   .settings {
+    h1 {
+      padding: 12px 0px;
+    }
     &-body {
       & > div {
         padding: 8px;
