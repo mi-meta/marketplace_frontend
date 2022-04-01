@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../providers';
+import { categories, LinkItem } from '../../store';
 import './header.style.scss';
-// import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import {
   Row,
   Image,
@@ -17,6 +17,7 @@ import Sidebar from '../SideBar/Sidebar';
 
 function Header() {
   const { theme } = useContext(ThemeContext);
+  // const [show, setShow] = useState(true);
   const [show, setShow] = useState(false);
 
   return (
@@ -44,11 +45,15 @@ function Header() {
             </InputGroup>
             <Nav className="me-auto pull-width" />
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '140px' }} navbarScroll>
-              <NavDropdown title="Explore" id="navbarScrollingDropdown">
-                <Link to="/explore">Marketplace</Link>
-                <Link to="/auctions">Auctions</Link>
-                <Link to="/collection">Collections</Link>
-                <Link to="/drops">New Drops</Link>
+              <NavDropdown title="Discover" id="navbarScrollingDropdown">
+                <Link to="/explore">All NFT</Link>
+                {categories.map((item: LinkItem, key: number) => {
+                  return (
+                    <Link to={`/${item.link}`} key={key}>
+                      {item.text}
+                    </Link>
+                  );
+                })}
               </NavDropdown>
               <Link to="/activity">Activity</Link>
               <Link to="/learn">Learn</Link>
@@ -56,9 +61,6 @@ function Header() {
               <Link to="/profile">
                 <Image src="/icons/user.svg" />
               </Link>
-              {/* <Nav.Link href="#action1">
-                <Image src="/icons/user.svg" />
-              </Nav.Link> */}
               <Nav.Link href="#action1" onClick={() => setShow(true)}>
                 <Image src="/icons/save.svg" />
               </Nav.Link>

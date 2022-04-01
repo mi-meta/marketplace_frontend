@@ -1,16 +1,7 @@
 import { Container, Row, Col, Stack } from 'react-bootstrap';
 import { NFTCard } from '../components';
 import '../styles/explore.scss';
-
-const categories: string[] = [
-  'trending',
-  'art',
-  'music',
-  'photography',
-  'utility',
-  'videos',
-  'domain names',
-];
+import { categories, LinkItem } from '../store';
 
 function Explore() {
   return (
@@ -24,8 +15,8 @@ function Explore() {
       <Row>
         <Col lg={8} md={12} className="m-auto">
           <Stack direction="horizontal" gap={3} className="explore-categories">
-            {categories.map((item: string, key: number) => {
-              return <span key={key}>{item}</span>;
+            {categories.map((item: LinkItem, key: number) => {
+              return <span key={key}>{item.text}</span>;
             })}
           </Stack>
         </Col>

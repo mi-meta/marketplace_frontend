@@ -53,14 +53,14 @@ module.exports = {
     // "import/parsers": {
     //   "@typescript-eslint/parser": [".ts", ".tsx"]
     // },
-    // "import/resolver": {
-    //   "typescript": {
-    //     "directory": "./tsconfig.json"
-    //   },
-    //   "node": {
-    //     "extensions": [".js", ".jsx", ".ts", ".tsx"]
-    //   }
-    // },
+    'import/resolver': {
+      typescript: {
+        directory: './tsconfig.json',
+      },
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
     // 'import/resolver': {
     //     node: {
     //         extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],

@@ -1,4 +1,5 @@
 import { Navbar, Offcanvas, NavDropdown, Form, FormControl, Nav, Button } from 'react-bootstrap';
+import './sidebar.style.scss';
 
 const Sidebar = ({ show, setShow }: { show: boolean; setShow: (f: boolean) => void }) => {
   return (
@@ -7,9 +8,10 @@ const Sidebar = ({ show, setShow }: { show: boolean; setShow: (f: boolean) => vo
       id="offcanvasNavbar"
       aria-labelledby="offcanvasNavbarLabel"
       placement="end"
+      className="sidebar"
     >
       <Offcanvas.Header closeButton onHide={() => setShow(false)}>
-        <Offcanvas.Title id="offcanvasNavbarLabel">Offcanvas</Offcanvas.Title>
+        <Offcanvas.Title id="offcanvasNavbarLabel">My Wallet</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
         <Nav className="justify-content-end flex-grow-1 pe-3">
