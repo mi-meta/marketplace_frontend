@@ -1,15 +1,21 @@
 import { Container, Row, Col, Stack } from 'react-bootstrap';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { NFTCard } from '../components';
 import '../styles/explore.scss';
 import { categories, LinkItem } from '../store';
 
 function Explore() {
+  const { type } = useParams();
+  useEffect(() => {
+    console.log(type);
+  }, [type]);
   return (
     <Container className="explore p-0" fluid>
       <Row className="explore-landing">
         <div className="explore-landing-bg" />
         <Col md={12} className="explore-landing-title">
-          <h1>Explore collections</h1>
+          <h1>Discover collections</h1>
         </Col>
       </Row>
       <Row>

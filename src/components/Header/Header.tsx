@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { ThemeContext } from '../../providers';
 import { categories, LinkItem } from '../../store';
 import './header.style.scss';
@@ -17,8 +17,13 @@ import Sidebar from '../SideBar/Sidebar';
 
 function Header() {
   const { theme } = useContext(ThemeContext);
+  const params = useParams();
   // const [show, setShow] = useState(true);
   const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    console.log(params);
+  }, [params]);
 
   return (
     <Row>
@@ -46,10 +51,10 @@ function Header() {
             <Nav className="me-auto pull-width" />
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '140px' }} navbarScroll>
               <NavDropdown title="Discover" id="navbarScrollingDropdown">
-                <Link to="/explore">All NFT</Link>
+                <Link to="/discover/all">All NFT</Link>
                 {categories.map((item: LinkItem, key: number) => {
                   return (
-                    <Link to={`/${item.link}`} key={key}>
+                    <Link to={`/discover/${item.link}`} key={key}>
                       {item.text}
                     </Link>
                   );
