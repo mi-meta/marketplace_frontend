@@ -3,7 +3,7 @@ import './dropdown.comp.style.scss';
 
 const DropdownComp = ({ items }: { items: string[] }) => {
   return (
-    <Dropdown>
+    <Dropdown className="dropdown-comp">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         {items[0]}
       </Dropdown.Toggle>
