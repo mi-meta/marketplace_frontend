@@ -18,7 +18,7 @@ const categories: string[] = [
   'Settings',
 ];
 const Profile = () => {
-  const { setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
   return (
     <Container className="profile p-0" fluid>
       <Row className="profile-landing">
@@ -36,7 +36,7 @@ const Profile = () => {
             <Stack direction="horizontal" className="mt-3">
               <p className="m-0 bold">Dark mode</p>
               <BootstrapSwitchButton
-                checked={true}
+                checked={theme === 'dark' ? true : false}
                 onChange={(checked: boolean) => {
                   console.log(checked);
                   if (setTheme) {

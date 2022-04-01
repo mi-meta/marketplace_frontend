@@ -51,24 +51,42 @@ function Header() {
             <Nav className="me-auto pull-width" />
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '140px' }} navbarScroll>
               <NavDropdown title="Discover" id="navbarScrollingDropdown">
-                <Link to="/discover/all">All NFT</Link>
+                <NavDropdown.Item as="span" href="#action/3.1">
+                  <Link to="/discover/all">All NFT</Link>
+                </NavDropdown.Item>
                 {categories.map((item: LinkItem, key: number) => {
                   return (
-                    <Link to={`/discover/${item.link}`} key={key}>
-                      {item.text}
-                    </Link>
+                    <NavDropdown.Item as="span" key={key}>
+                      <Link to={`/discover/${item.link}`}>{item.text}</Link>
+                    </NavDropdown.Item>
                   );
                 })}
               </NavDropdown>
-              <Link to="/activity">Activity</Link>
-              <Link to="/learn">Learn</Link>
-              <Link to="/create">Create</Link>
-              <Link to="/profile">
-                <Image src="/icons/user.svg" />
-              </Link>
-              <Nav.Link href="#action1" onClick={() => setShow(true)}>
-                <Image src="/icons/save.svg" />
-              </Nav.Link>
+              <Nav.Item>
+                <Link to="/activity" className="nav-link">
+                  Activity
+                </Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link to="/learn" className="nav-link">
+                  Learn
+                </Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link to="/create" className="nav-link">
+                  Create
+                </Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link to="/profile" className="nav-link">
+                  <Image src="/icons/user.svg" />
+                </Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="#action1" onClick={() => setShow(true)}>
+                  <Image src="/icons/save.svg" />
+                </Nav.Link>
+              </Nav.Item>
             </Nav>
           </Navbar.Collapse>
         </Container>

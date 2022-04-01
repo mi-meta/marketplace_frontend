@@ -12,6 +12,9 @@
   .nav-item {
     padding: 0rem 1rem;
   }
+  .nav-item.show > a {
+    color: #009CDE !important;
+  }
   .container-fluid {
     gap: 150px;
   }
@@ -62,6 +65,20 @@
     text-decoration: none;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
   }
+  .dropdown-menu {
+    span {
+      
+      a {
+        text-transform: capitalize;
+      }
+    }
+    span:hover {
+      
+      // a:hover {
+        background: rgba(0, 156, 222, 0.37) !important;
+      // }
+    }
+  }
 }
 // @include media-breakpoint-down(sm) {
 //   .navbar {
@@ -109,15 +126,17 @@
       color: #979797 !important;
     }
     #navbarScrollingDropdown {
-      color: #979797 !important;
+      color: #979797;
     }
   }
   .dropdown-menu {
     background: $bg-dark;
 
-    a {
-      color: $text-light;
-
+    span {
+      a {
+        color: $text-light;
+        text-decoration: none;
+      }
     }
   }
 }
