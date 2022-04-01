@@ -13,11 +13,31 @@
     thead {
       tr {
         // border-bottom: none;
-        td: {
+        th {
           border-bottom-width: 0px !important;
           // border-bottom-width: 1px;
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 600;
+          font-size: 15px;
+          line-height: 22px;
+          /* identical to box height, or 110% */
+
+
+          color: #FFFFFF;
         }
       }
+    }
+    td {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      /* identical to box height, or 110% */
+
+
+      color: #FFFFFF;
     }
   }
   .table > :not(caption) > * > * {
