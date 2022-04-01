@@ -8,4 +8,5 @@ export * from './Drops';
 export * from './Categories';
 export * from './CNav';
 export * from './Settings';
+export * from './DropdownComp';
 // export * from './Sidebar';

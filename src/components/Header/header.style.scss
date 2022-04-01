@@ -22,6 +22,10 @@
     border-right: none;
     background: white;
   }
+  
+  .dropdown-menu {
+    left: -25px !important;
+  }
   .dropdown-menu > a {
     display: block;
     width: 100%;
