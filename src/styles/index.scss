@@ -116,9 +116,6 @@ div.switch {
 ::-webkit-scrollbar-thumb:hover {
   background: #898989;
 }
-.dropdown-menu {
-  left: -25px !important;
-}
 @include media-breakpoint-down(sm) {
   .card {
     max-width: 300px !important;

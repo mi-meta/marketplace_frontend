@@ -1,0 +1,29 @@
+.activity {
+  &-header {
+    h1, p {
+      text-align: center;
+      font-weight: 600;
+    }
+  }
+  &-category {
+    border-bottom: 1px solid #DADADA;
+  }
+  table {
+    color: white;
+    thead {
+      tr {
+        // border-bottom: none;
+        td: {
+          border-bottom-width: 0px !important;
+          // border-bottom-width: 1px;
+        }
+      }
+    }
+  }
+  .table > :not(caption) > * > * {
+    // border-bottom-width: 0px !important;
+  }
+  .table > :not(:first-child) {
+    border-top: none !important;
+  }
+}
