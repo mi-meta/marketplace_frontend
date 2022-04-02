@@ -2,7 +2,7 @@ import React from 'react';
 import { Dropdown, Stack, Image } from 'react-bootstrap';
 import './dropdown.comp.style.scss';
 
-const DropdownComp = ({ items }: { items: any[] }) => {
+const DropdownComp = ({ items }: { items: React.ReactNode[] }) => {
   return (
     <Dropdown className="dropdown-comp">
       <Dropdown.Toggle variant="" id="dropdown-basic">
@@ -13,7 +13,7 @@ const DropdownComp = ({ items }: { items: any[] }) => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {items.map((item: string | Element, key: number) => {
+        {items.map((item: React.ReactNode, key: number) => {
           return (
             <Dropdown.Item href={`#/action-${key}`} key={key}>
               {item}
