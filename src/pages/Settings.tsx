@@ -10,25 +10,40 @@ const Settings = () => {
       <Row>
         <Col lg={3}>
           <h1 className="underline">Settings</h1>
-          <Nav defaultActiveKey="/home" className="flex-column">
+          <Nav defaultActiveKey="link-0" className="flex-column">
+            <Nav.Link as="span" eventKey="link-0">
+              <Link to="profile" className="nav-link">
+                Profile Settings
+              </Link>
+            </Nav.Link>
+            <Nav.Link as="span" eventKey="link-1">
+              <Link to={`communication`} className="nav-link">
+                Communications
+              </Link>
+            </Nav.Link>
+            <Nav.Link as="span" eventKey="link-2">
+              <Link to="security" className="nav-link">
+                Security
+              </Link>
+            </Nav.Link>
+            <Nav.Link as="span" eventKey="link-4">
+              <Link to="security" className="nav-link">
+                Support
+              </Link>
+            </Nav.Link>
+          </Nav>
+          {/* <Nav defaultActiveKey="/home" className="flex-column">
             <Link to="profile" className="nav-link active">
               Profile Settings
             </Link>
-            <Link
-              role="button"
-              data-rr-ui-event-key="lid"
-              to={`communication`}
-              className="nav-link"
-            >
-              Communications
-            </Link>
+            <Link to={`communication`}>Communications</Link>
             <Link to="security" className="nav-link">
               Security
             </Link>
             <Link to="security" className="nav-link">
               Support
             </Link>
-          </Nav>
+          </Nav> */}
         </Col>
         <Col lg={9} className="settings-body">
           <Outlet />

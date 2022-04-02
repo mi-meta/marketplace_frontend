@@ -7,6 +7,7 @@ export * from './Drops';
 export * from './Explore';
 export * from './Home';
 export * from './Learn';
-export * from './Root';
 export * from './Profile';
 export * from './Settings';
+export * from './Discover';
+export * from './Root';

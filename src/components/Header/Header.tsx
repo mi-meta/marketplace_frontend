@@ -1,5 +1,5 @@
-import { useContext, useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../providers';
 import { categories, LinkItem } from '../../store';
 import './header.style.scss';
@@ -14,16 +14,29 @@ import {
   InputGroup,
 } from 'react-bootstrap';
 import Sidebar from '../SideBar/Sidebar';
-
+// let isOpen = false;
 function Header() {
   const { theme } = useContext(ThemeContext);
-  const params = useParams();
+  const navigate = useNavigate();
   // const [show, setShow] = useState(true);
   const [show, setShow] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    console.log(params);
-  }, [params]);
+  const handleOpen = () => {
+    // console.log('open');
+    setIsOpen(true);
+  };
+  const handleClose = () => {
+    // console.log('close');
+    setIsOpen(false);
+  };
+  const navigate2discover = () => {
+    console.log('navigate');
+    navigate('/discover-collection');
+  };
+  document.addEventListener('click', function () {
+    handleClose();
+  });
 
   return (
     <Row>
@@ -50,9 +63,16 @@ function Header() {
             </InputGroup>
             <Nav className="me-auto pull-width" />
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '140px' }} navbarScroll>
-              <NavDropdown title="Discover" id="navbarScrollingDropdown">
+              <NavDropdown
+                as="span"
+                title={<button onClick={navigate2discover}>Discover</button>}
+                id="navbarScrollingDropdown"
+                onMouseEnter={handleOpen}
+                // onMouseLeave={handleClose}
+                show={isOpen}
+              >
                 <NavDropdown.Item as="span" href="#action/3.1">
-                  <Link to="/discover/all">All NFT</Link>
+                  <Link to="/assets">All NFT</Link>
                 </NavDropdown.Item>
                 {categories.map((item: LinkItem, key: number) => {
                   return (

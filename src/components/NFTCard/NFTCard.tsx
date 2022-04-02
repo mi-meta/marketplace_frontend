@@ -7,7 +7,7 @@ function NFTCard({ id }: { id: number }) {
   const navigate = useNavigate();
   const showDetail = (id: number) => {
     console.log(id);
-    navigate('/detail');
+    navigate('/collection');
   };
   return (
     // <Link to="/detail">
