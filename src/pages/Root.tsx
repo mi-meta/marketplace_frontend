@@ -14,6 +14,7 @@ import {
   Drops,
   Profile,
   Settings,
+  Discover,
 } from '../pages';
 import {
   Header,
@@ -39,7 +40,8 @@ function Root() {
           <Route path="/drops" element={<Drops />} />
           <Route path="/learn" element={<Learn />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/discover/:type" element={<Explore />} />
+          <Route path="/discover-collection" element={<Explore />} />
+          <Route path="/discover/:category" element={<Discover />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />}>
