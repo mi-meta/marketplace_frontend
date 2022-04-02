@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Container, Row, Col, Table } from 'react-bootstrap';
+import { Container, Row, Col, Table, Stack, Image } from 'react-bootstrap';
 import { DropdownComp } from '../components';
 import '../styles/activity.scss';
 import { chains, categories, durations, LinkItem } from '../store';
 
-const heads = ['collection', 'volume', '24h %', 'id%', 'floor price', 'owners', 'items'];
+const heads = ['collection', 'volume', '24h %', '7d %', 'floor price', 'owners', 'items'];
 const data: DType[] = [
   {
     id: 1,
@@ -86,7 +86,20 @@ function Activity() {
       </Row>
       <Row className="mt-3 activity-category p-3">
         <Col>
-          <DropdownComp items={['all chains', ...chains]} />
+          <DropdownComp
+            items={['all chains', ...chains].map((item: string, key: number) => {
+              return (
+                <Stack direction="horizontal" key={key} gap={3}>
+                  <Image
+                    src={`/icons/${item}-logo.png`}
+                    width={12}
+                    style={{ visibility: `${item === 'all chains' ? 'hidden' : 'visible'}` }}
+                  />
+                  {item}
+                </Stack>
+              );
+            })}
+          />
         </Col>
         <Col>
           <DropdownComp items={['all categories', ..._categories]} />
@@ -110,11 +123,26 @@ function Activity() {
               return (
                 <tr key={index}>
                   <td>{item['id']}</td>
-                  <td>{item['collection']}</td>
-                  <td>{item['volume']}</td>
-                  <td>{item['p24']}</td>
-                  <td>{item['p7d']}</td>
-                  <td>{item['floor_price']}</td>
+                  <td>
+                    <Stack direction="horizontal" gap={3}>
+                      <Image src={`/images/nft/1.png`} width={56} height={56} roundedCircle />
+                      {item['collection']}
+                    </Stack>
+                  </td>
+                  <td>
+                    <Stack direction="horizontal" gap={3}>
+                      <Image src={`/icons/eth.png`} />
+                      {item['volume']}
+                    </Stack>
+                  </td>
+                  <td className="text-info">{item['p24']}</td>
+                  <td className="text-info">{item['p7d']}</td>
+                  <td>
+                    <Stack direction="horizontal" gap={3}>
+                      <Image src={`/icons/eth.png`} />
+                      {item['floor_price']}
+                    </Stack>
+                  </td>
                   <td>{item['owners']}</td>
                   <td>{item['items']}</td>
                 </tr>

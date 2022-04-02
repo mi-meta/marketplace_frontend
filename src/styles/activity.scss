@@ -22,7 +22,7 @@
           font-size: 15px;
           line-height: 22px;
           /* identical to box height, or 110% */
-
+          text-transform: capitalize;
 
           color: #FFFFFF;
         }
@@ -32,12 +32,18 @@
       font-family: 'Montserrat';
       font-style: normal;
       font-weight: 400;
-      font-size: 14px;
+      font-size: 18px;
       line-height: 22px;
       /* identical to box height, or 110% */
-
+      // padding: 12px;
+      padding: 28px 12px;
 
       color: #FFFFFF;
+      text-transform: uppercase;
+    }
+    td:nth-child(2) {
+      padding: 12px;
+      text-transform: capitalize;
     }
   }
   .table > :not(caption) > * > * {

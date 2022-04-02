@@ -1,24 +1,25 @@
-import { Dropdown } from 'react-bootstrap';
+import React from 'react';
+import { Dropdown, Stack, Image } from 'react-bootstrap';
 import './dropdown.comp.style.scss';
 
-const DropdownComp = ({ items }: { items: string[] }) => {
+const DropdownComp = ({ items }: { items: any[] }) => {
   return (
     <Dropdown className="dropdown-comp">
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
-        {items[0]}
+      <Dropdown.Toggle variant="" id="dropdown-basic">
+        <Stack direction="horizontal" gap={5}>
+          <span>{items[0]}</span>
+          <Image src={`/icons/arrow-down.png`} />
+        </Stack>
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {items.map((item: string, key: number) => {
+        {items.map((item: string | Element, key: number) => {
           return (
             <Dropdown.Item href={`#/action-${key}`} key={key}>
               {item}
             </Dropdown.Item>
           );
         })}
-        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
