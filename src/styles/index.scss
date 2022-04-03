@@ -95,6 +95,13 @@ div.switch {
     // margin-top: 2px;
   }
 }
+
+input {
+  border: 1px solid #979797;
+  border-left: none;
+  color: #979797;
+  background: transparent;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 6px;
@@ -121,7 +128,7 @@ div.switch {
     max-width: 300px !important;
     // margin: 0px 0px 0px 24px !important;
     margin: auto !important;
-    // margin-bottom: 24px !important;
+    margin-bottom: 12px !important;
   }
 }
 

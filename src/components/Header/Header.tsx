@@ -65,7 +65,11 @@ function Header() {
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '140px' }} navbarScroll>
               <NavDropdown
                 as="span"
-                title={<button onClick={navigate2discover}>Discover</button>}
+                title={
+                  <Nav.Link as="span" onClick={navigate2discover}>
+                    Discover
+                  </Nav.Link>
+                }
                 id="navbarScrollingDropdown"
                 onMouseEnter={handleOpen}
                 // onMouseLeave={handleClose}
@@ -82,31 +86,31 @@ function Header() {
                   );
                 })}
               </NavDropdown>
-              <Nav.Item>
+              <Nav.Link as="span">
                 <Link to="/activity" className="nav-link">
                   Activity
                 </Link>
-              </Nav.Item>
-              <Nav.Item>
+              </Nav.Link>
+              <Nav.Link as="span">
                 <Link to="/learn" className="nav-link">
                   Learn
                 </Link>
-              </Nav.Item>
-              <Nav.Item>
+              </Nav.Link>
+              <Nav.Link as="span">
                 <Link to="/create" className="nav-link">
                   Create
                 </Link>
-              </Nav.Item>
-              <Nav.Item>
+              </Nav.Link>
+              <Nav.Link as="span">
                 <Link to="/profile" className="nav-link">
                   <Image src="/icons/user.svg" />
                 </Link>
-              </Nav.Item>
-              <Nav.Item>
+              </Nav.Link>
+              <Nav.Link as="span">
                 <Nav.Link href="#action1" onClick={() => setShow(true)}>
                   <Image src="/icons/save.svg" />
                 </Nav.Link>
-              </Nav.Item>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
