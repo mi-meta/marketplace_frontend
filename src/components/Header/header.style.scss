@@ -9,8 +9,11 @@
     width: 500px; 
     border-left: none;
   }
+  .nav-link > a {
+    // color: blue !important;
+  }
   .nav-item {
-    padding: 0rem 1rem;
+    // padding: 0rem 1rem;
   }
   .nav-item.show > a {
     color: #009CDE !important;

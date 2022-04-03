@@ -1,0 +1,48 @@
+.create {
+  &-network {
+    .card {
+      background: #333236;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 18px;
+      // height: auto;
+      height: 270px;
+      // margin-bottom: 12px;
+      &-body {
+        padding: 20px;
+
+        h1 {
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 28px;
+          line-height: 34px;
+
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
+  &-type {
+    .card {
+      background: #333236;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 18px;
+      // height: auto;
+      height: 270px;
+      // margin-bottom: 12px;
+      &-body {
+        padding: 20px;
+
+        h1 {
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 28px;
+          line-height: 34px;
+
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
+}
