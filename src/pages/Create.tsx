@@ -107,8 +107,10 @@ function Create() {
                     <Card.Img src={`/images/base.png`} />
                   </Card>
                   <div className="text-center">
-                    <p>PNG, GIF, WEBP, MP4, MP3 Max upload size 100mb.</p>
-                    <Button className="mi-button">Choose file</Button>
+                    <p className="text-center">PNG, GIF, WEBP, MP4, MP3 Max upload size 100mb.</p>
+                    <Button className="mi-button-primary" variant="primary">
+                      Choose file
+                    </Button>
                   </div>
                 </Stack>
               </div>
