@@ -102,6 +102,13 @@ input {
   color: #979797;
   background: transparent;
 }
+
+.bg-dark {
+  background-color: $fg-dark !important;
+}
+.bg-gray {
+  background: #DBE2EA !important;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 6px;
@@ -184,6 +191,36 @@ input {
     p {
       // color: white;
     }
+}
+.mi-button-primary {
+  background: #009CDE !important;
+  box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.08), 0px 24px 48px rgba(44, 39, 56, 0.16);
+  border-radius: 6px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+  padding: 14px 24px;
+  text-align: center;
+
+  color: #EBF4F8;
+}
+.mi-button-light {
+  background: #DBE2EA;
+  box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.08);
+  border-radius: 6px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+  padding: 14px 24px;
+  text-align: center;
+
+  color: #2C2738;
 }
 img.react-parallax-bgimage {
   width: 100% !important;
