@@ -1,4 +1,49 @@
 .create {
+  h2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+    /* identical to box height, or 167% */
+
+
+    color: #FFFFFF;
+
+  }
+  p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+
+    color: #979797;
+  }
+  .input-group {
+    input.form-control {
+      background: #333236;
+      border-radius: 3px;
+      border: none;
+      padding: 16px;
+
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+
+      color: #979797;
+    }
+    span.input-group-text {
+      border: none;
+      background: #333236;
+      border-radius: 3px;
+      padding: 16px
+    }
+  }
   &-network {
     .card {
       background: #333236;
@@ -41,6 +86,121 @@
           line-height: 34px;
 
           color: #FFFFFF;
+        }
+      }
+    }
+  }
+  &-nft {
+    .card {
+      height: auto;
+      padding: 12px;
+      background: #333236;
+      border-radius: 3px;
+      img {
+        filter: drop-shadow(0px 12px 24px rgba(44, 39, 56, 0.02)) drop-shadow(0px 24px 48px rgba(44, 39, 56, 0.04));
+        border-radius: 20px;
+      }
+    }
+    .dropdown-comp {
+      width: 100%;
+      .dropdown-toggle.btn {
+        width: 100%;
+      }
+      .dropdown-menu {
+        width: 100%;
+      }
+    }
+    div.switch {
+      min-height: 24px !important;
+      .switch-group {
+        .switch-on {
+          padding: 0px 24px 0px 12px !important;
+        }
+        .switch-off {
+          padding: 0px 24px 0px 18px !important;
+        }
+        .switch-handle {
+          top: -2px;
+          border-radius: 12px;
+        }
+      }
+    }
+    div.switch.off {
+      .switch-handle {
+        left: 12px;
+      }
+    }
+    &-price-type {
+      img {
+        // width: 76px;
+      }
+    }
+    &-erc-1155-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 32px;
+      background: linear-gradient(118.01deg, #493795 10.71%, #B52F73 70.29%, #D22438 133.71%);
+    }
+    &-trait {
+      padding-top: 12px;
+      input.form-control {
+        background: #333236;
+        border-radius: 3px;
+        border: none;
+        // padding: 16px;
+        padding: 25px;
+
+        text-align: left !important; 
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+
+        color: #979797;
+      }
+    }
+    textarea {
+      background: #333236;
+      box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.04);
+      border-radius: 6px;
+      border: none;
+      padding: 28px 16px;
+
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+
+      color: #979797;
+
+    }
+    &-add-item {
+      & > div:first-child {
+        padding: 12px 32px;
+        background: #333236;
+        box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.04);
+        border-radius: 6px;
+
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 59px;
+
+        color: #979797;
+
+      }
+      & > div:not(:first-child) {
+        padding: 6px 32px;
+        border: 1px solid #009CDE;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.04);
+        border-radius: 6px;
+        p {
+          text-align: center;
         }
       }
     }
