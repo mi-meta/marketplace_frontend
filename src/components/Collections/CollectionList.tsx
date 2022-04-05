@@ -5,8 +5,8 @@ import './collections.style.scss';
 
 function CollectionList() {
   return (
-    <Container className="collection-list">
-      <h1 className="title">
+    <Container className="collection-list p-3">
+      <h1 className="title mt-3">
         Top collections <span className="font-bold">this week</span>
       </h1>
       <Container className="p-4">

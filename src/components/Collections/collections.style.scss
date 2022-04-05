@@ -1,70 +1,75 @@
-.collection-list-item {
-
-  border-bottom: 0.5px solid #979797;
-  h3 {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 22px;
-    /* identical to box height, or 138% */
-
-
-    color: #2C2738;
+.collection-list {
+  h1 {
+    text-transform: uppercase;
   }
-  p {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    /* identical to box height, or 138% */
-    // padding: 3px !important;
+  &-item {
 
-    color: #2C2738;
-  }
-  & > div {
-    width: 100%;
-    justify-content: space-between;
-    margin-top: 8px;
-  }
-  & > div > div:last-child {
+    border-bottom: 0.5px solid #979797;
+    h3 {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 22px;
+      /* identical to box height, or 138% */
+  
+  
+      color: #2C2738;
+    }
     p {
-      text-align: right;
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      /* identical to box height, or 138% */
+      // padding: 3px !important;
+  
+      color: #2C2738;
+    }
+    & > div {
+      width: 100%;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+    & > div > div:last-child {
+      p {
+        text-align: right;
+      }
     }
   }
-}
-
-.dark {
-  .collection-list {
-    background: #333236;
-  }
-  .collection-list-item {
-    h3, p {
-      color: white;
+  
+  .dark {
+    .collection-list {
+      background: #333236;
+    }
+    .collection-list-item {
+      h3, p {
+        color: white;
+      }
     }
   }
-}
-
-.collection-card {
-  padding: 12px;
-  background: #FFFFFF;
-  border-radius: 24px;
-  height: 420px;
-  margin-bottom: 20px !important;
-  p {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 22px;
-    /* identical to box height, or 183% */
-
-
-    color: #585364;
-
-  }
-  img {
-    border-radius: 16px;
+  
+  .collection-card {
+    padding: 12px;
+    background: #FFFFFF;
+    border-radius: 24px;
+    height: 420px;
+    margin-bottom: 20px !important;
+    p {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 22px;
+      /* identical to box height, or 183% */
+  
+  
+      color: #585364;
+  
+    }
+    img {
+      border-radius: 16px;
+    }
   }
 }
