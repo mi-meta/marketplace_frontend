@@ -1,21 +1,22 @@
 import '../styles/profile.scss';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { Container, Row, Col, Image, Stack, Nav, InputGroup, FormControl } from 'react-bootstrap';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import { useContext } from 'react';
 import { ThemeContext } from '../providers';
-import { CategoryItem } from '../components';
+import { LinkItem } from '../store';
+// import { CategoryItem } from '../components';
 
-const categories: string[] = [
-  'My collections',
-  'Created',
-  'Favorites',
-  'Hidden',
-  'Activity',
-  'Offers',
-  'Listings',
-  'Watchlist',
-  'Settings',
+const categories: LinkItem[] = [
+  { text: 'My collections', link: 'collections' },
+  // { text: 'Created', link: 'created' },
+  { text: 'Favorites', link: 'favorites' },
+  { text: 'Hidden', link: 'hidden' },
+  { text: 'Activity', link: 'activity' },
+  { text: 'Offers', link: 'offers' },
+  { text: 'Listings', link: 'listings' },
+  { text: 'Watchlist', link: 'watchlist' },
+  { text: 'Settings', link: 'settings' },
 ];
 const Profile = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -59,13 +60,17 @@ const Profile = () => {
               return <span key={key}>{item}</span>;
             })}
           </Stack> */}
-          <Nav activeKey="/home" onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
-            {categories.map((item: string, key: number) => {
+          <Nav
+            className="justify-content-between"
+            activeKey="/home"
+            onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+          >
+            {categories.map((item: LinkItem, key: number) => {
               return (
                 <Nav.Item key={key}>
                   {/* <Nav.Link>{item}</Nav.Link> */}
-                  <Link className="nav-link" to={`/${item}`}>
-                    {item}
+                  <Link className="nav-link" to={`${item.link}`}>
+                    {item.text}
                   </Link>
                 </Nav.Item>
               );
@@ -74,7 +79,7 @@ const Profile = () => {
         </Col>
       </Row>
       <Row>
-        <Col md={8} className="m-auto profile-body">
+        <Col lg={8} className="m-auto profile-body">
           <Row>
             <Col md={5}>
               <InputGroup className="d-flex">
@@ -90,20 +95,7 @@ const Profile = () => {
               </InputGroup>
             </Col>
           </Row>
-          <Row>
-            <Col lg={3}>
-              <CategoryItem id={1} />
-            </Col>
-            <Col lg={3}>
-              <CategoryItem id={2} />
-            </Col>
-            <Col lg={3}>
-              <CategoryItem id={3} />
-            </Col>
-            <Col lg={3}>
-              <CategoryItem id={4} />
-            </Col>
-          </Row>
+          <Outlet />
         </Col>
       </Row>
     </Container>

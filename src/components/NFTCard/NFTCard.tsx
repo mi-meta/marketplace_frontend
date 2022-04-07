@@ -11,7 +11,7 @@ function NFTCard({ id }: { id: number }) {
   };
   return (
     // <Link to="/detail">
-    <Card className="nft-card m-auto" onClick={() => showDetail(id)}>
+    <Card className="nft-card" onClick={() => showDetail(id)}>
       <Card.Img variant="top" src={`/images/nft/${id}.png`} />
       <Card.Body>
         <Card.Text>1 Edition minted</Card.Text>

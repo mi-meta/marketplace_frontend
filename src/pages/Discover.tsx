@@ -34,13 +34,14 @@ const Discover = () => {
           </h1>
         </div>
         <Col lg={10} className="m-auto">
-          <Row className="m-auto">
+          <Row className="justify-content-center">
             {new Array(16).fill(1).map((_, key: number) => {
-              return (
-                <Col lg={3} md={6} key={key}>
-                  <CollectionCard id={key + 1} />
-                </Col>
-              );
+              return <CollectionCard id={key + 1} key={key} />;
+              // return (
+              //   <Col lg={3} md={4} sm={6} key={key}>
+              //     <CollectionCard id={key + 1} />
+              //   </Col>
+              // );
             })}
           </Row>
         </Col>

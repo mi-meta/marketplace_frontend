@@ -47,14 +47,14 @@
     }
   }
   &-categories {
-    padding: 10px;
+    padding: 20px;
     gap: 10px;
     justify-content: center;
     margin-bottom: 20px;
     border-bottom: 0.5px solid #DADADA;;
 
 
-    span  {
+    a {
       font-family: 'Montserrat';
       font-style: normal;
       font-weight: 600;
@@ -62,15 +62,19 @@
       line-height: 36px;
       /* identical to box height, or 200% */
       text-transform: capitalize;
-
+      text-decoration: none;
       color: #979797;
+    }
+    a:hover {
+      color: #0880AE;
     }
   }
   &-nft {
     padding: 0px 210px;
     justify-content: center;
     .card {
-      margin: auto;
+      max-width: 300px;
+      // margin: auto;
     }
   }
 }
@@ -85,7 +89,7 @@
       
       .card {
         // margin: 0px 12px 12px 12px !important;
-        margin: 12px 0px !important;
+        // margin: 12px 0px !important;
       }
     }
   }
@@ -96,7 +100,7 @@
       padding: 0px 80px;
       .card {
         // margin: 0px 12px 12px 12px !important;
-        margin: 0px 6px;
+        // margin: 0px 6px;
       }
     }
   }
@@ -111,7 +115,7 @@
       padding: 0px 160px;
       justify-content: center;
       .card {
-        margin: 0px 35px 48px 35px !important;
+        // margin: 0px 35px 48px 35px !important;
       }
     }
     // ::-webkit-scrollbar {
