@@ -26,6 +26,12 @@ import {
   MyCollections,
   CreatedItems,
   FavoriteItems,
+  HiddenItems,
+  ActivityProfile,
+  OffersProfile,
+  ListingsProfile,
+  WatchListProfile,
+  SettingsProfile,
 } from '../components';
 
 function Root() {
@@ -51,6 +57,12 @@ function Root() {
             <Route path="collections" element={<MyCollections />} />
             <Route path="created" element={<CreatedItems />} />
             <Route path="favorites" element={<FavoriteItems />} />
+            <Route path="hidden" element={<HiddenItems />} />
+            <Route path="activity" element={<ActivityProfile />} />
+            <Route path="offers" element={<OffersProfile />} />
+            <Route path="listings" element={<ListingsProfile />} />
+            <Route path="watchlist" element={<WatchListProfile />} />
+            <Route path="settings" element={<SettingsProfile />} />
           </Route>
           <Route path="/settings" element={<Settings />}>
             <Route path="" element={<ProfileSetting />} />
