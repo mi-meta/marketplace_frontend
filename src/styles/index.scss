@@ -149,11 +149,11 @@ input {
   }
   .card {
     background: #333236;
-    margin: auto;
-    height: 450px;
-    width: 100%;
-    max-width: 300px;
-    margin-bottom: 12px;
+    // margin: auto;
+    // height: 450px;
+    // width: 100%;
+    // max-width: 300px;
+    // margin-bottom: 12px;
     
     .card-title {
       color: white;
@@ -181,18 +181,22 @@ input {
 }
 .card {
   background: white;
-    margin: auto;
-    height: 450px;
-    width: 100%;
-    max-width: 300px;
-    margin-bottom: 12px;
-    
-    .card-title {
-      // color: white;
-    }
-    p {
-      // color: white;
-    }
+  height: 450px;
+  // width: 100%;
+  max-width: 300px;
+  margin: 12px 12px;
+  border-radius: 16px;
+  padding: 20px;
+  img.card-img-top {
+    border-radius: 16px;
+    height: 280px;
+  }
+  &-body {
+    padding: 12px 0px;
+  }
+  // &-title {
+
+  // }
 }
 .mi-button-primary {
   background: #009CDE !important;

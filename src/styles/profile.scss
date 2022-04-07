@@ -74,11 +74,15 @@
     }
   }
   &-body {
-    padding: 20px 70px;
-    min-height: 540px;
+    padding: 20px 12px;
+    // min-height: 540px;
 
+    // .input-group {
+    //   margin-left: 96px;
+    // }
     .card {
       background: $bg-light;
+      max-width: 289px;
     }
   }
   
@@ -116,7 +120,7 @@
       line-height: 36px;
       /* identical to box height, or 200% */
 
-
+      padding: 8px 0px;
       color: #979797;
     }
   }
@@ -127,8 +131,8 @@
   
   .profile {
     &-body {
-      padding: 20px 70px;
-      min-height: 540px;
+      // padding: 0px 70px;
+      // min-height: 540px;
   
       .card {
         background: $bg-dark;

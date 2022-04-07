@@ -24,6 +24,8 @@ import {
   CommunicationSetting,
   SecuritySetting,
   MyCollections,
+  CreatedItems,
+  FavoriteItems,
 } from '../components';
 
 function Root() {
@@ -47,6 +49,8 @@ function Root() {
           <Route path="/profile" element={<Profile />}>
             <Route path="" element={<MyCollections />} />
             <Route path="collections" element={<MyCollections />} />
+            <Route path="created" element={<CreatedItems />} />
+            <Route path="favorites" element={<FavoriteItems />} />
           </Route>
           <Route path="/settings" element={<Settings />}>
             <Route path="" element={<ProfileSetting />} />

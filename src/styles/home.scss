@@ -29,6 +29,11 @@
       // top: 0px;
       // left: 0px;      
     }
+    .react-multi-carousel-list {
+      .card {
+        margin: auto;
+      }
+    }
   }
 }
 @include media-breakpoint-down(sm) {

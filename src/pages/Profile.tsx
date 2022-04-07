@@ -9,7 +9,7 @@ import { LinkItem } from '../store';
 
 const categories: LinkItem[] = [
   { text: 'My collections', link: 'collections' },
-  { text: 'Created', link: 'created' },
+  // { text: 'Created', link: 'created' },
   { text: 'Favorites', link: 'favorites' },
   { text: 'Hidden', link: 'hidden' },
   { text: 'Activity', link: 'activity' },
@@ -60,7 +60,11 @@ const Profile = () => {
               return <span key={key}>{item}</span>;
             })}
           </Stack> */}
-          <Nav activeKey="/home" onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
+          <Nav
+            className="justify-content-between"
+            activeKey="/home"
+            onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+          >
             {categories.map((item: LinkItem, key: number) => {
               return (
                 <Nav.Item key={key}>
@@ -75,7 +79,7 @@ const Profile = () => {
         </Col>
       </Row>
       <Row>
-        <Col md={8} className="m-auto profile-body">
+        <Col lg={8} className="m-auto profile-body">
           <Row>
             <Col md={5}>
               <InputGroup className="d-flex">

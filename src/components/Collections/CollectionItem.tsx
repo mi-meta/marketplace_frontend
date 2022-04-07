@@ -3,7 +3,7 @@ import './collections.style.scss';
 
 function CollectionItem({ id }: { id: number }) {
   return (
-    <Card className="collection-card m-auto">
+    <Card className="collection-card">
       <Card.Img variant="top" src={`/images/collection/Image (${id + 5}).png`} />
       <Card.Body>
         <Card.Text className="bold">Collection Name</Card.Text>
