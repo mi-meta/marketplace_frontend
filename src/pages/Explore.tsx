@@ -1,6 +1,7 @@
 import { Container, Row, Col, Stack } from 'react-bootstrap';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { NFTCard } from '../components';
 import '../styles/explore.scss';
 import { categories, LinkItem } from '../store';
@@ -19,10 +20,15 @@ function Explore() {
         </Col>
       </Row>
       <Row>
-        <Col lg={8} md={12} className="m-auto">
-          <Stack direction="horizontal" gap={3} className="explore-categories">
+        <Col lg={8} md={12} className="m-auto pt-5">
+          <Stack direction="horizontal" gap={4} className="explore-categories">
+            <Link to="/trending">Trending</Link>
             {categories.map((item: LinkItem, key: number) => {
-              return <span key={key}>{item.text}</span>;
+              return (
+                <Link to={`/discover/${item.link}`} key={key}>
+                  {item.text}
+                </Link>
+              );
             })}
           </Stack>
         </Col>

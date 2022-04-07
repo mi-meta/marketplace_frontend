@@ -47,14 +47,14 @@
     }
   }
   &-categories {
-    padding: 10px;
+    padding: 20px;
     gap: 10px;
     justify-content: center;
     margin-bottom: 20px;
     border-bottom: 0.5px solid #DADADA;;
 
 
-    span  {
+    a {
       font-family: 'Montserrat';
       font-style: normal;
       font-weight: 600;
@@ -62,8 +62,11 @@
       line-height: 36px;
       /* identical to box height, or 200% */
       text-transform: capitalize;
-
+      text-decoration: none;
       color: #979797;
+    }
+    a:hover {
+      color: #0880AE;
     }
   }
   &-nft {

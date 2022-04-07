@@ -23,6 +23,7 @@ import {
   ProfileSetting,
   CommunicationSetting,
   SecuritySetting,
+  MyCollections,
 } from '../components';
 
 function Root() {
@@ -43,7 +44,10 @@ function Root() {
           <Route path="/discover-collection" element={<Explore />} />
           <Route path="/discover/:category" element={<Discover />} />
           <Route path="/collection" element={<Collection />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile />}>
+            <Route path="" element={<MyCollections />} />
+            <Route path="collections" element={<MyCollections />} />
+          </Route>
           <Route path="/settings" element={<Settings />}>
             <Route path="" element={<ProfileSetting />} />
             <Route path="profile" element={<ProfileSetting />} />
