@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 
 function Create() {
   return (
-    <Container className="create">
+    <Container className="create mb-5">
       <Outlet />
     </Container>
   );

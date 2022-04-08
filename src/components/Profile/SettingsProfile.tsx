@@ -1,5 +1,5 @@
 const SettingsProfile = () => {
-  return <h1>Offer Profile</h1>;
+  return <h1>Settings</h1>;
 };
 
 export { SettingsProfile };

@@ -1,5 +1,5 @@
 const ListingsProfile = () => {
-  return <h1>Offer Profile</h1>;
+  return <h1>Listings</h1>;
 };
 
 export { ListingsProfile };

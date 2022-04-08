@@ -13,6 +13,9 @@ import { DropdownComp } from '../';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 
 const CreateComp = () => {
+  const handleChange = () => {
+    console.log('handle');
+  };
   return (
     <Row className="create-nft justify-content-center mt-5">
       <Col lg={9}>
@@ -30,6 +33,7 @@ const CreateComp = () => {
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                   value={`0x12f491fany9ll5rw2...cddc107116083ec49e5217`}
+                  onChange={handleChange}
                 />
               </InputGroup>
             </div>

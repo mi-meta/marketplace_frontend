@@ -116,6 +116,15 @@ input {
 .text-active {
   color: #0880AE !important;
 }
+.text-rejected {
+  color: #FF5689 !important;
+}
+// .text-pending {
+
+// }
+.text-accepted {
+  color: #05EDC6 !important;
+}
 /* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
