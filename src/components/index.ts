@@ -10,4 +10,5 @@ export * from './CNav';
 export * from './Settings';
 export * from './DropdownComp';
 export * from './Profile';
+export * from './Create';
 // export * from './Sidebar';

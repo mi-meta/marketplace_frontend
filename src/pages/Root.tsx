@@ -32,6 +32,9 @@ import {
   ListingsProfile,
   WatchListProfile,
   SettingsProfile,
+  ChooseBlockchain,
+  ChooseType,
+  CreateComp,
 } from '../components';
 
 function Root() {
@@ -44,7 +47,12 @@ function Root() {
           <Route path="/" element={<Home />} />
           <Route path="/activity" element={<Activity />} />
           <Route path="/auctions" element={<Auctions />} />
-          <Route path="/create" element={<Create />} />
+          <Route path="/create" element={<Create />}>
+            <Route path="" element={<ChooseBlockchain />} />
+            <Route path="blockchain" element={<ChooseBlockchain />} />
+            <Route path="type" element={<ChooseType />} />
+            <Route path="create" element={<CreateComp />} />
+          </Route>
           <Route path="/detail" element={<Detail />} />
           <Route path="/drops" element={<Drops />} />
           <Route path="/learn" element={<Learn />} />

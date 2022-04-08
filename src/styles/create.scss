@@ -45,6 +45,9 @@
     }
   }
   &-network {
+    a {
+      text-decoration: none;
+    }
     .card {
       background: #333236;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
@@ -68,6 +71,9 @@
     }
   }
   &-type {
+      a {
+        text-decoration: none;
+      }
     .card {
       background: #333236;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
