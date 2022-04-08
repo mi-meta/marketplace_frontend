@@ -17,9 +17,19 @@ const data: DType[] = [
     items: '30.6k',
   },
   {
-    id: 1,
-    collection: 'Bored Pandas Gym',
-    volume: '5478.76',
+    id: 2,
+    collection: 'Street Art of Bansky',
+    volume: '4478.76',
+    p24: '+102.3%',
+    p7d: '+20.3%',
+    floor_price: '1.76',
+    owners: '15.2k',
+    items: '30.6k',
+  },
+  {
+    id: 3,
+    collection: 'Selfles',
+    volume: '4458.34',
     p24: '+205.3%',
     p7d: '+20.3%',
     floor_price: '1.76',
@@ -27,9 +37,9 @@ const data: DType[] = [
     items: '30.6k',
   },
   {
-    id: 1,
-    collection: 'Bored Pandas Gym',
-    volume: '5478.76',
+    id: 4,
+    collection: 'Curated Art Blocks',
+    volume: '4321.11',
     p24: '+205.3%',
     p7d: '+20.3%',
     floor_price: '1.76',
@@ -37,19 +47,9 @@ const data: DType[] = [
     items: '30.6k',
   },
   {
-    id: 1,
-    collection: 'Bored Pandas Gym',
-    volume: '5478.76',
-    p24: '+205.3%',
-    p7d: '+20.3%',
-    floor_price: '1.76',
-    owners: '15.2k',
-    items: '30.6k',
-  },
-  {
-    id: 1,
-    collection: 'Bored Pandas Gym',
-    volume: '5478.76',
+    id: 5,
+    collection: '967 Collectibles',
+    volume: '4320.05',
     p24: '+205.3%',
     p7d: '+20.3%',
     floor_price: '1.76',
@@ -125,7 +125,12 @@ function Activity() {
                   <td>{item['id']}</td>
                   <td>
                     <Stack direction="horizontal" gap={3}>
-                      <Image src={`/images/nft/1.png`} width={56} height={56} roundedCircle />
+                      <Image
+                        src={`/images/nft/${index + 1}.png`}
+                        width={56}
+                        height={56}
+                        roundedCircle
+                      />
                       {item['collection']}
                     </Stack>
                   </td>

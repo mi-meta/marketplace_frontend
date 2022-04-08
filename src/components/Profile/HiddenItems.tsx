@@ -1,5 +1,5 @@
 const HiddenItems = () => {
-  return <h1>Offer Profile</h1>;
+  return <h1>Hidden</h1>;
 };
 
 export { HiddenItems };

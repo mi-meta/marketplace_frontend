@@ -1,5 +1,5 @@
 const WatchListProfile = () => {
-  return <h1>Offer Profile</h1>;
+  return <h1>WatchList</h1>;
 };
 
 export { WatchListProfile };
