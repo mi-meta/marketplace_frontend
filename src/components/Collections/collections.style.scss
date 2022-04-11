@@ -73,3 +73,12 @@
     }
   }
 }
+.dark {
+  .collection-list {
+    &-item {
+      h3, p {
+        color: white;
+      }
+    }
+  }
+}
