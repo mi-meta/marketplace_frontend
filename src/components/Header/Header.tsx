@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../providers';
-import { categories, LinkItem } from '../../store';
+import { categories, LinkItem, MENUITEM, SubMenuList } from '../../store';
 import './header.style.scss';
 import {
   Row,
@@ -21,6 +21,8 @@ function Header() {
   // const [show, setShow] = useState(true);
   const [show, setShow] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [menuselected, setMenuselected] = useState("");
+ 
 
   const handleOpen = () => {
     // console.log('open');
@@ -30,8 +32,8 @@ function Header() {
     // console.log('close');
     setIsOpen(false);
   };
-  const navigate2discover = () => {
-    console.log('navigate');
+  const navigate2discover = (val:any) => {
+    setMenuselected(val)
     navigate('/discover-collection');
   };
   document.addEventListener('click', function () {
@@ -42,7 +44,7 @@ function Header() {
     <Row>
       <Navbar bg={`${theme}`} variant={`${theme === 'dark' ? 'dark' : 'light'}`} expand="lg">
         <Container fluid>
-          <Link to="/" className="navbar-brand">
+          <Link to="/" className="navbar-brand" onClick={()=>setMenuselected("")}>
             <Image src="/icons/logo.svg" className="img-brand" />
             <span>mi-meta</span>
           </Link>
@@ -66,7 +68,7 @@ function Header() {
               <NavDropdown
                 as="span"
                 title={
-                  <Nav.Link as="span" onClick={navigate2discover}>
+                  <Nav.Link as="span" onClick={()=>navigate2discover(MENUITEM[0])} className={menuselected==MENUITEM[0]?"selected_menu":""} >
                     Discover
                   </Nav.Link>
                 }
@@ -75,7 +77,16 @@ function Header() {
                 // onMouseLeave={handleClose}
                 show={isOpen}
               >
-                <NavDropdown.Item as="span" href="#action/3.1">
+               
+              {SubMenuList.map((item: LinkItem, key: number) => {
+                return (
+                  <NavDropdown.Item as="span" key={key}>
+                    <div className='header_menu_item'>{item.text}</div>
+                  </NavDropdown.Item>
+                );
+              })}
+              </NavDropdown>
+                {/* <NavDropdown.Item as="span" href="#action/3.1">
                   <Link to="/assets">All NFT</Link>
                 </NavDropdown.Item>
                 {categories.map((item: LinkItem, key: number) => {
@@ -85,24 +96,24 @@ function Header() {
                     </NavDropdown.Item>
                   );
                 })}
-              </NavDropdown>
-              <Nav.Link as="span">
-                <Link to="/activity" className="nav-link">
+              </NavDropdown> */}
+              <Nav.Link as="span" >
+                <Link to="/activity" className={`nav-link ${menuselected === MENUITEM[1] ? "selected_menu":""}`} onClick={()=>navigate2discover(MENUITEM[1])}  >
                   Activity
                 </Link>
               </Nav.Link>
               <Nav.Link as="span">
-                <Link to="/learn" className="nav-link">
+                <Link to="/learn" className={`nav-link ${menuselected === MENUITEM[2] ? "selected_menu":""}`} onClick={()=>navigate2discover(MENUITEM[2])}>
                   Learn
                 </Link>
               </Nav.Link>
               <Nav.Link as="span">
-                <Link to="/create" className="nav-link">
+                <Link to="/create" className={`nav-link ${menuselected === MENUITEM[3] ? "selected_menu":""}`} onClick={()=>navigate2discover(MENUITEM[3])}>
                   Create
                 </Link>
               </Nav.Link>
               <Nav.Link as="span">
-                <Link to="/profile" className="nav-link">
+                <Link to="/profile" className={`nav-link ${menuselected === MENUITEM[4] ? "selected_menu":""}`} onClick={()=>navigate2discover(MENUITEM[4])}>
                   <Image src="/icons/user.svg" />
                 </Link>
               </Nav.Link>

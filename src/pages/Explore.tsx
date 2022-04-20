@@ -1,16 +1,20 @@
 import { Container, Row, Col, Stack } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import { NFTCard } from '../components';
 import '../styles/explore.scss';
-import { categories, LinkItem } from '../store';
+import { categories, LinkItem, SubMenuList} from '../store';
 
 function Explore() {
   const { type } = useParams();
+  const[submenu, Setsubmenu] = useState("all nft")
   useEffect(() => {
     console.log(type);
   }, [type]);
+  const subItemSelect=(menuitem:any)=>{
+    Setsubmenu(menuitem);
+  }
   return (
     <Container className="explore p-0" fluid>
       <Row className="explore-landing">
@@ -22,14 +26,18 @@ function Explore() {
       <Row>
         <Col lg={8} md={12} className="m-auto pt-5">
           <Stack direction="horizontal" gap={4} className="explore-categories">
-            <Link to="/trending">Trending</Link>
-            {categories.map((item: LinkItem, key: number) => {
-              return (
-                <Link to={`/discover/${item.link}`} key={key}>
-                  {item.text}
-                </Link>
-              );
+            
+            {SubMenuList.map((item,key) => {
+              return <div className={`collection_menu_item ${submenu==item.text ? "selected_menu_item":""}`} key={key} onClick={()=>subItemSelect(item.text)}>{item.text}</div>
             })}
+              {/* <div className='collection_menu_item'>Trending</div>
+              {categories.map((item,key) => {
+                return (
+                  <Link to={`/discover/${item.link}`} key={key}>
+                    {item.text}
+                  </Link>
+                );
+              })} */}
           </Stack>
         </Col>
       </Row>
