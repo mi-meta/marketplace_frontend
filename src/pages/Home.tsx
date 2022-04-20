@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import * as components from '../components';
 import { CategoryGroup } from '../components';
 // import image from './nfts-bg-dark-parallax.png';
-// import Carousel from 'react-multi-carousel';
+import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import '../styles/home.scss';
 

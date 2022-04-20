@@ -8,11 +8,13 @@ import { categories, LinkItem, SubMenuList} from '../store';
 
 function Explore() {
   const { type } = useParams();
-  const[submenu, Setsubmenu] = useState("all nft")
+  const[submenu, Setsubmenu] = useState("trending")
+  const [count, setCount] = useState(20);
   useEffect(() => {
     console.log(type);
   }, [type]);
   const subItemSelect=(menuitem:any)=>{
+    setCount(Math.floor(Math.random()*20))
     Setsubmenu(menuitem);
   }
   return (
@@ -42,7 +44,7 @@ function Explore() {
         </Col>
       </Row>
       <Row className="explore-nft">
-        {new Array(20).fill(1).map((_item: number, key: number) => {
+        {new Array(count).fill(1).map((_item: number, key: number) => {
           return <NFTCard id={key + 1} key={key} />;
           // return (
           //   <Col lg={3} md={4} sm={6} xs={12} key={key}>

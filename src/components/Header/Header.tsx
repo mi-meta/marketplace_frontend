@@ -15,32 +15,63 @@ import {
 } from 'react-bootstrap';
 import Sidebar from '../SideBar/Sidebar';
 // let isOpen = false;
+
+
+const posts = [
+  { id: '1', name: 'This first post is about React', image:"/images/nft/1.png", count:'199' },
+  { id: '2', name: 'This next post is about Preact', image:"/images/nft/2.png", count:'32' },
+  { id: '3', name: 'We have yet another React post!', image:"/images/nft/3.png", count:'134' },
+  { id: '4', name: 'This is the fourth and final post', image:"/images/nft/4.png", count:'12' },
+];
+
+
+const filterPosts = (posts:any, inputval:any) => {
+  if (!inputval) {
+      return [];
+  }
+
+  return posts.filter((post:any) => {
+      const postName = post.name.toLowerCase();
+      return postName.includes(inputval.toLowerCase());
+  });
+};
+
 function Header() {
   const { theme } = useContext(ThemeContext);
+  const [searchval, setSearchval] = useState("");
   const navigate = useNavigate();
   // const [show, setShow] = useState(true);
   const [show, setShow] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [menuselected, setMenuselected] = useState("");
+  
  
 
   const handleOpen = () => {
-    // console.log('open');
     setIsOpen(true);
   };
+
   const handleClose = () => {
-    // console.log('close');
     setIsOpen(false);
   };
+
+  const changeValue = (val:any)=>{
+    setSearchval(val);
+ }
+
   const navigate2discover = (val:any) => {
     setMenuselected(val)
     navigate('/discover-collection');
   };
+
   document.addEventListener('click', function () {
     handleClose();
   });
 
+  const filteredPosts = filterPosts(posts, searchval);
+
   return (
+    
     <Row>
       <Navbar bg={`${theme}`} variant={`${theme === 'dark' ? 'dark' : 'light'}`} expand="lg">
         <Container fluid>
@@ -51,16 +82,35 @@ function Header() {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Sidebar show={show} setShow={setShow} />
           <Navbar.Collapse id="navbarScroll">
-            <InputGroup className="d-flex">
+            <InputGroup className="d-flex custom-input-group">
               <InputGroup.Text id="basic-addon1">
                 <Image src={`/icons/lens.svg`} />
               </InputGroup.Text>
               <FormControl
                 type="search"
                 placeholder="Search items and collections"
-                className="me-2"
+                className={theme === "dark" ? "search-input-dark":"search-input-light"}
                 aria-label="Search"
+                value={searchval}
+                onChange = {e=> changeValue(e.target.value)}
               />
+              <ul className={(theme === "dark" ? "search-action-dark ":"search-action-light ") + (searchval !== "" && filteredPosts.length>0 ? "":"d-none")} >
+                    {filteredPosts.map((post:any, i:Number) => (
+                        <li key={post.id} className={(theme ==="dark"? "search-action-li-dark ":"search-action-li-light ") + " d-flex justify-content-between"}>
+                          <div>
+                            <span>
+                              <img className="search-action-li-image " src={post.image} />
+                            </span>
+                            <span className="ps-sm-1">
+                              {post.name}
+                            </span>
+                          </div>
+                          <div>{post.count + " items"}</div>
+                        </li> 
+                    ))}
+              </ul>
+               
+              
               {/* <Button variant="outline-success">Search</Button> */}
             </InputGroup>
             <Nav className="me-auto pull-width" />
@@ -78,15 +128,15 @@ function Header() {
                 show={isOpen}
               >
                
-              {SubMenuList.map((item: LinkItem, key: number) => {
+              {/* {SubMenuList.map((item: LinkItem, key: number) => {
                 return (
                   <NavDropdown.Item as="span" key={key}>
                     <div className='header_menu_item'>{item.text}</div>
                   </NavDropdown.Item>
                 );
               })}
-              </NavDropdown>
-                {/* <NavDropdown.Item as="span" href="#action/3.1">
+              </NavDropdown> */}
+                <NavDropdown.Item as="span" href="#action/3.1">
                   <Link to="/assets">All NFT</Link>
                 </NavDropdown.Item>
                 {categories.map((item: LinkItem, key: number) => {
@@ -96,7 +146,7 @@ function Header() {
                     </NavDropdown.Item>
                   );
                 })}
-              </NavDropdown> */}
+              </NavDropdown>
               <Nav.Link as="span" >
                 <Link to="/activity" className={`nav-link ${menuselected === MENUITEM[1] ? "selected_menu":""}`} onClick={()=>navigate2discover(MENUITEM[1])}  >
                   Activity
@@ -124,6 +174,7 @@ function Header() {
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
+        
         </Container>
       </Navbar>
     </Row>
