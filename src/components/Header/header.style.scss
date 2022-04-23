@@ -7,6 +7,14 @@
 .selected_menu {
   color: #009CDE !important;
 }
+// .selected_dropitem {
+//   background: rgba(0, 156, 222, 0.37) !important;
+// }
+.dropdown_item_active {
+  color: #fff;
+  text-decoration: none;
+  background:rgba(0, 156, 222, 0.37) !important;
+}
 .header_menu_item {
     display: block;
     width: 100%;

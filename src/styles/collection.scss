@@ -4,6 +4,10 @@
 
 @import "../styles/variables";
 
+.active {
+  color:#0880AE !important
+}
+
 .collection {
   &-landing {
     position: relative;
@@ -85,9 +89,20 @@
     // text-align: center;
     color: #979797;
   }
+  span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height, or 138% */
+    // padding: 3px !important;
+
+    color: #979797;
+  }
   button {
     padding: 2px;
-    background: #ED1652;
+    // background: #ED1652;
     border: none;
     width: 24px;
   }
@@ -132,10 +147,50 @@
         font-weight: 400;
         font-size: 20px;
         line-height: 24px;
-
         color: #979797;
       }
     }
+  }
+
+  .custom-input-group {
+    height:100%;
+    background-color:#333236;
+  }
+
+  .search-input-dark {
+    background-color:#333236;
+    color:gray;
+  }
+
+  .search-input-light {
+    background-color:white;
+    color:gray;
+  }
+
+  .search-input-dark:focus {
+    border:1px solid #979797;
+    border-left:0px solid transparent;
+    box-shadow:none;
+  }
+
+  .search-input-light:focus {
+    border:1px solid #ced4da;
+    border-left:0px solid transparent;
+    box-shadow:none;
+  }
+  
+  .custom-input-group:focus-within {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+
+  .filter-text {
+    color:black;
+    font-size:28px;
+  }
+
+  .collection-filter-input {
+    border:1px solid transparent;
+    background-color:#2b2b32;
   }
 }
 
@@ -222,5 +277,15 @@
         }
       }
     }
+    .filter-text {
+      color:white;
+      font-size:28px;
+    }
+  }
+}
+
+.collection-body {
+  button {
+    width:100%;
   }
 }

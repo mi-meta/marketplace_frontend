@@ -182,8 +182,8 @@ input {
   }
   div.switch {
     .switch-handle {
-      
-      margin-left: -12px;
+      border-width:0px;
+      margin-left: -15px;
       background: linear-gradient(180deg, #70BCFD -19.23%, #403896 -19.22%, #8D3695 51.86%, #BB2E69 117.49%);
     }
   }

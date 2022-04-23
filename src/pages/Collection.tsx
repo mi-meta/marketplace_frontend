@@ -1,8 +1,16 @@
-import { Container, Row, Col, Button, Stack, Image, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, Button, Stack, Image, ListGroup} from 'react-bootstrap';
 import '../styles/collection.scss';
-import { CollectionItem } from '../components';
+import { CollectionItem, CollectionItemsPane, CollectionIActivityPane } from '../components';
+import { useState } from 'react';
 
 function Collection() {
+  const setshowpane = (val:any)=> {
+    console.log(val);
+    setShow(val);
+  }
+
+  const [show,setShow] = useState(true);
+
   return (
     <Container className="collection p-0" fluid>
       <Row className="collection-landing">
@@ -49,43 +57,21 @@ function Collection() {
           </Stack>
         </Stack>
       </Row>
+    
       <Row className="collection-tab">
         <Stack direction="horizontal">
-          <div>
+          <div onClick={() => setshowpane(true)}>
             <Image src="/icons/item.png" />
-            <p>Items</p>
+            <p className={show ? "active": ""}>Items</p>
           </div>
-          <div>
+          <div onClick={() => setshowpane(false)}>
             <Image src="/icons/Graph Poly.png" />
-            <p>Activity</p>
+            <p className={!show ? "active": ""}>Activity</p>
           </div>
         </Stack>
       </Row>
-      <Row className="mb-3 collection-body">
-        <Col lg={3} className="mt-3">
-          <ListGroup as="ol">
-            <ListGroup.Item as="li">
-              <span>Trait</span>
-            </ListGroup.Item>
-            <ListGroup.Item as="li">
-              <span>Trait</span>
-            </ListGroup.Item>
-            <ListGroup.Item as="li">
-              <span>Trait</span>
-            </ListGroup.Item>
-            <ListGroup.Item as="li">
-              <span>Trait</span>
-            </ListGroup.Item>
-          </ListGroup>
-        </Col>
-        <Col lg={9}>
-          <Row className="pt-4">
-            {new Array(8).fill(22).map((item: number, key: number) => {
-              return <CollectionItem key={key} id={key + 1} />;
-            })}
-          </Row>
-        </Col>
-      </Row>
+      {show ? <CollectionItemsPane /> :<CollectionIActivityPane /> }
+      
     </Container>
   );
 }

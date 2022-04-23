@@ -10,7 +10,7 @@ const CategoryGroup = () => {
         <strong> CATEGORY</strong>
       </h1>
       <Row>
-        <Col md={8} className="m-auto">
+        <Col md={12} lg={10} className="m-auto">
           <Row>
             {new Array(6).fill(1).map((item: number, key: number) => {
               return (

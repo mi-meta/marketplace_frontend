@@ -37,6 +37,8 @@ const Profile = () => {
             <Stack direction="horizontal" className="mt-3">
               <p className="m-0 bold">Dark mode</p>
               <BootstrapSwitchButton
+                onlabel=" "
+                offlabel=" "
                 checked={theme === 'dark' ? true : false}
                 onChange={(checked: boolean) => {
                   console.log(checked);

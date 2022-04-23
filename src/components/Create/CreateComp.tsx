@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import {
   Row,
   Col,
@@ -8,13 +9,60 @@ import {
   FormControl,
   Button,
   Form,
+  Modal
 } from 'react-bootstrap';
 import { DropdownComp } from '../';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 
 const CreateComp = () => {
+  const [listMarket, setListMarket] = useState(true);
+  const [selectedFile, setSelectedFile] = useState("");
+  const [modal, setModal] = useState(false)
+  const [itemData, setItemData] = useState([{type:'Boswell', name:'Ears'}, {type:'Rollo', name:'Sword'}, {type:'Rollo', name:'Shield'}])
+  const [bufferItemData, setBufferItemData] = useState([{type:'Boswell', name:'Ears'}, {type:'Rollo', name:'Sword'}, {type:'Rollo', name:'Shield'}])
+
   const handleChange = () => {
     console.log('handle');
+  };
+
+  const handleCloseModal = () => {
+    setModal(false);
+  }
+
+  const editHandler = (e:any, i:number, type:string) => {
+    let itemData = bufferItemData;
+    if (type === "type") {
+      itemData[i].type = e.target.value;
+    } else {
+      itemData[i].name = e.target.value;
+    }
+    setBufferItemData([...itemData]);
+  }
+
+  const saveHandler = () => {
+    setBufferItemData([...itemData]);
+    setModal(false);
+  }
+
+  const cancelHandler = () => {
+    setItemData([...bufferItemData]);
+    setModal(false);
+  }
+
+  const onFileChange = (e:any) => {
+    e.preventDefault();
+    let file = e.target.files[0];
+    let fileReader = new FileReader();
+
+    fileReader.onloadend = () => {
+        console.log(fileReader.result)
+        if (fileReader.result !== null) {
+          setSelectedFile(fileReader.result.toString())
+        }
+        
+    };
+    console.log(fileReader.result)
+    fileReader.readAsDataURL(file)
   };
   return (
     <Row className="create-nft justify-content-center mt-5">
@@ -41,11 +89,14 @@ const CreateComp = () => {
               <h2>Upload file</h2>
               <Stack direction="horizontal">
                 <Card>
-                  <Card.Img src={`/images/base.png`} />
+                  <Card.Img src={selectedFile !== ""?selectedFile:`/images/base.png`} style={{width:'100%'}} />
                 </Card>
                 <div className="text-center">
                   <p>PNG, GIF, WEBP, MP4, MP3 Max upload size 100mb.</p>
-                  <Button className="mi-button">Choose file</Button>
+                  <Form.Control type="file" className="create-file-select" onChange={onFileChange}/>
+                  {/* <input type="file" id="upload-file" placeholder="Upload a Picture"  /> */}
+                  {/* <label htmlFor="upload-file">Upload a Picture</label> */}
+                  {/* <Button className="mi-button">Choose file</Button> */}
                 </div>
               </Stack>
             </div>
@@ -72,34 +123,34 @@ const CreateComp = () => {
             </div>
             <div className="creat-nft-trait"></div>
           </Col>
-          <Col lg={6} className="p-3">
+          <Col lg={6} className="p-3 create-nft-trait">
             <h2>Preview</h2>
             <Image src={`/images/base.png`} fluid style={{ borderRadius: '20px' }} />
             <Stack direction="horizontal" className="mt-4">
               <h2>List on marketplace</h2>
-              <BootstrapSwitchButton checked={true} />
+              <BootstrapSwitchButton   onlabel=" " offlabel=" "  checked={listMarket} onChange={(checked: boolean)=> checked?setListMarket(true):setListMarket(false)} />
             </Stack>
-            <div className="create-nft-trait">
+            {listMarket && <div className="create-nft-trait">
               <Stack direction="horizontal" className="create-nft-price-type" gap={3}>
                 <div className="text-center">
                   <p>Fixed price</p>
                   <Image src={`/icons/tag.png`} width={76} height={76} />
-                  <Form.Check type="radio" />
+                  <Form.Check className="custom-radio" type="radio" />
                 </div>
                 <div className="text-center">
                   <p>Accept bids</p>
                   <Image src={`/icons/lBKGwu_2_.png`} width={76} height={76} className="p-2" />
-                  <Form.Check type="radio" />
+                  <Form.Check className="custom-radio" type="radio" />
                 </div>
                 <div className="text-center">
                   <p>Timed auction</p>
                   <Image src={`/icons/Watch.png`} width={76} height={76} />
-                  <Form.Check type="radio" />
+                  <Form.Check className="custom-radio" type="radio" />
                 </div>
                 <div></div>
                 <div></div>
               </Stack>
-            </div>
+            </div>}
           </Col>
         </Row>
         <Row>
@@ -112,7 +163,7 @@ const CreateComp = () => {
               </Stack>
             </Stack>
           </Col>
-          <Col lg={6}>
+          {listMarket && <Col lg={6}>
             <div className="create-nft-trait">
               <h2>Price</h2>
               <p>Enter the price for one item</p>
@@ -127,7 +178,7 @@ const CreateComp = () => {
                 You will receive <span className="text-light">4.875 MATIC</span> ($8)
               </p>
             </div>
-          </Col>
+          </Col>}
           <Col>
             <div className="create-nft-trait">
               <h2>Description</h2>
@@ -148,26 +199,59 @@ const CreateComp = () => {
               <h2>Properties</h2>
               <p>Add properties to your item</p>
               <Stack direction="horizontal" className="create-nft-add-item" gap={3}>
-                <div className="bg-dark">+</div>
-                <div>
-                  <p>Bosswell</p>
+                <div className="bg-dark create-nft-edit-item" onClick={() => setModal(true)}>+</div>
+                {itemData.map((item, i) => <div key={i}>
+                  <p>{item.type}</p>
                   <p>
-                    <span className="text-info">Ears</span>
+                    <span className="text-info">{item.name}</span>
                   </p>
-                </div>
-                <div>
-                  <p>Rollo</p>
-                  <p>
-                    <span className="text-info">Sword</span>
-                  </p>
-                </div>
-                <div>
-                  <p>Rollo</p>
-                  <p>
-                    <span className="text-info">Shield</span>
-                  </p>
-                </div>
+                </div>)}
               </Stack>
+              <Modal
+                  show={modal}
+                  onHide={handleCloseModal}
+                  backdrop="static"
+                  keyboard={false}
+                  centered
+                >
+                  <Modal.Header>
+                    <div></div>
+                    <Modal.Title>Add properties</Modal.Title>
+                    <div className="create-nft-modal-close">X</div>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <div className="create-nft-modal-item-row mb-4" style={{borderBottom:'1px solid gray'}}>
+                      <div className="create-nft-modal-item-prefix" ></div>
+                      <div className="create-nft-modal-item-content">
+                        <span>Type</span>
+                      </div>
+                      <div  className="create-nft-modal-item-content">
+                        <span>Name</span>
+                      </div>
+                    </div>
+                    {bufferItemData.map((item, i) => {
+                      return <div key={i} className="create-nft-modal-item-row">
+                          <div className="create-nft-modal-item-prefix" >X</div>
+                          <div className="create-nft-modal-item-content">
+                            <div>
+                              <Form.Control type="text" className="create-nft-modal-input" value={item.type} onChange={(e)=>editHandler(e, i, "type")}/>
+                            </div>
+                          </div>
+                          <div  className="create-nft-modal-item-content">
+                            <div>
+                              <Form.Control type="text" className="create-nft-modal-input" value={item.name}  onChange={(e)=>editHandler(e, i, "name")}/>
+                            </div>
+                          </div>
+                        </div>
+                    })}
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="primary" className="create-nft-modal-btn-save" onClick = {()=>saveHandler()}>Save</Button>
+                    <Button variant="secondary" className="create-nft-modal-btn-close" onClick={()=>cancelHandler()}>
+                      Cancel
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
             </div>
             <div className="create-nft-trait">
               <Row>
@@ -196,7 +280,7 @@ const CreateComp = () => {
             <div className="create-nft-trait">
               <Stack direction="horizontal" gap={3}>
                 <h2>Unlockable content</h2>
-                <BootstrapSwitchButton checked={true} />
+                <BootstrapSwitchButton onlabel=" " offlabel=" " checked={true}  />
               </Stack>
               <FormControl
                 as="textarea"
@@ -210,7 +294,7 @@ const CreateComp = () => {
             <div className="create-nft-trait">
               <Stack direction="horizontal" gap={3}>
                 <h2>Explicit content</h2>
-                <BootstrapSwitchButton checked={true} />
+                <BootstrapSwitchButton onlabel=" " offlabel=" " checked={true} />
               </Stack>
             </div>
             <div className="create-nft-trait text-center mb-5">

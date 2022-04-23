@@ -1,4 +1,32 @@
 .create {
+  .create-file-select {
+    width:100px;
+  }
+  .create-nft-edit-item {
+    cursor:pointer;
+  }
+  .create-nft-trait {
+    .btn {
+      padding:0.375rem 1rem!important;
+    }
+  }
+
+  .custom-radio input:checked {
+    border:1px solid #0d6efd;
+    background-color:transparent;
+    filter: brightness(0.6) sepia(1) hue-rotate(180deg) saturate(5);
+  }
+  .custom-radio input {
+    border:1px solid #0d6efd;
+    background-color:transparent;
+    
+  }
+  .create-network {
+    margin-bottom:350px;
+  }
+  .create-type {
+    margin-bottom:350px;
+  }
   h1 {
     font-family: 'Montserrat';
     font-style: normal;
@@ -142,6 +170,8 @@
     }
     div.switch {
       min-height: 24px !important;
+
+      
       .switch-group {
         .switch-on {
           padding: 0px 24px 0px 12px !important;
@@ -150,7 +180,7 @@
           padding: 0px 24px 0px 18px !important;
         }
         .switch-handle {
-          top: -2px;
+          top: -3px;
           border-radius: 12px;
         }
       }
@@ -235,4 +265,73 @@
       }
     }
   }
+}
+
+.light {
+  h1, h2, h3, h4, h5, h6 {
+    color:black;
+  }
+  .switch-group {
+    width:158%;
+  }
+  .switch-handle {
+    border:1px solid transparent;
+  }
+}
+
+.modal-content {
+  background-color:#232325;
+}
+.modal-title {
+  color:white;
+}
+.create-nft-modal-close {
+  color:gray;
+}
+.modal-header {
+  border-bottom:1px solid transparent;
+}
+.modal-body {
+  padding-left:2rem;
+  padding-right:2rem;
+  border-bottom:1px solid transparent;
+}
+.modal-footer {
+  justify-content:center;
+  border-top:1px solid transparent;
+}
+.create-nft-modal-btn-save {
+  background-color:#009CDE;
+  color:white;
+  width:120px;
+}
+.create-nft-modal-btn-save:hover {
+  background-color:#01b3ff;
+}
+.create-nft-modal-btn-close {
+  background-color:white;
+  color:gray;
+  width:120px;
+}
+.create-nft-modal-btn-close:hover {
+  background-color:#dddddd;
+}
+.create-nft-modal-item-row {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  color:gray
+}
+.create-nft-modal-item-content{
+  width:45%;
+  text-align:center;
+}
+.create-nft-modal-input {
+  background-color:#333236;
+  color:#979797;
+  border:1px solid transparent;
+  text-align:center;
 }

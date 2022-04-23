@@ -10,15 +10,15 @@ const TopShelfDrops = () => {
         <span className="font-bold">Top Shelf</span> Drops
       </h1>
       <Row className="mt-5">
-        <Col md={10} lg={8}>
+        <Col md={12} lg={10}>
           <Row>
-            <Col md={4} sm={6}>
+            <Col md={6} sm={6} lg={4}>
               <DropItem id={1} />
             </Col>
-            <Col md={4} sm={6}>
+            <Col md={6} sm={6} lg={4}>
               <DropItem id={2} />
             </Col>
-            <Col md={4} sm={6}>
+            <Col md={6} sm={6} lg={4}>
               <DropItem id={3} />
             </Col>
           </Row>

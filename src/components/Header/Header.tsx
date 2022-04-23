@@ -44,6 +44,7 @@ function Header() {
   const [show, setShow] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [menuselected, setMenuselected] = useState("");
+  const [dropitem, setDropitem] = useState("all nft");
   
  
 
@@ -60,13 +61,18 @@ function Header() {
  }
 
   const navigate2discover = (val:any) => {
-    setMenuselected(val)
+    setDropitem("all nft");
+    setMenuselected(val);
     navigate('/discover-collection');
   };
 
   document.addEventListener('click', function () {
     handleClose();
   });
+
+  const subitemclick = (val:any) => {
+    setDropitem(val.toLowerCase());
+  }
 
   const filteredPosts = filterPosts(posts, searchval);
 
@@ -110,7 +116,6 @@ function Header() {
                     ))}
               </ul>
                
-              
               {/* <Button variant="outline-success">Search</Button> */}
             </InputGroup>
             <Nav className="me-auto pull-width" />
@@ -124,7 +129,7 @@ function Header() {
                 }
                 id="navbarScrollingDropdown"
                 onMouseEnter={handleOpen}
-                // onMouseLeave={handleClose}
+                onMouseLeave={handleClose}
                 show={isOpen}
               >
                
@@ -136,13 +141,13 @@ function Header() {
                 );
               })}
               </NavDropdown> */}
-                <NavDropdown.Item as="span" href="#action/3.1">
+                <NavDropdown.Item as="span" href="#action/3.1"  className={dropitem == "all nft"? "dropdown_item_active":""} onClick={()=>subitemclick("all nft")} >
                   <Link to="/assets">All NFT</Link>
                 </NavDropdown.Item>
                 {categories.map((item: LinkItem, key: number) => {
                   return (
-                    <NavDropdown.Item as="span" key={key}>
-                      <Link to={`/discover/${item.link}`}>{item.text}</Link>
+                    <NavDropdown.Item as="span" key={key} className={dropitem == item.text.toLocaleLowerCase()? "dropdown_item_active":""}>
+                      <Link to={`/discover/${item.link}`} onClick={()=>subitemclick(item.text)} >{item.text}</Link>
                     </NavDropdown.Item>
                   );
                 })}

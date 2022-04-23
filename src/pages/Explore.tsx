@@ -9,7 +9,7 @@ import { categories, LinkItem, SubMenuList} from '../store';
 function Explore() {
   const { type } = useParams();
   const[submenu, Setsubmenu] = useState("trending")
-  const [count, setCount] = useState(20);
+  const [count, setCount] = useState(10);
   useEffect(() => {
     console.log(type);
   }, [type]);
