@@ -128,7 +128,7 @@ const CreateComp = () => {
             <Image src={`/images/base.png`} fluid style={{ borderRadius: '20px' }} />
             <Stack direction="horizontal" className="mt-4">
               <h2>List on marketplace</h2>
-              <BootstrapSwitchButton   onlabel=" " offlabel=" "  checked={listMarket} onChange={(checked: boolean)=> checked?setListMarket(true):setListMarket(false)} />
+              <BootstrapSwitchButton onlabel=" " offlabel=" " checked={listMarket} onChange={(checked: boolean)=> checked?setListMarket(true):setListMarket(false)} />
             </Stack>
             {listMarket && <div className="create-nft-trait">
               <Stack direction="horizontal" className="create-nft-price-type" gap={3}>
@@ -208,50 +208,50 @@ const CreateComp = () => {
                 </div>)}
               </Stack>
               <Modal
-                  show={modal}
-                  onHide={handleCloseModal}
-                  backdrop="static"
-                  keyboard={false}
-                  centered
-                >
-                  <Modal.Header>
-                    <div></div>
-                    <Modal.Title>Add properties</Modal.Title>
-                    <div className="create-nft-modal-close">X</div>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <div className="create-nft-modal-item-row mb-4" style={{borderBottom:'1px solid gray'}}>
-                      <div className="create-nft-modal-item-prefix" ></div>
-                      <div className="create-nft-modal-item-content">
-                        <span>Type</span>
-                      </div>
-                      <div  className="create-nft-modal-item-content">
-                        <span>Name</span>
-                      </div>
+                show={modal}
+                onHide={handleCloseModal}
+                backdrop="static"
+                keyboard={false}
+                centered
+              >
+                <Modal.Header>
+                  <div></div>
+                  <Modal.Title>Add properties</Modal.Title>
+                  <div className="create-nft-modal-close">X</div>
+                </Modal.Header>
+                <Modal.Body>
+                  <div className="create-nft-modal-item-row mb-4" style={{borderBottom:'1px solid gray'}}>
+                    <div className="create-nft-modal-item-prefix" ></div>
+                    <div className="create-nft-modal-item-content">
+                      <span>Type</span>
                     </div>
-                    {bufferItemData.map((item, i) => {
-                      return <div key={i} className="create-nft-modal-item-row">
-                          <div className="create-nft-modal-item-prefix" >X</div>
-                          <div className="create-nft-modal-item-content">
-                            <div>
-                              <Form.Control type="text" className="create-nft-modal-input" value={item.type} onChange={(e)=>editHandler(e, i, "type")}/>
-                            </div>
-                          </div>
-                          <div  className="create-nft-modal-item-content">
-                            <div>
-                              <Form.Control type="text" className="create-nft-modal-input" value={item.name}  onChange={(e)=>editHandler(e, i, "name")}/>
-                            </div>
+                    <div  className="create-nft-modal-item-content">
+                      <span>Name</span>
+                    </div>
+                  </div>
+                  {bufferItemData.map((item, i) => {
+                    return <div key={i} className="create-nft-modal-item-row">
+                        <div className="create-nft-modal-item-prefix" >X</div>
+                        <div className="create-nft-modal-item-content">
+                          <div>
+                            <Form.Control type="text" className="create-nft-modal-input" value={item.type} onChange={(e)=>editHandler(e, i, "type")}/>
                           </div>
                         </div>
-                    })}
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="primary" className="create-nft-modal-btn-save" onClick = {()=>saveHandler()}>Save</Button>
-                    <Button variant="secondary" className="create-nft-modal-btn-close" onClick={()=>cancelHandler()}>
-                      Cancel
-                    </Button>
-                  </Modal.Footer>
-                </Modal>
+                        <div  className="create-nft-modal-item-content">
+                          <div>
+                            <Form.Control type="text" className="create-nft-modal-input" value={item.name}  onChange={(e)=>editHandler(e, i, "name")}/>
+                          </div>
+                        </div>
+                      </div>
+                  })}
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="primary" className="create-nft-modal-btn-save" onClick = {()=>saveHandler()}>Save</Button>
+                  <Button variant="secondary" className="create-nft-modal-btn-close" onClick={()=>cancelHandler()}>
+                    Cancel
+                  </Button>
+                </Modal.Footer>
+              </Modal>
             </div>
             <div className="create-nft-trait">
               <Row>

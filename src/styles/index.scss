@@ -20,6 +20,15 @@ code {
     monospace;
 }
 
+.text-dark-light {
+  color:black;
+}
+
+.App {
+  padding-left:0px!important;
+  padding-right:0px!important;
+}
+
 .container {
 
 }
@@ -155,6 +164,9 @@ input {
   background-color: $bg-dark;
   h1.title {
     color: white; 
+  }
+  .text-dark-light {
+    color:white
   }
   .card {
     background: #333236;

@@ -275,3 +275,12 @@
     }
   }
 }
+
+#profileScrollingDropdown::after {
+  display: none;
+}
+
+#profileScrollingDropdown {
+  padding-top:0px;
+  padding-bottom:0px;
+}

@@ -67,7 +67,7 @@ const ActivityProfile = () => {
                       '---'
                     )}
                   </td>
-                  <td>
+                  <td className="text-info">
                     {item['from'] ? (
                       <Stack direction="horizontal">
                         <Image src="" />
@@ -77,7 +77,7 @@ const ActivityProfile = () => {
                       '---'
                     )}
                   </td>
-                  <td>
+                  <td  className="text-info">
                     {item['to'] ? (
                       <Stack direction="horizontal">
                         <Image src="" />

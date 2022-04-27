@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { Container, Row, Col, Button, Stack, Image, ListGroup, InputGroup, FormControl, Form, ButtonGroup} from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom';
 import { CollectionItem } from './CollectionItem';
 import { DropdownComp } from '../DropdownComp';
 import { ThemeContext } from '../../providers';
@@ -9,6 +10,7 @@ import './collections.style.scss';
 import '../../styles/activity.scss';
 
 function CollectionItemsPane() {
+  const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
   const [activeChain, setActiveChain] = useState(chainData[0].name);
   return (
@@ -36,7 +38,7 @@ function CollectionItemsPane() {
         <FilterCard id="Price">
           <Row className="align-items-center">
             <Form.Select>
-              {currencyType.map((item) => <option value="1">{item}</option>)}
+              {currencyType.map((item) => <option key={item} value="1">{item}</option>)}
             </Form.Select>
           </Row>
           <Row className="align-items-center mt-1">
@@ -54,11 +56,7 @@ function CollectionItemsPane() {
       <Row>
         <FilterCard id="Chains">
             <div className="custom-button-group">
-              {chainData.map(item => <Button variant="secondary" className={`my-1 py-1 ${item.name === activeChain ? "button-active":""}`} onClick={() => setActiveChain(item.name)}><span className="px-1"><img src={item.image} style={{width:20}} /></span>{item.name}</Button>)}
-{/*               
-              <Button variant="secondary" className="my-1 py-1">2</Button>
-              <Button variant="secondary" className="my-1 py-1">3</Button>
-              <Button variant="secondary" className="my-1 py-1">4</Button> */}
+              {chainData.map(item => <Button key={item.name} variant="secondary" className={`my-1 py-1 ${item.name === activeChain ? "button-active":""}`} onClick={() => setActiveChain(item.name)}><span className="px-1"><img src={item.image} style={{width:20}} /></span>{item.name}</Button>)}
             </div>
         </FilterCard>
       </Row>
@@ -89,7 +87,7 @@ function CollectionItemsPane() {
             </Col>
         </Row>
         {new Array(8).fill(22).map((item: number, key: number) => {
-          return <CollectionItem key={key} id={key + 1} />;
+          return <CollectionItem  key={key} id={key + 1} />;
         })}
       </Row>
     </Col>

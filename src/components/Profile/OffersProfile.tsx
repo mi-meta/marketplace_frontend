@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import { Row, Table, Stack, Image } from 'react-bootstrap';
 
 interface DataType {
@@ -45,12 +46,13 @@ const data: DataType[] = [
   },
 ];
 const OffersProfile = () => {
+  const [offerTab, setOfferTab] = useState('submit')
   return (
     <>
       <Row>
         <Stack direction="horizontal" gap={3} className="profile-body-offers-category">
-          <p className="text-info">Offers Submitted</p>
-          <p>Offers Received</p>
+          <p  className={offerTab =="submit"?"text-info offer-tab":"offer-tab"} onClick={()=>setOfferTab('submit')}>Offers Submitted</p>
+          <p className={offerTab =="receive"?"text-info offer-tab":"offer-tab"} onClick={()=>setOfferTab('receive')}>Offers Received</p>
         </Stack>
       </Row>
       <Row className="profile-body-offers p-4">

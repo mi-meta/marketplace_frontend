@@ -6,10 +6,10 @@ import { useState } from 'react';
 function Collection() {
   const setshowpane = (val:any)=> {
     console.log(val);
-    setShow(val);
+    setItemTab(val);
   }
 
-  const [show,setShow] = useState(true);
+  const [itemTab, setItemTab] = useState(true);
 
   return (
     <Container className="collection p-0" fluid>
@@ -21,10 +21,10 @@ function Collection() {
         <h1>LoopingRings</h1>
         <p>
           Created By: <span className="text-info mx-2">Monster Magnet</span>
-          <Button className="mx-2">
+          <Button variant="danger" className="mx-2">
             <Image src="/icons/twitter.svg" width={15} height={15} />
           </Button>
-          <Button>
+          <Button variant="danger">
             <Image src="/icons/discord.svg" width={15} height={15} />
           </Button>
         </p>
@@ -43,14 +43,14 @@ function Collection() {
             <div>
               <h1>
                 <Image src={`/icons/eth.png`} className="mb-1" />
-                <span>0.32</span>
+                <span className="eth-amount-span" style={{display:'inline-block'}}>0.32</span>
               </h1>
               <p>floor price</p>
             </div>
             <div>
               <h1>
                 <Image src={`/icons/eth.png`} className="mb-1" />
-                <span>30.6</span>
+                <span  className="eth-amount-span" style={{display:'inline-block'}}>30.6</span>
               </h1>
               <p>volume trated</p>
             </div>
@@ -61,16 +61,16 @@ function Collection() {
       <Row className="collection-tab">
         <Stack direction="horizontal">
           <div onClick={() => setshowpane(true)}>
-            <Image src="/icons/item.png" />
-            <p className={show ? "active": ""}>Items</p>
+            {itemTab ? <Image src="/icons/item.png" /> : <Image src="/icons/item_gray.png" />}
+            <p className={itemTab ? "active": ""}>Items</p>
           </div>
           <div onClick={() => setshowpane(false)}>
-            <Image src="/icons/Graph Poly.png" />
-            <p className={!show ? "active": ""}>Activity</p>
+            {itemTab ? <Image src="/icons/Graph Poly.png" /> : <Image src="/icons/Graph Poly_blue.png" />}
+            <p className={!itemTab ? "active": ""}>Activity</p>
           </div>
         </Stack>
       </Row>
-      {show ? <CollectionItemsPane /> :<CollectionIActivityPane /> }
+      {itemTab ? <CollectionItemsPane /> :<CollectionIActivityPane /> }
       
     </Container>
   );

@@ -4,11 +4,11 @@ import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 const SecuritySetting = () => {
   return (
     <>
-      <h1>Security Setting</h1>
+      <h1 className="text-dark-light">Security Setting</h1>
       <Row>
-        <Stack direction="horizontal" gap={2}>
-          <h2>Enable 2-Factor Authentication</h2>
-          <BootstrapSwitchButton checked={true} onChange={() => console.log('change')} size="xs" />
+        <Stack direction="horizontal" className="security-setting" gap={2}>
+          <h2 className="text-dark-light">Enable 2-Factor Authentication</h2>
+          <BootstrapSwitchButton onlabel=" " offlabel=" " checked={true} onChange={() => console.log('change')} size="xs" />
         </Stack>
         <p style={{ maxWidth: '650px' }}>
           Setting up 2-Factor Authentication (2FA) provides an additional layer of security to your

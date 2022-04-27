@@ -11,23 +11,28 @@ const Sidebar = ({ show, setShow }: { show: boolean; setShow: (f: boolean) => vo
       className="sidebar"
     >
       <Offcanvas.Header closeButton onHide={() => setShow(false)}>
-        <Offcanvas.Title id="offcanvasNavbarLabel">My Wallet</Offcanvas.Title>
+        <div style={{display:'flex'}}>
+          <img src="/icons/wallet.png" className="ps-4"/>
+          <Offcanvas.Title id="offcanvasNavbarLabel" style={{color:'white'}}>My Wallet</Offcanvas.Title>
+        </div>
       </Offcanvas.Header>
+      <p className="px-4 mt-3 text-light">
+        Connect with an available wallet provider to get started.
+      </p>
+      <p className="px-4 text-light">
+        First time setting up a wallet?
+      </p>
       <Offcanvas.Body>
         <Nav className="justify-content-end flex-grow-1 pe-3">
-          <Nav.Link href="#action1">Home</Nav.Link>
-          <Nav.Link href="#action2">Link</Nav.Link>
-          <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
-            <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action5">Something else here</NavDropdown.Item>
-          </NavDropdown>
+          <Nav.Link href="#action1"><img src="/icons/metamask.png" width={30} /><span className="ps-3 text-light">MetaMask</span></Nav.Link>
+          <Nav.Link href="#action2"><img src="/icons/coinbase.png" width={30}/><span className="ps-3 text-light">Coinbase</span></Nav.Link>
+          <Nav.Link href="#action2"><img src="/icons/trust wallet.png" width={30}/><span className="ps-3 text-light" >Trust Wallet</span></Nav.Link>
+          <Nav.Link href="#action2"><img src="/icons/phantom.png" width={30}/><span className="ps-3 text-light">Phantom</span></Nav.Link>
         </Nav>
-        <Form className="d-flex">
+        {/* <Form className="d-flex">
           <FormControl type="search" placeholder="Search" className="me-2" aria-label="Search" />
           <Button variant="outline-success">Search</Button>
-        </Form>
+        </Form> */}
       </Offcanvas.Body>
     </Navbar.Offcanvas>
   );

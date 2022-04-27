@@ -53,15 +53,7 @@ const Profile = () => {
         </Col>
       </Row>
       <Row>
-        <Col md={8} className="m-auto">
-          {/* <Container>
-            <CNav />
-          </Container> */}
-          {/* <Stack direction="horizontal" gap={3} className="explore-categories">
-            {categories.map((item: string, key: number) => {
-              return <span key={key}>{item}</span>;
-            })}
-          </Stack> */}
+        <Col md={12} lg={8} className="m-auto">
           <Nav
             className="justify-content-between"
             activeKey="/home"
@@ -81,7 +73,7 @@ const Profile = () => {
         </Col>
       </Row>
       <Row>
-        <Col lg={8} className="m-auto profile-body">
+        <Col md={12} lg={8} className="m-auto profile-body">
           <Row>
             <Col md={5}>
               <InputGroup className="d-flex">
@@ -90,7 +82,7 @@ const Profile = () => {
                 </InputGroup.Text>
                 <FormControl
                   type="search"
-                  placeholder="Search items and collections"
+                  placeholder="Search"
                   className="me-2"
                   aria-label="Search"
                 />
