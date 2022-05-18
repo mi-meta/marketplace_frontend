@@ -17,6 +17,9 @@ import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 const CreateComp = () => {
   const [listMarket, setListMarket] = useState(true);
   const [selectedFile, setSelectedFile] = useState("");
+  const [fixedPrice, setFixedPrice] = useState("fix");
+  const [explicit, setExplicit] = useState(true);
+  const [unlockable, setUnlockable] = useState(true);
   const [modal, setModal] = useState(false)
   const [itemData, setItemData] = useState([{type:'Boswell', name:'Ears'}, {type:'Rollo', name:'Sword'}, {type:'Rollo', name:'Shield'}])
   const [bufferItemData, setBufferItemData] = useState([{type:'Boswell', name:'Ears'}, {type:'Rollo', name:'Sword'}, {type:'Rollo', name:'Shield'}])
@@ -37,6 +40,11 @@ const CreateComp = () => {
       itemData[i].name = e.target.value;
     }
     setBufferItemData([...itemData]);
+  }
+
+  const addItemData = () => {
+    setItemData([...itemData, {type:'Boswell', name:'Ears'}])
+    setBufferItemData([...itemData, {type:'Boswell', name:'Ears'}]);
   }
 
   const saveHandler = () => {
@@ -132,22 +140,26 @@ const CreateComp = () => {
             </Stack>
             {listMarket && <div className="create-nft-trait">
               <Stack direction="horizontal" className="create-nft-price-type" gap={3}>
-                <div className="text-center">
+                <div className="text-center" onClick={()=>setFixedPrice("fix")}>
                   <p>Fixed price</p>
                   <Image src={`/icons/tag.png`} width={76} height={76} />
-                  <Form.Check className="custom-radio" type="radio" />
+                  <Form.Check className="custom-radio" type="radio" checked={fixedPrice === "fix"} />
                 </div>
-                <div className="text-center">
+                <div className="text-center" onClick={()=>setFixedPrice("accept")}>
                   <p>Accept bids</p>
                   <Image src={`/icons/lBKGwu_2_.png`} width={76} height={76} className="p-2" />
-                  <Form.Check className="custom-radio" type="radio" />
+                  <Form.Check className="custom-radio" type="radio"  checked={fixedPrice === "accept"} />
                 </div>
-                <div className="text-center">
+                <div className="text-center" onClick={()=>setFixedPrice("time")}>
                   <p>Timed auction</p>
                   <Image src={`/icons/Watch.png`} width={76} height={76} />
-                  <Form.Check className="custom-radio" type="radio" />
+                  <Form.Check className="custom-radio" type="radio" checked={fixedPrice === "time"}  />
                 </div>
-                <div></div>
+                <div className="text-center" onClick={()=>setFixedPrice("free")}>
+                  <p>Free</p>
+                  <Image src={`/icons/Tag_free.png`} width={76} height={76} />
+                  <Form.Check className="custom-radio" type="radio" checked={fixedPrice === "free"}  />
+                </div>
                 <div></div>
               </Stack>
             </div>}
@@ -179,7 +191,7 @@ const CreateComp = () => {
               </p>
             </div>
           </Col>}
-          <Col>
+          <Col lg={12}>
             <div className="create-nft-trait">
               <h2>Description</h2>
               <p>
@@ -192,21 +204,27 @@ const CreateComp = () => {
                 rows={5}
               ></Form.Control>
               <h2>
-                <span className="text-info">Markdown</span> syntax is supported.
+                <a href="https://www.markdownguide.org/getting-started" target="_blank" style={{textDecoration:'none'}} className="text-info">Markdown</a> syntax is supported.
               </h2>
             </div>
             <div className="create-nft-trait">
               <h2>Properties</h2>
               <p>Add properties to your item</p>
-              <Stack direction="horizontal" className="create-nft-add-item" gap={3}>
-                <div className="bg-dark create-nft-edit-item" onClick={() => setModal(true)}>+</div>
-                {itemData.map((item, i) => <div key={i}>
+              <Row className="create-nft-add-item gap-4">
+                <Col lg={2}>
+                  <div className="bg-dark create-nft-edit-item text-center" onClick={() => setModal(true)}>+</div>
+                </Col>
+                {itemData.map((item, i) => <Col lg={2} key={i}>
                   <p>{item.type}</p>
                   <p>
                     <span className="text-info">{item.name}</span>
                   </p>
-                </div>)}
-              </Stack>
+                </Col>)}
+              </Row>
+              {/* <Stack direction="horizontal" className="create-nft-add-item" gap={3}>
+                
+                
+              </Stack> */}
               <Modal
                 show={modal}
                 onHide={handleCloseModal}
@@ -217,7 +235,7 @@ const CreateComp = () => {
                 <Modal.Header>
                   <div></div>
                   <Modal.Title>Add properties</Modal.Title>
-                  <div className="create-nft-modal-close">X</div>
+                  <div className="create-nft-modal-close px-2" onClick={()=>cancelHandler()}>X</div>
                 </Modal.Header>
                 <Modal.Body>
                   <div className="create-nft-modal-item-row mb-4" style={{borderBottom:'1px solid gray'}}>
@@ -244,6 +262,15 @@ const CreateComp = () => {
                         </div>
                       </div>
                   })}
+                  <div className="create-nft-modal-item-row mt-3">
+                    <div className="create-nft-modal-item-prefix" >+</div>
+                    <div className="create-nft-modal-item-content">
+                      <div className="create-nft-modal-add-button" onClick={addItemData}>
+                        Add more
+                      </div>
+                    </div>
+                    <div className="create-nft-modal-item-content" ></div>
+                  </div>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="primary" className="create-nft-modal-btn-save" onClick = {()=>saveHandler()}>Save</Button>
@@ -273,36 +300,38 @@ const CreateComp = () => {
                 <Col lg={6} className="mt-3">
                   <h2>Number of Editions</h2>
                   <p>Amount of tokens</p>
-                  <DropdownComp items={['a', 'b']} />
+                  <FormControl placeholder="0" />
                 </Col>
               </Row>
             </div>
             <div className="create-nft-trait">
               <Stack direction="horizontal" gap={3}>
                 <h2>Unlockable content</h2>
-                <BootstrapSwitchButton onlabel=" " offlabel=" " checked={true}  />
+                <BootstrapSwitchButton onlabel=" " offlabel=" " checked={unlockable} onChange={()=>setUnlockable(!unlockable)}/>
               </Stack>
-              <FormControl
+              {unlockable && <FormControl
                 as="textarea"
                 rows={5}
                 placeholder="Example: “when you buy this NFT, you can get free coffee for life”"
-              />
-              <h2 className="mt-3">
-                <span className="text-info">Markdown</span> syntax is supported.
-              </h2>
+              /> }
+              {unlockable && <h2 className="mt-3">
+                <a href="https://www.markdownguide.org/getting-started" target="_blank" style={{textDecoration:'none'}} className="text-info">Markdown</a> syntax is supported.
+              </h2>}
+              
             </div>
             <div className="create-nft-trait">
               <Stack direction="horizontal" gap={3}>
                 <h2>Explicit content</h2>
-                <BootstrapSwitchButton onlabel=" " offlabel=" " checked={true} />
+                <BootstrapSwitchButton onlabel=" " offlabel=" " checked={explicit} onChange={()=>setExplicit(!explicit)}/>
               </Stack>
+              
             </div>
             <div className="create-nft-trait text-center mb-5">
               <Button className="mi-button-primary mx-3" variant="primary">
                 Mint it!
               </Button>
               <Button className="mi-button-light bg-gray mx-3" variant="light">
-                Cancel!
+                Cancel
               </Button>
             </div>
           </Col>

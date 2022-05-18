@@ -60,11 +60,11 @@ function Collection() {
     
       <Row className="collection-tab">
         <Stack direction="horizontal">
-          <div onClick={() => setshowpane(true)}>
+          <div className="tab-pane-item" onClick={() => setshowpane(true)}>
             {itemTab ? <Image src="/icons/item.png" /> : <Image src="/icons/item_gray.png" />}
             <p className={itemTab ? "active": ""}>Items</p>
           </div>
-          <div onClick={() => setshowpane(false)}>
+          <div className="tab-pane-item" onClick={() => setshowpane(false)}>
             {itemTab ? <Image src="/icons/Graph Poly.png" /> : <Image src="/icons/Graph Poly_blue.png" />}
             <p className={!itemTab ? "active": ""}>Activity</p>
           </div>

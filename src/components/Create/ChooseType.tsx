@@ -33,6 +33,18 @@ const ChooseType = () => {
               </Card>
             </Link>
           </Col>
+          <Col lg={4} md={6} sm={12}>
+            <Link to="/create/collection">
+              <Card>
+                <Card.Body className="m-auto text-center mb-5">
+                  <h1>Collection</h1>
+                  <Image src={`/icons/collection.png`} className="mt-4" />
+                  {/* <Image src={`/icons/erc1155-logo.png`} className="mt-4" />
+                  <Image src={`/icons/erc1155-logo.png`} className="mt-4" /> */}
+                </Card.Body>
+              </Card>
+            </Link>
+          </Col>
         </Row>
       </Col>
     </Row>

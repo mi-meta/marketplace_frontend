@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Container, Row, Col, Table, Stack, Image } from 'react-bootstrap';
 import { DropdownComp } from '../components';
+import { ThemeContext } from '../providers';
 import '../styles/activity.scss';
 import { chains, categories, durations, LinkItem } from '../store';
 
@@ -70,6 +71,7 @@ type DType = {
 
 function Activity() {
   const [_categories, setCategories] = useState<string[]>([]);
+  const { theme, setTheme } = useContext(ThemeContext);
   useEffect(() => {
     const _cats: string[] = categories.map((item: LinkItem) => {
       return item?.text;
@@ -122,8 +124,8 @@ function Activity() {
             {data.map((item: DType, index: number) => {
               return (
                 <tr key={index}>
-                  <td>{item['id']}</td>
-                  <td>
+                  <td className={` ${theme==="dark"?"text-light":"text-dark"}`}>{item['id']}</td>
+                  <td className={` ${theme==="dark"?"text-light":"text-dark"}`}>
                     <Stack direction="horizontal" gap={3}>
                       <Image
                         src={`/images/nft/${index + 1}.png`}
@@ -134,7 +136,7 @@ function Activity() {
                       {item['collection']}
                     </Stack>
                   </td>
-                  <td>
+                  <td className={` ${theme==="dark"?"text-light":"text-dark"}`}>
                     <Stack direction="horizontal" gap={3}>
                       <Image src={`/icons/eth.png`} />
                       {item['volume']}
@@ -142,14 +144,14 @@ function Activity() {
                   </td>
                   <td className="text-info">{item['p24']}</td>
                   <td className="text-info">{item['p7d']}</td>
-                  <td>
+                  <td className={` ${theme==="dark"?"text-light":"text-dark"}`}>
                     <Stack direction="horizontal" gap={3}>
                       <Image src={`/icons/eth.png`} />
                       {item['floor_price']}
                     </Stack>
                   </td>
-                  <td>{item['owners']}</td>
-                  <td>{item['items']}</td>
+                  <td className={` ${theme==="dark"?"text-light":"text-dark"}`}>{item['owners']}</td>
+                  <td className={` ${theme==="dark"?"text-light":"text-dark"}`}>{item['items']}</td>
                 </tr>
               );
             })}

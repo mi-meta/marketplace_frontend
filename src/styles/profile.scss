@@ -5,6 +5,44 @@
 @import "./_variables.scss";
 
 .profile {
+  .text-dark-light {
+    color:black;
+  }
+  .menu-pop {
+    position:absolute;
+    background-color:white;
+    border: 1px solid #979797;
+    z-index:10000;
+    top:84px;
+    right: -100px;
+  }
+  .collection-create-button {
+    background-color: #009CDE;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+  }
+  .collection-category-container {
+    padding-bottom:20px;
+  }
+  .category-item-card {
+    background-color:#333236;
+    border-radius:26px;
+    border-width:0px;
+    padding-top:0px;
+    padding-bottom:0px;
+    height:340px;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    justify-content: flex-start;
+  }
+  .collection-category-container {
+    .category-item {
+      position: relative;
+    }
+  }
+  .collection-create-button:hover {
+    background-color: #04adf5;
+  }
   .switch-handle {
     padding: 0.375rem 1.6rem;
     margin-left:8px!important;
@@ -116,6 +154,22 @@
 
 .dark {
   .profile {
+    .text-dark-light {
+      color:white;
+    }
+    .menu-pop {
+      position:absolute;
+      background-color:#333236;
+      border: 0px solid #979797;
+      z-index:10000;
+      top:84px;
+      right: -100px;
+    }
+    .menu-pop-item:hover {
+      background-color:#5e5e5e;
+      cursor:pointer;
+      transition: all .3s ease-in;
+    }
     &-body {
       // padding: 0px 70px;
       // min-height: 540px;

@@ -10,6 +10,11 @@
   div {
     justify-content: center;
   }
+  .card:hover {
+    cursor: pointer;
+    margin-top: -3px;
+    transition: all .3s ease-in;
+  }
   .card {
     // width: 300px;
     height: 450px;

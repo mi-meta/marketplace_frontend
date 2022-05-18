@@ -175,28 +175,11 @@ function Header() {
                   Create
                 </Link>
               </Nav.Link>
-              <NavDropdown
-                as="span"
-                title={
-                  <Nav.Link as="span">
-                    <Link to="/profile" className={`nav-link ${menuselected === MENUITEM[4] ? "selected_menu":""}`} onClick={()=>navigate2discover(MENUITEM[4])}>
-                      <Image src="/icons/user.svg" />
-                    </Link>
-                  </Nav.Link>
-                }
-                id="profileScrollingDropdown"
-                onMouseEnter={handleProfileOpen}
-                onMouseLeave={handleProfileClose}
-                show={isProfileOpen}
-              >
-                <NavDropdown.Item as="span"  className={userItem == 'profile' ? "dropdown_item_active":""}>
-                  <Link to={`/profile`} onClick={() => setUserItem('profile')}>Profile</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item as="span"  className={userItem == 'settings' ? "dropdown_item_active":""}>
-                  <Link to={`/settings`} onClick={() => setUserItem('settings')}>Settings</Link>
-                </NavDropdown.Item>
-
-              </NavDropdown>
+              <Nav.Link as="span">
+                <Nav.Link href="/profile" >
+                  <Image src="/icons/user.svg" />
+                </Nav.Link>
+              </Nav.Link>
               <Nav.Link as="span">
                 <Nav.Link href="#action1" onClick={() => setShow(true)}>
                   <Image src="/icons/save.svg" />

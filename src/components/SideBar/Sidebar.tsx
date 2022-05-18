@@ -24,10 +24,10 @@ const Sidebar = ({ show, setShow }: { show: boolean; setShow: (f: boolean) => vo
       </p>
       <Offcanvas.Body>
         <Nav className="justify-content-end flex-grow-1 pe-3">
-          <Nav.Link href="#action1"><img src="/icons/metamask.png" width={30} /><span className="ps-3 text-light">MetaMask</span></Nav.Link>
-          <Nav.Link href="#action2"><img src="/icons/coinbase.png" width={30}/><span className="ps-3 text-light">Coinbase</span></Nav.Link>
-          <Nav.Link href="#action2"><img src="/icons/trust wallet.png" width={30}/><span className="ps-3 text-light" >Trust Wallet</span></Nav.Link>
-          <Nav.Link href="#action2"><img src="/icons/phantom.png" width={30}/><span className="ps-3 text-light">Phantom</span></Nav.Link>
+          <Nav.Link href="#action1" className="wallet-item"><img src="/icons/metamask.png" width={30} /><span className="ps-3 text-light">MetaMask</span></Nav.Link>
+          <Nav.Link href="#action2" className="wallet-item"><img src="/icons/coinbase.png" width={30}/><span className="ps-3 text-light">Coinbase</span></Nav.Link>
+          <Nav.Link href="#action2" className="wallet-item"><img src="/icons/trust wallet.png" width={30}/><span className="ps-3 text-light" >Trust Wallet</span></Nav.Link>
+          <Nav.Link href="#action2" className="wallet-item"><img src="/icons/phantom.png" width={30}/><span className="ps-3 text-light">Phantom</span></Nav.Link>
         </Nav>
         {/* <Form className="d-flex">
           <FormControl type="search" placeholder="Search" className="me-2" aria-label="Search" />

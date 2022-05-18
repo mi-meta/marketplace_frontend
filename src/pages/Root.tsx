@@ -15,6 +15,7 @@ import {
   Profile,
   Settings,
   Discover,
+  Assets
 } from '../pages';
 import {
   Header,
@@ -35,6 +36,8 @@ import {
   ChooseBlockchain,
   ChooseType,
   CreateComp,
+  CreateCollection,
+  NotFound
 } from '../components';
 
 function Root() {
@@ -47,11 +50,13 @@ function Root() {
           <Route path="/" element={<Home />} />
           <Route path="/activity" element={<Activity />} />
           <Route path="/auctions" element={<Auctions />} />
+          <Route path="/assets" element={<Assets />} />
           <Route path="/create" element={<Create />}>
             <Route path="" element={<ChooseBlockchain />} />
             <Route path="blockchain" element={<ChooseBlockchain />} />
             <Route path="type" element={<ChooseType />} />
             <Route path="create" element={<CreateComp />} />
+            <Route path="collection" element={<CreateCollection />} />
           </Route>
           <Route path="/detail" element={<Detail />} />
           <Route path="/drops" element={<Drops />} />
@@ -78,6 +83,7 @@ function Root() {
             <Route path="communication" element={<CommunicationSetting />} />
             <Route path="security" element={<SecuritySetting />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
       <Contact />

@@ -11,3 +11,4 @@ export * from './Profile';
 export * from './Settings';
 export * from './Discover';
 export * from './Root';
+export * from './Assets';

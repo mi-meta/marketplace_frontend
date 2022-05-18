@@ -1,5 +1,5 @@
 import '../styles/profile.scss';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, useNavigate, Outlet } from 'react-router-dom';
 import { Container, Row, Col, Image, Stack, Nav, InputGroup, FormControl } from 'react-bootstrap';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import { useContext } from 'react';
@@ -19,6 +19,7 @@ const categories: LinkItem[] = [
   { text: 'Settings', link: 'settings' },
 ];
 const Profile = () => {
+  const navigate = useNavigate();
   const { theme, setTheme } = useContext(ThemeContext);
   return (
     <Container className="profile p-0" fluid>
@@ -60,21 +61,33 @@ const Profile = () => {
             onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
           >
             {categories.map((item: LinkItem, key: number) => {
-              return (
-                <Nav.Item key={key}>
-                  {/* <Nav.Link>{item}</Nav.Link> */}
-                  <Link className="nav-link" to={`${item.link}`}>
-                    {item.text}
-                  </Link>
-                </Nav.Item>
-              );
+              if (item.link === "settings") {
+                return (
+                  <Nav.Item key={key} onClick={()=>navigate('/settings')}>
+                    {/* <Nav.Link>{item}</Nav.Link> */}
+                    <Link to=""  className="nav-link" >
+                      {item.text}
+                    </Link>
+                  </Nav.Item>
+                );
+              } else {
+                return (
+                  <Nav.Item key={key}>
+                    {/* <Nav.Link>{item}</Nav.Link> */}
+                    <Link className="nav-link" to={`${item.link}`}>
+                      {item.text}
+                    </Link>
+                  </Nav.Item>
+                );
+              }
+              
             })}
           </Nav>
         </Col>
       </Row>
       <Row>
         <Col md={12} lg={8} className="m-auto profile-body">
-          <Row>
+          <Row className="mb-3">
             <Col md={5}>
               <InputGroup className="d-flex">
                 <InputGroup.Text id="basic-addon1">

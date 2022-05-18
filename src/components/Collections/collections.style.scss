@@ -2,6 +2,9 @@
   h1 {
     text-transform: uppercase;
   }
+  &-item:hover {
+    cursor: pointer;
+  }
   &-item {
 
     border-bottom: 0.5px solid #979797;
@@ -82,6 +85,25 @@
       border-radius: 16px;
     }
   }
+  
+}
+.collection-item-favorite {
+  path {
+    fill:#DF3468;
+    stroke:#DF3468;
+  }
+  g {
+    fill:#DF3468;
+    stroke:#DF3468;
+  }
+  rect {
+    fill:#DF3468;
+    stroke:#DF3468;
+  }
+}
+.collection-card:hover {
+  cursor: pointer; 
+  margin-top:10px;
 }
 .dark {
   .collection-list {

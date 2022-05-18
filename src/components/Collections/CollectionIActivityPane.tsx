@@ -82,7 +82,7 @@ type DType = {
   time: string;
 };
 
-function CollectionIActivityPane() {
+function CollectionIActivityPane(props:any) {
   const { theme } = useContext(ThemeContext);
   const [activeChain, setActiveChain] = useState(chainData[0].name);
   const [options, setOptions] = useState({chart: {id: 'apexchart-example'},dataLabels:{enabled:false},  xaxis: {categories: ['02/28', '03/05', '03/10', '03/15', '03/20', '03/25', '04/01']}})
@@ -145,7 +145,7 @@ function CollectionIActivityPane() {
             <thead>
               <tr>
                 {heads.map((item, index) => (
-                  <th className="text-center" key={index}>{item}</th>
+                  <th className={`text-center ${theme === "dark" ? "text-light": "text-dark"}`} key={index}>{item}</th>
                 ))}
               </tr>
             </thead>
@@ -153,8 +153,8 @@ function CollectionIActivityPane() {
               {data.map((item: DType, index: number) => {
                 return (
                   <tr key={index}>
-                    <td className="text-center align-middle">{item['activity']}</td>
-                    <td className="text-center align-middle">
+                    <td className={`text-center align-middle ${theme === "dark" ? "text-light": "text-dark"}`}>{item['activity']}</td>
+                    <td className={`text-center align-middle ${theme === "dark" ? "text-light": "text-dark"}`}>
                       <Stack direction="horizontal" gap={3}>
                         <Image
                           src={`/images/nft/${index + 1}.png`}
@@ -165,16 +165,16 @@ function CollectionIActivityPane() {
                         {item['item']}
                       </Stack>
                     </td>
-                    <td className="text-center align-middle">
+                    <td className={`text-center align-middle ${theme === "dark" ? "text-light": "text-dark"}`}>
                       <Stack direction="horizontal" gap={3}>
                         <Image src={`/icons/eth.png`} />
                         {item['price']}
                       </Stack>
                     </td>
-                    <td className="text-center  align-middle">{item['qty']}</td>
+                    <td className={`text-center align-middle ${theme === "dark" ? "text-light": "text-dark"}`}>{item['qty']}</td>
                     <td className="text-info text-center align-middle">{item['from']}</td>
                     <td className="text-info text-center align-middle">{item['to']}</td>
-                    <td className="text-center align-middle">{item['time']}</td>
+                    <td className={`text-center align-middle ${theme === "dark" ? "text-light": "text-dark"}`}>{item['time']}</td>
                   </tr>
                 );
               })}
