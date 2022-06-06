@@ -1,8 +1,12 @@
-import {useState, useContext, forwardRef} from 'react'
+import {useState, useContext, useEffect} from 'react'
 import { Container, Row, Col, Image, Stack, Button, Accordion, Table, Form, FormControl, Modal, FormCheck } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import DateTimePicker from 'react-datetime-picker';
-
+import { useParams, useNavigate } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from '../hooks/reduxHook';
+import {getNftSide, addNftFavorite, addNftVisit} from '../redux/reducers/nft';
+import {getCollectionSide} from '../redux/reducers/collection';
+import useMetaMask from '../hooks/metamask';
 import { NFTCard } from '../components';
 import { CollectionItem, DropdownComp } from '../components';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
@@ -96,36 +100,34 @@ type DType = {
 };
 
 function Detail() {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const nftStore = useAppSelector(state => state.nft);
+  const collectionStore = useAppSelector(state => state.collection);
+  const {connect, disconnect, isActive, account} = useMetaMask()!;
+  const { nftId } = useParams();
+
+  const [nftIndex, setNftIndex] = useState(0);
   const { theme } = useContext(ThemeContext);
-  const [itemData, setItemData] = useState([{type:'Boswell', name:'Ears'}, {type:'Rollo', name:'Sword'}, {type:'Rollo', name:'Shield'}])
+  const [itemData, setItemData] = useState([{name:'Boswell', value:'Ears'}, {name:'Rollo', value:'Sword'}, {name:'Rollo', value:'Shield'}])
   const [listMarket, setListMarket] = useState(true);
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState("0")
+  const [currency, setCurrency] = useState(currencyType[0])
   const [modal, setModal] = useState(false)
   const [modalStep, setModalStep] = useState(1)
   const [value, onChange] = useState(new Date());
+  const [offerPrice, setOfferPrice] = useState('0');
+  const [term, setTerm] = useState(false);
 
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
-  const handleDateChange = (e:any) => {
-    setIsOpen(!isOpen);
-    setStartDate(e);
-  };
 
-  const handleClick = (e:any) => {
-    e.preventDefault();
-    setIsOpen(!isOpen);
-  };
-
-  const handleChange = (e:any) => {
-    setPrice(e.target.value)
-  }
   const handleCloseModal = () => {
     setModal(false);
   }
   const confirmHandler = () => {
     setModal(false);
   }
-
   const cancelHandler = () => {
     setModal(false);
   }
@@ -137,36 +139,68 @@ function Detail() {
     setModalStep(3);
     setModal(true);
   }
+
+  useEffect(()=>{
+    if (nftStore.nft.length == 0) {
+      dispatch(getNftSide());
+      dispatch(getCollectionSide());
+    }else {
+      if (nftId == "" || nftId == undefined || nftStore.nft.findIndex((each)=>each._id == nftId) != -1 ) {
+        setNftIndex(nftStore.nft.findIndex((each)=>each._id == nftId));
+        setPrice(nftStore.nft[nftStore.nft.findIndex((each)=>each._id == nftId)].price)
+        setItemData(nftStore.nft[nftStore.nft.findIndex((each)=>each._id == nftId)].propertise)
+        dispatch(addNftVisit(nftId));
+      } else {
+        navigate(-1);
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    if (nftId == "" || nftId == undefined || nftStore.nft.findIndex((each)=>each._id == nftId) != -1 ) {
+      setNftIndex(nftStore.nft.findIndex((each)=>each._id == nftId));
+      setPrice(nftStore.nft[nftStore.nft.findIndex((each)=>each._id == nftId)].price);
+      setItemData(nftStore.nft[nftStore.nft.findIndex((each)=>each._id == nftId)].propertise);
+    } else {
+      navigate(-1);
+    }
+  }, [nftStore, nftId])
+
+  const handleFavorite = (nftId:any, account:any) => {
+    dispatch(addNftFavorite(nftId, account));
+  }
+
   return (
-    <Container className="detail">
+    <div>
+    {nftStore.nft.findIndex((each)=>each._id == nftId) != -1 && <Container className="detail">
       <Row>
         <Col lg={5} className="detail-preview">
           <div>
-            <Image src={`/images/detail-preview.png`} />
+            <Image src={`https://${nftStore.nft[nftIndex].nftImg.cid}.ipfs.dweb.link/${nftStore.nft[nftIndex].nftImg.name}`} />
           </div>
         </Col>
         <Col lg={7} className="detail-body">
           <Stack direction="horizontal">
             <div className="me-4">
-              <Heart  />
-              <span className="ps-2">204</span>
+              <Heart onClick={()=>handleFavorite(nftStore.nft[nftIndex]._id, account)} />
+              <span className="ps-2">{nftStore.nft[nftIndex].favorite.length}</span>
             </div>
             <div className="ms-4 me-4 d-flex align-items-center">
               <Visit  />
-              <span className="ps-2">1,257</span>
+              <span className="ps-2">{nftStore.nft[nftIndex].visit}</span>
             </div>
             <div className="ms-4">
               <Share  />
             </div>
           </Stack>
           <p>
-            Created by: <span className="text-info">Monster Magnet</span>
+            Created by: <span className="text-info">{nftStore.nft[nftIndex].creator.substring(0,10)}</span>
           </p>
           <p>
-            Collection: <span className="text-info">LoopingRings</span>
+            Collection: {collectionStore.collection.length > 0 && <span className="text-info">{collectionStore.collection.filter((each)=>each._id == nftStore.nft[nftIndex].collectionId)[0].name}</span>}
           </p>
           <p>
-            Owner: <span className="text-info">WillSmith</span>
+            Owner: <span className="text-info">{nftStore.nft[nftIndex].owner.substring(0,10)}</span>
           </p>
           <p>
             Edition: <span className="text-info">1 of 4</span>
@@ -174,59 +208,59 @@ function Detail() {
           <p>
             Chain: <span className="text-info">Ethereum</span>
           </p>
-          <h1 className="text-dark-light">Infinite #874</h1>
+          {collectionStore.collection.length > 0 && <h1 className="text-dark-light">{collectionStore.collection.filter((each)=>each._id == nftStore.nft[nftIndex].collectionId)[0].name} #874</h1>}
           <p>Current Price</p>
           <h1 className="text-dark-light">
             <Image src={`/icons/eth.png`} />
-            3.02 <span>($67.83 USD)</span>
+            {nftStore.nft[nftIndex].price} <span>($67.83 USD)</span>
           </h1>
 
-          <Stack direction="horizontal" className="mt-4 text-dark-light align-items-center">
+          {account == nftStore.nft[nftIndex].owner && <Stack direction="horizontal" className="mt-4 text-dark-light align-items-center">
             <p className="text-dark-light mb-0">List on marketplace</p>
             <BootstrapSwitchButton   onlabel=" " offlabel=" "  checked={listMarket} onChange={(checked: boolean)=> checked?setListMarket(true):setListMarket(false)} />
-          </Stack>
-          {listMarket && <div className="create-nft-trait">
+          </Stack>}
+          {account == nftStore.nft[nftIndex].owner && listMarket && <div className="create-nft-trait">
             <Stack direction="horizontal" className="create-nft-price-type" gap={3}>
               <div className="text-center">
                 <p className="text-center">Fixed price</p>
                 <Image src={`/icons/tag.png`} width={76} height={76} />
-                <Form.Check className="custom-radio" type="radio" />
+                <Form.Check className="custom-radio" type="radio" checked={nftStore.nft[nftIndex].listMarketplaceCategory === "fix"}/>
               </div>
               <div className="text-center">
                 <p className="text-center">Accept bids</p>
                 <Image src={`/icons/lBKGwu_2_.png`} width={76} height={76} className="p-2" />
-                <Form.Check className="custom-radio" type="radio" />
+                <Form.Check className="custom-radio" type="radio" checked={nftStore.nft[nftIndex].listMarketplaceCategory === "accept"}/>
               </div>
               <div className="text-center">
                 <p className="text-center">Timed auction</p>
                 <Image src={`/icons/Watch.png`} width={76} height={76} />
-                <Form.Check className="custom-radio" type="radio" />
+                <Form.Check className="custom-radio" type="radio" checked={nftStore.nft[nftIndex].listMarketplaceCategory === "time"}/>
               </div>
               <div className="text-center">
                 <p className="text-center">Free</p>
                 <Image src={`/icons/tag_free.png`} width={76} height={76} />
-                <Form.Check className="custom-radio" type="radio" />
+                <Form.Check className="custom-radio" type="radio" checked={nftStore.nft[nftIndex].listMarketplaceCategory === "free"}/>
               </div>
             </Stack>
           </div>}
-          {listMarket && <div className="create-nft-trait">
+          {account == nftStore.nft[nftIndex].owner && listMarket && <div className="create-nft-trait">
             <p className="text-dark-light">Price</p>
             <p>Enter the price for one item</p>
             <Stack direction="horizontal" gap={3}>
-              <FormControl />
-              <DropdownComp items={currencyType} />
+              <FormControl value={price} onChange={(e) => setPrice(e.target.value)}/>
+              <DropdownComp items={currencyType} clickHandler={setCurrency} initialValue={"Ethereum(Eth)"}/>
             </Stack>
             <p className="mt-3">
               Service fee <span className="text-dark-light">2.5%</span>
             </p>
             <p>
-              You will receive <span className="text-dark-light">4.875 MATIC</span> ($8)
+              You will receive <span className="text-dark-light">{price == "" ? "0" : parseFloat(price)*0.975} {currency}</span> ($8)
             </p>
           </div>}
           
         </Col>
       </Row>
-      <Row className="content-box px-5 py-2 mt-3 justify-content-between align-items-center">
+      {account != nftStore.nft[nftIndex].owner && nftStore.nft[nftIndex].listMarketplaceCategory == "fix" && <Row className="content-box px-5 py-2 mt-3 justify-content-between align-items-center">
         <Col>
           <Button className="mx-2 create-nft-modal-btn-save" onClick={()=>buyHandler()}>Buy Now</Button>
           <Button className="mx-2 create-nft-modal-btn-save" onClick={()=>offerHandler()}>Make Offer</Button>
@@ -239,7 +273,8 @@ function Detail() {
           <span style={{fontSize:15, color:'gray'}}>2.9% royalty fee to creator</span>
         </Col>
       </Row>
-      <Row className="content-box px-5 py-2 mt-3 justify-content-between align-items-center px-lg-3">
+      }
+      {account != nftStore.nft[nftIndex].owner && nftStore.nft[nftIndex].listMarketplaceCategory == "accept" && <Row className="content-box px-5 py-2 mt-3 justify-content-between align-items-center px-lg-3">
         <Col lg={4} md={5}>
           <p className="mb-0">Minimun bid</p>
           <h1>
@@ -259,6 +294,7 @@ function Detail() {
           </Row>
         </Col>
       </Row>
+      }
       <Modal
         show={modal}
         onHide={handleCloseModal}
@@ -335,7 +371,7 @@ function Detail() {
           </Row>
           <Row className="text-center mt-2">
             <Stack direction="horizontal" className="justify-content-center">
-              <Form.Check type="checkbox" className={theme === 'dark' ? "text-light custom-check-box-dark" : "text-dark custom-check-box-light"}></Form.Check>
+              <Form.Check type="checkbox" checked={term} onClick={()=>setTerm(!term)} className={theme === 'dark' ? "text-light custom-check-box-dark" : "text-dark custom-check-box-light"}></Form.Check>
               <Form.Check.Label className="text-light ps-2" style={{fontSize:15}}>By checking this box, I agree to Company's Terms of Service</Form.Check.Label>
             </Stack>
           </Row>
@@ -384,8 +420,11 @@ function Detail() {
               </Col>
               <Col sm={5} className="text-right">
                 <h4 className="text-light text-right">
+                  <Stack direction="horizontal" className="align-items-center">
                   <Image src={`/icons/eth.png`} />
-                  0.02 <p className="text-right" style={{fontSize:16, color:'gray'}}>($67.83 USD)</p>
+                  <FormControl type="text" value={offerPrice} onChange={(e)=>setOfferPrice(e.target.value)}/> <p className="text-right mb-0" style={{fontSize:16, color:'gray'}}>($67.83)</p>
+                  </Stack>
+                  
                 </h4>
               </Col>
             </Row>
@@ -398,7 +437,7 @@ function Detail() {
               <Col sm={7} xs={7} className="text-right">
                 <h4 className="text-light text-right mb-0">
                   <Image src={`/icons/eth.png`} />
-                  0.02 <p className="text-right mb-0" style={{fontSize:16, color:'gray'}}>($67.83 USD)</p>
+                  {offerPrice} <p className="text-right mb-0" style={{fontSize:16, color:'gray'}}>($67.83 USD)</p>
                 </h4>
               </Col>
             </Row>
@@ -425,7 +464,7 @@ function Detail() {
             </Row> */}
             <Row className="text-center mt-2">
               <Stack direction="horizontal" className="justify-content-center">
-                <Form.Check type="checkbox" className={theme === 'dark' ? "text-light custom-check-box-dark" : "text-dark custom-check-box-light"}></Form.Check>
+                <Form.Check type="checkbox" checked={term} onClick={()=>setTerm(!term)} className={theme === 'dark' ? "text-light custom-check-box-dark" : "text-dark custom-check-box-light"}></Form.Check>
                 <Form.Check.Label className="text-light ps-2" style={{fontSize:15}}>By checking this box, I agree to Company's Terms of Service</Form.Check.Label>
               </Stack>
             </Row>
@@ -445,7 +484,7 @@ function Detail() {
       <Row className="px-0">
         <Col lg={6} md={12} sm={12} className="pe-md-3 ps-0 pe-sm-0">
           <div className="px-3 py-2 content-box">
-            <p>Ter ålåpp, sufyda och nöläktig. Lörtad sus i sogt ifall nesam. Sud trinen, asymmetrisk krigföring völig, och divakiktig. Benoning hypovadat: nevis. Öledes</p>
+            <p>{nftStore.nft[nftIndex].description}</p>
           </div>
           <div className="px-3 py-2 content-box mt-3">
             <Accordion defaultActiveKey="0">
@@ -478,9 +517,9 @@ function Detail() {
           <div className="mt-3">
             <Stack direction="horizontal" className="detail-properties-item" gap={3}>
               {itemData.map((item, i) => <div key={i}>
-                  <p>{item.type}</p>
+                  <p>{item.name}</p>
                   <p>
-                    <span className="text-info">{item.name}</span>
+                    <span className="text-info">{item.value}</span>
                   </p>
                 </div>)}
               </Stack>
@@ -582,7 +621,7 @@ function Detail() {
           </Accordion.Item>
         </Accordion>
       </Row>
-      <Row className="content-box px-5 py-2 mt-3 justify-content-between align-items-center">
+      {account != nftStore.nft[nftIndex].owner && nftStore.nft[nftIndex].listMarketplaceCategory == "fix" && <Row className="content-box px-5 py-2 mt-3 justify-content-between align-items-center">
         <Col>
           <Button className="mx-2">Buy Now</Button>
           <Button className="mx-2">Make Offer</Button>
@@ -595,18 +634,21 @@ function Detail() {
           <span style={{fontSize:15, color:'gray'}}>2.9% royalty fee to creator</span>
         </Col>
       </Row>
+      }
       <h3 className="text-dark-light mt-3">More from this collection</h3>
-      <Row className="">
-        {new Array(10).fill(1).map((_item: number, key: number) => {
+      {nftStore.nft.length > 0 && <Row className="">
+        {nftStore.nft.filter((each)=>each.collectionId == nftStore.nft[nftIndex].collectionId).map((item, key) => {
           // return <NFTCard id={key + 1} key={key} />;
+          if (item._id !== nftStore.nft[nftIndex]._id)
           return (
             <Col lg={4} md={6} sm={12} xs={12} key={key}>
-              <CollectionItem key={key} id={key + 1} />;
+              {collectionStore.collection.length > 0 && <CollectionItem  key={key} id={item._id} favoriteCount={item.favorite.length} title={collectionStore.collection[collectionStore.collection.findIndex((e)=>e._id == nftStore.nft[nftIndex].collectionId)].name} description={item.description} price={item.price} owner={item.owner} img={`https://${item.nftImg.cid}.ipfs.dweb.link/${item.nftImg.name}`} />};
             </Col>
           );
         })}
-      </Row>
-    </Container>
+      </Row>}
+    </Container>}
+    </div>
   );
 }
 

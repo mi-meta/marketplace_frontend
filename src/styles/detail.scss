@@ -3,6 +3,9 @@ $base-font:'Montserrat';
 $base-font-style:normal;
 
 .detail {
+  .collection-card {
+    height: 380px !important;;
+  }
   padding: 90px;
   & > div {
 
@@ -50,9 +53,10 @@ $base-font-style:normal;
     // text-align: right;
     & > div {
       text-align: center;
-
+      
       img {
         width: 100%;
+        border-radius:10px;
       }
     }
   }
@@ -182,7 +186,14 @@ $base-font-style:normal;
 .custom-radio input {
   border:1px solid #0d6efd;
   background-color:transparent;
-  
+}
+
+.modal-dark {
+  .form-control {
+    background-color: transparent;
+    color:#979797;
+    border:1px solid #333236;
+  }
 }
 
 .modal-light {
@@ -224,7 +235,7 @@ $base-font-style:normal;
   }
   & > input:checked {
     border: 1px solid black;
-    background-color:transparent;
+    background-color:#009CDE;
   }
 }
 .custom-check-box-dark  {
@@ -344,6 +355,14 @@ $base-font-style:normal;
 }
 .react-datetime-picker__clear-button {
   display: none;
+}
+.modal-light {
+  .react-datetime-picker__calendar-button {
+    color:black;
+    & > svg {
+      stroke: black;
+    }
+  }
 }
 .react-datetime-picker__calendar-button {
   color:white;

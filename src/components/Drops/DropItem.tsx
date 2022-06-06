@@ -1,12 +1,12 @@
 import { Card } from 'react-bootstrap';
 
-function DropItem({ id }: { id: number }) {
+function DropItem({ id, title, description, img }: { id: number, title:string, description:string, img:string }) {
   return (
     <Card className="text-white">
-      <Card.Img src={`/images/drops/${id.toString()}.png`} alt="Card image" />
+      <Card.Img src={img} alt="Card image" />
       <Card.ImgOverlay>
-        <Card.Title>Card title</Card.Title>
-        <Card.Text>Supporting description for the card goes here like this.</Card.Text>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{description}</Card.Text>
       </Card.ImgOverlay>
     </Card>
   );

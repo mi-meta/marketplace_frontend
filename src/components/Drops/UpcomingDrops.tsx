@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { DropItem } from './DropItem';
 import './drops.style.scss';
-
+import { useAppSelector, useAppDispatch } from '../../hooks/reduxHook';
+import {getNftSide} from '../../redux/reducers/nft';
 
 import { Parallax } from 'react-parallax';
 import * as components from '../../components';
@@ -30,6 +31,16 @@ const responsive = {
 };
 
 const UpcomingDrops = () => {
+
+  const dispatch = useAppDispatch();
+  const nftStore = useAppSelector(state => state.nft);
+
+  useEffect(()=> {
+    if (nftStore.nft.length == 0 ) {
+      dispatch(getNftSide());
+    }
+  }, [])
+
   return (
    <Parallax
         bgImage={'/images/nfts-bg-dark-parallax.png'}
@@ -44,13 +55,19 @@ const UpcomingDrops = () => {
               <Col md={10} className="m-auto">
                 <Row>
                   <Carousel responsive={responsive}>
-                    {new Array(10).fill(2).map((item: number, key: number) => {
+                  {nftStore.nft.map((item, key) => {
+                      if (key < 6) return <div style={{ padding: '12px' }} key={key}>
+                      <components.NFTCard  key={key} id={item._id} title={"Doge NFT"} description={item.description} price={item.price} owner={"asdf"} img={`https://${item.nftImg.cid}.ipfs.dweb.link/${item.nftImg.name}`} />
+                    </div>
+                  })}
+                  
+                    {/* {new Array(10).fill(2).map((item: number, key: number) => {
                       return (
                         <div style={{ padding: '12px' }} key={key}>
-                          <components.NFTCard id={key + 1} />
+                          <components.NFTCard  key={key} id={`${key} + 1`} title={"aaa"} description={"aaaaaaaaaaaaaa"} price={'24.31'} owner={"asdf"} img={"sdfsdf"} />
                         </div>
                       );
-                    })}
+                    })} */}
                   </Carousel>
                 </Row>
               </Col>

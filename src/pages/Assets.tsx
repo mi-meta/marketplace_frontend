@@ -1,7 +1,6 @@
 import {Container} from 'react-bootstrap';
 import '../styles/assets.scss';
-import {CollectionItem, CollectionItemsPane, CollectionIActivityPane} from '../components';
-import {useState} from 'react';
+import {CollectionItemsPane} from '../components';
 
 function Assets() {
 

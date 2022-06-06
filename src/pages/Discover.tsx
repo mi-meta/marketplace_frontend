@@ -2,14 +2,25 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { CollectionCard } from '../components';
+import {getCollectionSide} from '../redux/reducers/collection'
+import { useAppSelector, useAppDispatch } from '../hooks/reduxHook';
 import '../styles/discover.scss';
 
 const Discover = () => {
+  const dispatch = useAppDispatch();
+  const collectionStore = useAppSelector(state => state.collection)
   const { category } = useParams();
 
   useEffect(() => {
     console.log(category);
   }, [category]);
+
+  useEffect(()=> {
+    if (collectionStore.collection.length == 0 ) {
+      dispatch(getCollectionSide());
+    }
+  }, [])
+
   return (
     <Container className="discover p-0" fluid>
       <Row className="discover-landing">
@@ -35,8 +46,8 @@ const Discover = () => {
         </div>
         <Col lg={10} className="m-auto">
           <Row className="justify-content-center">
-            {new Array(16).fill(1).map((_, key: number) => {
-              return <CollectionCard id={key + 1} key={key} />;
+            {collectionStore.collection.filter((e) => !e.hide).map((item, key: number) => {
+              return <CollectionCard id={item._id} key={key} img={`https://${item.collectionImg.cid}.ipfs.dweb.link/${item.collectionImg.name}`} name={item.name} creator={item.creator} description={item.description}  />;
               // return (
               //   <Col lg={3} md={4} sm={6} key={key}>
               //     <CollectionCard id={key + 1} />

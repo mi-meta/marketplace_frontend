@@ -1,31 +1,33 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { Card, Stack, Image } from 'react-bootstrap';
 import {ReactComponent as Heart} from "../../assets/icons/heart.svg"
 import './nft-card.style.scss';
 
-function NFTCard({ id }: { id: number }) {
+function NFTCard({ id, title, description, price, img, owner }: { id: string, title:string, description:string, price:string, img:string, owner:string }) {
   const navigate = useNavigate();
-  const showDetail = (id: number) => {
+  
+  const showDetail = (id: string) => {
     console.log(id);
-    navigate('/collection');
-    window.location.href=`/detail/`
+    navigate('/detail/' + id);
+    // window.location.href= "/detail/" + id;
   };
   return (
     // <Link to="/detail">
     <Card className="nft-card" onClick={() => showDetail(id)}>
-      <Card.Img variant="top" src={`/images/nft/${id}.png`} />
+      <Card.Img variant="top" src={img} />
       <Card.Body>
         <Card.Text>1 Edition minted</Card.Text>
-        <Card.Title>NFT Title</Card.Title>
+        <Card.Title>{title}</Card.Title>
         <Card.Text className="bold">
-          Supporting description for the card goes here like this. 
+          {description}
         </Card.Text>
         <Card.Text className="bold">
           Price
-          <img className="ms-4" src="icons/eth.png" />
+          <img className="ms-4" src="/icons/eth.png" />
           <span>
-            78.76
+            {price}
           </span>
         </Card.Text>
         <Card.Text>
@@ -35,7 +37,7 @@ function NFTCard({ id }: { id: number }) {
             <Stack gap={1}>
               <h5>Owner</h5>
               <p>
-                aldo
+                {owner}
               </p>
             </Stack>
                 <Heart className="heart-icon" />

@@ -11,7 +11,7 @@ const categories: LinkItem[] = [
 const chains = ['ethereum', 'polygon', 'solana'];
 const chainImage=["/icons/ethereum-logo.png", "/icons/polygon-logo.png", "/icons/solana-logo.png"]
 const chainData = [
-  {name:"All Chains", image:'icons/blank.png'},
+  {name:"All Chains", image:'/icons/blank.png'},
   {name:"Ethereum", image:"/icons/ethereum-logo.png"},
   {name:"Polygon", image:"/icons/polygon-logo.png"},
   {name:"Solana", image:"/icons/solana-logo.png"},
@@ -33,4 +33,6 @@ const SubMenuList = [
   { text: 'domain names', link: 'domain' },
 ];
 
-export { categories, chains, durations, MENUITEM, SubMenuList, sortMethod, collectionType, currencyType, chainImage, chainData};
+const web3Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQzYUVkQzEwOTYxRWY0RjRhNWI4QjM3RjgzYjAyNUI2MjMwYjhDOTYiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NTMyNDI3ODk1MjYsIm5hbWUiOiJtaS1tZXRhIn0.2GwE6AHabOC18PRqUOUHSuLc-MB6Vz3dtVEgjbKmPeo";
+
+export { categories, chains, durations, MENUITEM, SubMenuList, sortMethod, collectionType, currencyType, chainImage, chainData, web3Token};

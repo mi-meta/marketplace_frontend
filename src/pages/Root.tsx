@@ -15,7 +15,8 @@ import {
   Profile,
   Settings,
   Discover,
-  Assets
+  Assets,
+  Login
 } from '../pages';
 import {
   Header,
@@ -48,6 +49,7 @@ function Root() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/activity" element={<Activity />} />
           <Route path="/auctions" element={<Auctions />} />
           <Route path="/assets" element={<Assets />} />
@@ -58,13 +60,13 @@ function Root() {
             <Route path="create" element={<CreateComp />} />
             <Route path="collection" element={<CreateCollection />} />
           </Route>
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/detail/:nftId" element={<Detail />} />
           <Route path="/drops" element={<Drops />} />
           <Route path="/learn" element={<Learn />} />
           <Route path="/home" element={<Home />} />
           <Route path="/discover-collection" element={<Explore />} />
-          <Route path="/discover/:category" element={<Discover />} />
-          <Route path="/collection" element={<Collection />} />
+          <Route path="/discover" element={<Discover />} />
+          <Route path="/collection/:collectionId" element={<Collection />} />
           <Route path="/profile" element={<Profile />}>
             <Route path="" element={<MyCollections />} />
             <Route path="collections" element={<MyCollections />} />

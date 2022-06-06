@@ -7,7 +7,7 @@ import {ReactComponent as Dot} from '../../assets/icons/dot.svg'
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
 
-const CategoryItem = ({ id, type }: any) => {
+const CategoryItem = ({ id, type, title, description, cid, name, hide, handleSell, handleHide, handleBurn, handleProfilePicture, handleShare, handleDetail, account }: any) => {
   const navigate = useNavigate();
   const popover = (
     <Popover id="popover-basic">
@@ -38,11 +38,9 @@ const CategoryItem = ({ id, type }: any) => {
   return (
     <div className="category-item">
       <Card className="text-white m-auto category-item-card">
-        <Card.Img src={`/images/category/${id.toString()}.png`} alt="Card image" />
-        {/* <Card.ImgOverlay> */}
-          <Card.Title style={{marginTop:'-100px'}} className="px-3">Card title</Card.Title>
-          <Card.Text className="px-3">Supporting description for the card goes here like this.</Card.Text>
-        {/* </Card.ImgOverlay> */}
+        <Card.Img src={`https://${cid}.ipfs.dweb.link/${name}`} alt="Card image" />
+          <Card.Title style={{marginTop:'-100px'}} className="px-3">{title}</Card.Title>
+          <Card.Text className="px-3 mb-4 pt-3" style={{whiteSpace:'nowrap', overflow:'hidden', textOverflow:"ellipsis"}}>{description}</Card.Text>
         {type==="collection" && <div className="px-3 ">
           <Stack direction="horizontal" className="align-items-center justify-content-start">
             <span className="category-item-icon" style={{width:25}}>
@@ -51,25 +49,24 @@ const CategoryItem = ({ id, type }: any) => {
             <span className="category-item-icon" style={{width:25}}>
               <Lock />
             </span>
-            {/* <OverlayTrigger trigger="click" placement="top-start" overlay={popover}> */}
               <span className="category-item-icon" style={{width:30}} onClick={openMenu}>
                 <Dot />
               </span>
-            {/* </OverlayTrigger> */}
             
           </Stack>
         </div>
         }
       </Card>
       {show && <div id="menu_pop" className="menu-pop px-2 py-2"  ref={ref}>
-        <p className="mb-0 py-1 px-3 menu-pop-item text-dark-light">Make profile picture</p>
+        <p className="mb-0 py-1 px-3 menu-pop-item text-dark-light" onClick={()=>handleProfilePicture(cid, name, account)}>Make profile picture</p>
         <p className="mb-0 py-1 px-3 menu-pop-item text-dark-light">Sell</p>
-        <p className="mb-0 py-1 px-3 menu-pop-item text-dark-light">Hide</p>
-        <p className="mb-0 py-1 px-3 menu-pop-item text-dark-light">Burn</p>
+        <p className="mb-0 py-1 px-3 menu-pop-item text-dark-light" onClick = {() => handleHide(id)}>{!hide ? "Hide" : "Show"}</p>
+        <p className="mb-0 py-1 px-3 menu-pop-item text-dark-light" onClick = {() => handleBurn(id)}>Burn</p>
         <p className="mb-0 py-1 px-3 menu-pop-item text-dark-light">Transfer</p>
         <p className="mb-0 py-1 px-3 menu-pop-item text-dark-light">Share</p>
-        <p className="mb-0 py-1 px-3 menu-pop-item text-dark-light">Open origilan on IPFS</p>
-        <p className="mb-0 py-1 px-3 menu-pop-item text-dark-light">View details</p>
+
+        <a href={`https://${cid}.ipfs.dweb.link/${name}`} target="_blank" style={{textDecoration:'none'}}><p className="mb-0 py-1 px-3 menu-pop-item text-dark-light" >Open original on IPFS</p></a>
+        <p className="mb-0 py-1 px-3 menu-pop-item text-dark-light" onClick = {() => handleDetail(id)}>View details</p>
       </div>}
     </div>
   );

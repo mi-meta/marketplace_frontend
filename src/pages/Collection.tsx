@@ -1,26 +1,56 @@
-import { Container, Row, Col, Button, Stack, Image, ListGroup} from 'react-bootstrap';
+import { Container, Row, Button, Stack, Image} from 'react-bootstrap';
+import {useNavigate}  from 'react-router';
 import '../styles/collection.scss';
-import { CollectionItem, CollectionItemsPane, CollectionIActivityPane } from '../components';
-import { useState } from 'react';
+import { CollectionItemsPane, CollectionIActivityPane } from '../components';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from '../hooks/reduxHook';
+import {getCollectionSide} from '../redux/reducers/collection';
+import collection from '../redux/reducers/collection';
 
 function Collection() {
+  const navigate = useNavigate();
+  const [collectionIndex, setCollectionIndex] = useState(0);
+
   const setshowpane = (val:any)=> {
-    console.log(val);
     setItemTab(val);
   }
 
+  const collectionStore = useAppSelector(state => state.collection);
+  const { collectionId } = useParams();
   const [itemTab, setItemTab] = useState(true);
+  const dispatch = useAppDispatch()
+
+  useEffect(()=>{
+    if (collectionStore.collection.length == 0) {
+      dispatch(getCollectionSide());
+    }else {
+      if (collectionId == "" || collectionId == undefined || collectionStore.collection.findIndex((each)=>each._id == collectionId) != -1 ) {
+        setCollectionIndex(collectionStore.collection.findIndex((each)=>each._id == collectionId));
+      } else {
+        navigate(-1);
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    if (collectionId == "" || collectionId == undefined || collectionStore.collection.findIndex((each)=>each._id == collectionId) != -1 ) {
+      setCollectionIndex(collectionStore.collection.findIndex((each)=>each._id == collectionId));
+    } else {
+      navigate(-1);
+    }
+  }, [collectionStore])
 
   return (
     <Container className="collection p-0" fluid>
       <Row className="collection-landing">
-        <div className="collection-landing-bg" />
-        <div className="collection-badge" />
+        {collectionStore.collection.length >0 && <div className="collection-landing-bg" style={{backgroundImage:`url("https://${collectionStore.collection[collectionIndex].bannerImg.cid}.ipfs.dweb.link/${collectionStore.collection[collectionIndex].bannerImg.name}")`}}/>}
+        {collectionStore.collection.length >0 && <div className="collection-badge" style={{backgroundImage:`url("https://${collectionStore.collection[collectionIndex].logoImg.cid}.ipfs.dweb.link/${collectionStore.collection[collectionIndex].logoImg.name}")`}}/>}
       </Row>
       <Row className="collection-description">
-        <h1>LoopingRings</h1>
+        {collectionStore.collection.length > 0 && <h1>{collectionStore.collection[collectionIndex].name}</h1>}
         <p>
-          Created By: <span className="text-info mx-2">Monster Magnet</span>
+          Created By: {collectionStore.collection.length > 0 && <span className="text-info mx-2">{collectionStore.collection[collectionIndex].creator.substring(0,10)}</span>}
           <Button variant="danger" className="mx-2">
             <Image src="/icons/twitter.svg" width={15} height={15} />
           </Button>
@@ -70,7 +100,7 @@ function Collection() {
           </div>
         </Stack>
       </Row>
-      {itemTab ? <CollectionItemsPane /> :<CollectionIActivityPane /> }
+      {itemTab ? <CollectionItemsPane collectionId={collectionId}/> :<CollectionIActivityPane /> }
       
     </Container>
   );

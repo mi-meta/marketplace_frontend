@@ -1,10 +1,14 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Container, Row, Col, Button, Stack, Image, ListGroup, InputGroup, FormControl, Form, ButtonGroup} from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
 import { CollectionItem } from './CollectionItem';
 import { DropdownComp } from '../DropdownComp';
 import { ThemeContext } from '../../providers';
 import { chains, categories, durations, LinkItem, sortMethod, collectionType, currencyType, chainImage, chainData } from '../../store';
+import { useAppSelector, useAppDispatch } from '../../hooks/reduxHook';
+import {getCollectionSide} from '../../redux/reducers/collection'
+import {getNftSide} from '../../redux/reducers/nft'
+
 import {FilterCard} from './FilterCard'
 import {NFTCard} from '../NFTCard'
 import './collections.style.scss';
@@ -12,9 +16,24 @@ import '../../styles/activity.scss';
 import { propTypes } from 'react-bootstrap/esm/Image';
 
 function CollectionItemsPane(props:any) {
+
+  const dispatch = useAppDispatch();
+  const collectionStore = useAppSelector(state => state.collection);
+  const nftStore = useAppSelector(state => state.nft);
+
   const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
   const [activeChain, setActiveChain] = useState(chainData[0].name);
+
+  useEffect(()=>{
+    if (collectionStore.collection.length == 0 ) {
+      dispatch(getCollectionSide());
+    }
+    if (nftStore.nft.length == 0 ) {
+      dispatch(getNftSide());
+    }
+  }, [])
+
   return (
     <Row className="mb-3 collection-body">
       <Col lg={3} className="mt-4">
@@ -75,8 +94,6 @@ function CollectionItemsPane(props:any) {
                   placeholder="Search"
                   className={theme === "dark" ? "search-input-dark":"search-input-light"}
                   aria-label="Search"
-                  // value={searchval}
-                  // onChange = {e=> changeValue(e.target.value)}
                 />
               </InputGroup>
               </Col >
@@ -87,14 +104,21 @@ function CollectionItemsPane(props:any) {
                   <DropdownComp items={sortMethod} />
               </Col>
           </Row>
-          {new Array(8).fill(22).map((item: number, key: number) => {
-            if (props !== "assets") {
-              return <NFTCard  key={key} id={key + 1} />;
-            } else {
-              return <CollectionItem  key={key} id={key + 1} />;
-            }
-            
-          })}
+          {
+            props.type !== "assets" && nftStore.nft.filter((each)=>each.collectionId == props.collectionId).map((item, key) => {
+              return <CollectionItem  key={key} id={item._id} title={"Doge Nft"} description={item.description} favoriteCount={item.favorite.length} price={item.price} owner={item.owner} img={`https://${item.nftImg.cid}.ipfs.dweb.link/${item.nftImg.name}`} />;
+            })
+          }
+          {
+            props.type === "assets" && nftStore.nft.map((item, key) => {
+              return <CollectionItem  key={key} id={item._id} title={"Doge Nft"} description={item.description} favoriteCount={item.favorite.length} price={item.price} owner={item.owner} img={`https://${item.nftImg.cid}.ipfs.dweb.link/${item.nftImg.name}`} />;
+            })
+          }
+          {/* {
+            props === "assets" && collectionStore.collection.map((item, key) => {
+              return <CollectionItem  key={key} id={item._id} title={"Doge Nft"} description={item.description} price={item.price} owner={item.owner} img={`https://${item.nftImg.cid}.ipfs.dweb.link/${item.nftImg.name}`} />;
+            })
+          } */}
         </Row>
       </Col>
     </Row> 

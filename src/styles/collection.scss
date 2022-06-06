@@ -9,6 +9,10 @@
 }
 
 .collection {
+
+  .collection-card {
+    height: 380px!important;
+  }
   .input-group-text {
     border:0px solid transparent!important;
   }
@@ -78,6 +82,7 @@
     height: 125px;
     z-index: 10;
     text-align: left;
+    border-radius:50%;
   }
   &-description {
     padding: 75px 100px;
@@ -285,6 +290,7 @@
     &-landing {
       &-bg {
         z-index: 1;
+        background-position:center;
       }
     }
     &-description {

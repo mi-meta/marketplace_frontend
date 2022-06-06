@@ -1,26 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, Image } from 'react-bootstrap';
 import './collections.style.scss';
 
-function CollectionCard({ id }: { id: number }) {
+function CollectionCard({ id, name, creator, description, img }: { id: number, name:string, creator: string, description:string, img:string }) {
   const navigate = useNavigate();
+
   const showDetail = (id: number) => {
     console.log(id);
-    navigate('/collection');
+    navigate(`/collection/${id}`);
   };
+
   return (
     // <Link to="/detail">
-    <Card className="collection-card" onClick={() => showDetail(id)}>
-      <Card.Img variant="top" src={`/images/nft/${id}.png`} />
+    <Card className="collection-card" style={{overflow:'hidden'}} onClick={() => showDetail(id)}>
+      <Card.Img variant="top" src={img} />
       <Card.Body className="text-center">
-        <Card.Title className="text-center">Looping Rings</Card.Title>
+        <Card.Title className="text-center">{name}</Card.Title>
         <Card.Text className="bold text-center">
-          by <span className="text-info">MonsterMagnet</span>
+          by <span className="text-info">{creator.substring(0,10)}</span>
         </Card.Text>
-        <Image src={`/avatars/user-1.png`} className="m-auto" fluid />
+        <div>
+          <Image src={`/avatars/user-1.png`} className="m-auto" fluid style={{objectFit:'cover'}}/>
+        </div>
         <p className="text-center">
-          Creativedrops presents a limited run of 500 unique pieces painted by blind artists
+          {description}
         </p>
       </Card.Body>
     </Card>

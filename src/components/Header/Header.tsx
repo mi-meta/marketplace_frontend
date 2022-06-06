@@ -1,7 +1,8 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../providers';
-import { categories, LinkItem, MENUITEM, SubMenuList } from '../../store';
+import { categories, LinkItem, MENUITEM } from '../../store';
+
 import './header.style.scss';
 import {
   Row,
@@ -37,6 +38,7 @@ const filterPosts = (posts:any, inputval:any) => {
 };
 
 function Header() {
+
   const { theme } = useContext(ThemeContext);
   const [searchval, setSearchval] = useState("");
   const navigate = useNavigate();
@@ -176,8 +178,10 @@ function Header() {
                 </Link>
               </Nav.Link>
               <Nav.Link as="span">
-                <Nav.Link href="/profile" >
-                  <Image src="/icons/user.svg" />
+                <Nav.Link as="span" >
+                  <Link to="/profile">
+                    <Image src="/icons/user.svg" />
+                  </Link>
                 </Nav.Link>
               </Nav.Link>
               <Nav.Link as="span">
